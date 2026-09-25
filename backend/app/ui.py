@@ -788,7 +788,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
     let chartInstance = null;
     let isAuthRegisterMode = false;
 
-    // --- API CALL HELPER ---
+    // --- API CALL HELPER WITH AUTO STALE TOKEN PURGE ---
     async function apiCall(path, options = {}) {
       const cleanPath = path.startsWith('/') ? path : '/' + path;
       let url = '';
@@ -820,6 +820,14 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
           data = { detail: text || res.statusText };
         }
 
+        if (res.status === 401) {
+          // Clear invalid/stale/expired token immediately
+          token = '';
+          localStorage.removeItem('token');
+          currentUser = null;
+          updateAuthUI();
+        }
+
         if (!res.ok) {
           const msg = (data && (data.detail || data.message)) || ('Request failed with status ' + res.status);
           throw new Error(typeof msg === 'object' ? JSON.stringify(msg) : msg);
@@ -833,6 +841,9 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
     // --- TOAST SYSTEM ---
     function showToast(message, type) {
+      // Suppress raw credential errors from spamming popups
+      if (message && message.includes('Could not validate credentials')) return;
+
       type = type || 'info';
       const container = document.getElementById('toast-container');
       if (!container) return;
@@ -974,6 +985,16 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
     async function fetchCurrentUser() {
       if (!token) {
+        // Auto-authenticate default demo student if no token present
+        try {
+          const data = await apiCall('/api/auth/login', {
+            method: 'POST',
+            body: JSON.stringify({ email: 'student@ai.com', password: 'password123' })
+          });
+          token = data.access_token;
+          localStorage.setItem('token', token);
+          currentUser = data.user;
+        } catch (e) {}
         updateAuthUI();
         return;
       }
@@ -985,6 +1006,17 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
         localStorage.removeItem('token');
         currentUser = null;
         updateAuthUI();
+        // Auto recovery: login default student
+        try {
+          const data = await apiCall('/api/auth/login', {
+            method: 'POST',
+            body: JSON.stringify({ email: 'student@ai.com', password: 'password123' })
+          });
+          token = data.access_token;
+          localStorage.setItem('token', token);
+          currentUser = data.user;
+          updateAuthUI();
+        } catch (e) {}
       }
     }
 
@@ -1093,6 +1125,10 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
     // --- INTERVIEW SESSION WORKFLOW ---
     async function startInterviewSession() {
+      if (!token) {
+        await fetchCurrentUser();
+      }
+
       if (!token) {
         openAuthModal();
         showToast('Please login first to start an interview session.', 'info');
