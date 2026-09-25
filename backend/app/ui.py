@@ -762,7 +762,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       }
       
       // Default to Localtunnel HTTPS Host for GitHub Pages / External Browsers
-      return 'https://four-ways-sin.loca.lt';
+      return 'https://ai-interview-backend-qlso.onrender.com';
     }
 
     const API_BASE_URL = getApiBaseUrl();
