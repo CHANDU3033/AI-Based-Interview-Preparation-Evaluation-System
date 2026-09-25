@@ -18,6 +18,8 @@ class User(Base):
     education = Column(String(200), nullable=True)
     college = Column(String(200), nullable=True)
     branch = Column(String(100), nullable=True)
+    bio = Column(String(500), nullable=True)
+    avatar_url = Column(String(500), nullable=True)
     experience_years = Column(Float, default=0.0)
     role = Column(String(20), default="student")   # student | admin
     is_active = Column(Boolean, default=True)

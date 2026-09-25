@@ -99,6 +99,7 @@ def google_auth(payload: GoogleAuthRequest, db: Session = Depends(get_db)):
                 decoded_data = json.loads(decoded_bytes.decode("utf-8"))
                 email = decoded_data.get("email")
                 name = decoded_data.get("name") or decoded_data.get("given_name", name)
+                picture = decoded_data.get("picture")
         except Exception as e:
             pass
 

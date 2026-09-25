@@ -28,6 +28,8 @@ class UserUpdate(BaseModel):
     college: Optional[str] = None
     branch: Optional[str] = None
     experience_years: Optional[float] = None
+    bio: Optional[str] = None
+    avatar_url: Optional[str] = None
 
 
 class UserResponse(BaseModel):
@@ -41,6 +43,8 @@ class UserResponse(BaseModel):
     college: Optional[str] = None
     branch: Optional[str] = None
     experience_years: Optional[float] = 0.0
+    bio: Optional[str] = None
+    avatar_url: Optional[str] = None
     role: str
     created_at: Optional[datetime] = None
 
