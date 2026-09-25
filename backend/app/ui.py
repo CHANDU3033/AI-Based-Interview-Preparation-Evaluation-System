@@ -666,7 +666,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
           <button type="button" onclick="quickLogin('student@ai.com', 'password123')" class="px-3 py-1.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition-all shadow">
             ⚡ Demo Student
           </button>
-          <button type="button" onclick="quickLogin('admin@ai.com', 'password123')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all border border-slate-700">
+          <button type="button" onclick="quickLogin('admin@ai.com', 'admin123')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all border border-slate-700">
             🛡 Demo Admin
           </button>
         </div>
