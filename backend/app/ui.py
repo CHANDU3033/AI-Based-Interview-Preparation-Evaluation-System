@@ -66,26 +66,114 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
   </script>
 
   <style>
-    :root {
-      --bg-dark: #0f172a;
-      --card-dark: rgba(30, 41, 59, 0.75);
-      --border-dark: rgba(56, 189, 248, 0.15);
-      --nav-dark: rgba(15, 23, 42, 0.88);
-    }
-
+    /* BASE THEMES */
     body {
       font-family: 'Outfit', sans-serif;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      background-attachment: fixed;
+    }
+
+    /* 1. OCEAN SLATE (DEFAULT DARK) */
+    body.theme-ocean, body:not([class*="theme-"]) {
       background-color: #0f172a;
       color: #f8fafc;
       background-image: 
         radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.12) 0px, transparent 50%),
         radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.10) 0px, transparent 50%),
         radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
-      background-attachment: fixed;
-      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+    body.theme-ocean .glass-card, body:not([class*="theme-"]) .glass-card {
+      background: rgba(30, 41, 59, 0.75);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+    }
+    body.theme-ocean .glass-nav, body:not([class*="theme-"]) .glass-nav {
+      background: rgba(15, 23, 42, 0.88);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    }
+    body.theme-ocean .btn-gradient, body:not([class*="theme-"]) .btn-gradient {
+      background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 50%, #06b6d4 100%);
     }
 
-    body.light-theme {
+    /* 2. MINT EMERALD */
+    body.theme-emerald {
+      background-color: #022c22;
+      color: #f0fdf4;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(20, 184, 166, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(52, 211, 153, 0.08) 0px, transparent 50%);
+    }
+    body.theme-emerald .glass-card {
+      background: rgba(6, 78, 59, 0.75);
+      border: 1px solid rgba(52, 211, 153, 0.2);
+    }
+    body.theme-emerald .glass-nav {
+      background: rgba(2, 44, 34, 0.88);
+      border-bottom: 1px solid rgba(52, 211, 153, 0.2);
+    }
+    body.theme-emerald .btn-gradient {
+      background: linear-gradient(135deg, #10b981 0%, #059669 50%, #34d399 100%);
+    }
+    body.theme-emerald .gradient-text {
+      background: linear-gradient(135deg, #34d399 0%, #6ee7b7 50%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* 3. COSMIC PURPLE */
+    body.theme-cosmic {
+      background-color: #1e1b4b;
+      color: #faf5ff;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(217, 70, 239, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(99, 102, 241, 0.08) 0px, transparent 50%);
+    }
+    body.theme-cosmic .glass-card {
+      background: rgba(30, 27, 75, 0.75);
+      border: 1px solid rgba(167, 139, 250, 0.2);
+    }
+    body.theme-cosmic .glass-nav {
+      background: rgba(30, 27, 75, 0.88);
+      border-bottom: 1px solid rgba(167, 139, 250, 0.2);
+    }
+    body.theme-cosmic .btn-gradient {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #d946ef 100%);
+    }
+    body.theme-cosmic .gradient-text {
+      background: linear-gradient(135deg, #a78bfa 0%, #c084fc 50%, #f472b6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* 4. SUNSET AMBER */
+    body.theme-sunset {
+      background-color: #1c1917;
+      color: #fff7ed;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(245, 158, 11, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(234, 88, 12, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(251, 191, 36, 0.08) 0px, transparent 50%);
+    }
+    body.theme-sunset .glass-card {
+      background: rgba(44, 23, 17, 0.75);
+      border: 1px solid rgba(251, 191, 36, 0.2);
+    }
+    body.theme-sunset .glass-nav {
+      background: rgba(28, 25, 23, 0.88);
+      border-bottom: 1px solid rgba(251, 191, 36, 0.2);
+    }
+    body.theme-sunset .btn-gradient {
+      background: linear-gradient(135deg, #f59e0b 0%, #ea580c 50%, #fbbf24 100%);
+    }
+    body.theme-sunset .gradient-text {
+      background: linear-gradient(135deg, #fbbf24 0%, #f97316 50%, #f43f5e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* 5. AIRY PASTEL LIGHT MODE */
+    body.theme-light, body.light-theme {
       background-color: #f8fafc;
       color: #0f172a;
       background-image: 
@@ -93,79 +181,67 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
         radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.08) 0px, transparent 50%),
         radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.05) 0px, transparent 50%);
     }
-
-    .glass-card {
-      background: rgba(30, 41, 59, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(56, 189, 248, 0.15);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.35);
-      transition: all 0.3s ease;
-    }
-
-    body.light-theme .glass-card {
-      background: rgba(255, 255, 255, 0.85);
+    body.theme-light .glass-card, body.light-theme .glass-card {
+      background: rgba(255, 255, 255, 0.88);
       border: 1px solid rgba(203, 213, 225, 0.8);
       box-shadow: 0 10px 25px -5px rgba(148, 163, 184, 0.2);
     }
-
-    .glass-nav {
-      background: rgba(15, 23, 42, 0.88);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(56, 189, 248, 0.15);
-      transition: all 0.3s ease;
-    }
-
-    body.light-theme .glass-nav {
+    body.theme-light .glass-nav, body.light-theme .glass-nav {
       background: rgba(255, 255, 255, 0.92);
       border-bottom: 1px solid rgba(226, 232, 240, 0.9);
     }
-
-    .btn-gradient {
-      background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 50%, #06b6d4 100%);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    body.theme-light .btn-gradient, body.light-theme .btn-gradient {
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #0d9488 100%);
     }
 
-    .btn-gradient:hover {
-      box-shadow: 0 0 20px rgba(14, 165, 233, 0.45);
-      transform: translateY(-2px);
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #34d399 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    body.light-theme .text-white {
+    body.theme-light .text-white, body.light-theme .text-white {
       color: #0f172a !important;
     }
-
-    body.light-theme .text-slate-400 {
+    body.theme-light .text-slate-400, body.light-theme .text-slate-400 {
       color: #64748b !important;
     }
-
-    body.light-theme .text-slate-300 {
+    body.theme-light .text-slate-300, body.light-theme .text-slate-300 {
       color: #334155 !important;
     }
-
-    body.light-theme .bg-slate-900, 
+    body.theme-light .bg-slate-900, 
+    body.theme-light .bg-slate-900\/90,
+    body.theme-light .bg-slate-900\/60,
+    body.theme-light .bg-slate-900\/80,
+    body.light-theme .bg-slate-900,
     body.light-theme .bg-slate-900\/90,
     body.light-theme .bg-slate-900\/60,
     body.light-theme .bg-slate-900\/80 {
       background-color: #f1f5f9 !important;
     }
-
+    body.theme-light .border-slate-800,
+    body.theme-light .border-slate-700,
     body.light-theme .border-slate-800,
     body.light-theme .border-slate-700 {
       border-color: #cbd5e1 !important;
     }
 
+    .glass-card {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.35);
+      transition: all 0.3s ease;
+    }
+    .glass-nav {
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+    }
+    .btn-gradient:hover {
+      box-shadow: 0 0 20px rgba(14, 165, 233, 0.45);
+      transform: translateY(-2px);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #34d399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     .progress-bar-glow {
       box-shadow: 0 0 12px #38bdf8;
     }
-
-    /* Custom Mind-Free Scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -176,9 +252,6 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
     ::-webkit-scrollbar-thumb {
       background: #334155;
       border-radius: 9999px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #38bdf8;
     }
   </style>
   <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -225,10 +298,36 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
           <i class="fa-solid fa-code text-brand-400"></i> FastAPI Docs
         </a>
 
-                <button onclick="toggleMindFreeTheme()" title="Toggle Mind-Free Theme" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-sky-400 transition-all flex items-center gap-2 text-xs font-semibold border border-slate-700">
-          <i id="theme-icon" class="fa-solid fa-moon text-sky-400"></i>
-          <span class="hidden sm:inline" id="theme-label">Theme</span>
-        </button>
+                        <!-- MULTI-COLOR THEME SELECTOR DROPDOWN -->
+        <div class="relative group">
+          <button type="button" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-2 text-xs font-bold transition-all shadow">
+            <i class="fa-solid fa-palette text-sky-400"></i>
+            <span class="hidden sm:inline">Theme</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+          </button>
+          <div class="absolute right-0 mt-2 w-48 glass-card p-2 rounded-2xl shadow-2xl border border-slate-700 hidden group-hover:block z-50 space-y-1">
+            <button type="button" onclick="setAppTheme('ocean')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold text-slate-200 hover:bg-slate-700/70 flex items-center gap-2.5 transition-all">
+              <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-r from-sky-400 to-blue-600 shadow-sm"></span>
+              <span>Ocean Slate (Dark)</span>
+            </button>
+            <button type="button" onclick="setAppTheme('emerald')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold text-slate-200 hover:bg-slate-700/70 flex items-center gap-2.5 transition-all">
+              <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-r from-emerald-400 to-teal-600 shadow-sm"></span>
+              <span>Mint Emerald</span>
+            </button>
+            <button type="button" onclick="setAppTheme('cosmic')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold text-slate-200 hover:bg-slate-700/70 flex items-center gap-2.5 transition-all">
+              <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-r from-purple-400 to-fuchsia-600 shadow-sm"></span>
+              <span>Cosmic Purple</span>
+            </button>
+            <button type="button" onclick="setAppTheme('sunset')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold text-slate-200 hover:bg-slate-700/70 flex items-center gap-2.5 transition-all">
+              <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-r from-amber-400 to-orange-600 shadow-sm"></span>
+              <span>Sunset Amber</span>
+            </button>
+            <button type="button" onclick="setAppTheme('light')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold text-slate-200 hover:bg-slate-700/70 flex items-center gap-2.5 transition-all border-t border-slate-800 pt-2 mt-1">
+              <span class="w-3.5 h-3.5 rounded-full bg-slate-200 border border-slate-400 shadow-sm"></span>
+              <span>Airy Pastel (Light)</span>
+            </button>
+          </div>
+        </div>
         <div id="auth-state-area">
           <button onclick="openAuthModal()" class="px-5 py-2.5 rounded-xl text-sm font-semibold btn-gradient text-white shadow-lg">
             Login / Register
@@ -893,6 +992,28 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
   <script>
     // --- STATE & ENVIRONMENT ---
     let token = localStorage.getItem('token') || '';
+
+    function setAppTheme(themeName) {
+      const body = document.body;
+      body.classList.remove('theme-ocean', 'theme-emerald', 'theme-cosmic', 'theme-sunset', 'theme-light', 'light-theme');
+      
+      if (themeName === 'light') {
+        body.classList.add('theme-light', 'light-theme');
+      } else {
+        body.classList.add('theme-' + themeName);
+      }
+      
+      localStorage.setItem('app_color_theme', themeName);
+      if (typeof showToast === 'function') {
+        showToast('Switched to ' + themeName.toUpperCase() + ' theme', 'info');
+      }
+    }
+
+    (function initMultiTheme() {
+      const saved = localStorage.getItem('app_color_theme') || 'ocean';
+      setAppTheme(saved);
+    })();
+
 
     function toggleMindFreeTheme() {
       const body = document.body;
