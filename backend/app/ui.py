@@ -324,10 +324,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
       <!-- Action & Auth Button -->
       <div class="flex items-center gap-3">
-                <button onclick="openFastApiDocs()" title="Open Interactive FastAPI Swagger Documentation" class="hidden sm:flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 border border-slate-700/50 transition-all shadow">
-          <i class="fa-solid fa-code text-sky-400"></i>
-          <span>FastAPI Docs</span>
-        </button>
+                
 
                                 <!-- 7-COLOR THEME SELECTOR DROPDOWN -->
         <div class="relative group">
@@ -1207,11 +1204,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
 
     
-    function openFastApiDocs() {
-      const baseUrl = getApiBaseUrl();
-      const docsUrl = (baseUrl ? baseUrl.replace(/\/+$/, '') : '') + '/docs';
-      window.open(docsUrl, '_blank');
-    }
+    
 
     function getApiBaseUrl() {
       const saved = localStorage.getItem('custom_backend_url');
