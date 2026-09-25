@@ -885,13 +885,12 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       if (viewId === 'history') loadHistoryData();
       if (viewId === 'profile') loadProfileData();
 
-      // Do NOT scroll upward when starting or navigating to interview view
       if (!skipScroll && viewId !== 'interview') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
 
-    // --- AUTHENTICATION & GOOGLE SIGN-IN ---
+    // --- AUTHENTICATION & PREMIUM GOOGLE MODAL ---
     function openAuthModal() {
       const modal = document.getElementById('auth-modal');
       if (modal) modal.classList.remove('hidden');
@@ -899,6 +898,26 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
     function closeAuthModal() {
       const modal = document.getElementById('auth-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function openGoogleModal() {
+      const modal = document.getElementById('google-modal');
+      if (modal) modal.classList.remove('hidden');
+
+      if (window.google && window.google.accounts && window.google.accounts.id) {
+        try {
+          window.google.accounts.id.initialize({
+            client_id: "1092837465019-google-app-id.apps.googleusercontent.com",
+            callback: handleGoogleCredentialResponse
+          });
+          window.google.accounts.id.prompt();
+        } catch (e) {}
+      }
+    }
+
+    function closeGoogleModal() {
+      const modal = document.getElementById('google-modal');
       if (modal) modal.classList.add('hidden');
     }
 
@@ -946,23 +965,33 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
     async function handleGoogleCredentialResponse(response) {
       if (response && response.credential) {
+        closeGoogleModal();
         await executeAuth('/api/auth/google', { credential: response.credential });
       }
     }
 
-    async function handleGoogleSignIn() {
-      if (window.google && window.google.accounts && window.google.accounts.id) {
-        window.google.accounts.id.initialize({
-          client_id: "1092837465019-google-app-id.apps.googleusercontent.com",
-          callback: handleGoogleCredentialResponse
-        });
-        window.google.accounts.id.prompt();
-      }
+    function handleGoogleSignIn() {
+      closeAuthModal();
+      openGoogleModal();
+    }
 
-      const email = prompt("Google Sign In\n\nEnter your Google account email:", "student@ai.com");
-      if (!email || !email.includes('@')) return;
+    async function selectGoogleAccount(email, name) {
+      closeGoogleModal();
+      await executeAuth('/api/auth/google', { email: email, name: name });
+    }
+
+    async function handleCustomGoogleSubmit(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const input = document.getElementById('google-email-input');
+      const email = input ? input.value.trim() : '';
+      if (!email || !email.includes('@')) {
+        showToast('Please enter a valid Google email address.', 'error');
+        return;
+      }
       const name = email.split('@')[0].replace(/[._]/g, ' ');
       const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
+
+      closeGoogleModal();
       await executeAuth('/api/auth/google', { email: email, name: formattedName });
     }
 
@@ -978,6 +1007,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
         currentUser = data.user;
         updateAuthUI();
         closeAuthModal();
+        closeGoogleModal();
         showToast('Welcome ' + (currentUser.name || '') + '! Authenticated successfully.', 'success');
         loadDashboardData();
       } catch (err) {
@@ -1165,7 +1195,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
         activeInterview = data;
         renderInterviewQuestion(data.current_question, 1, data.total_questions);
         startTimer();
-        navigateTo('interview');
+        navigateTo('interview', true);
         showToast('Mock Interview Session Started!', 'success');
       } catch (err) {
         showToast(err.message, 'error');
@@ -1330,13 +1360,11 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
       const interviewId = activeInterview ? (activeInterview.interview_id || (activeInterview.interview ? activeInterview.interview.id : activeInterview.id)) : null;
 
-      // Immediately & unconditionally switch UI state back to dashboard
       stopTimer();
       activeInterview = null;
       navigateTo('dashboard');
       showToast('Interview cancelled.', 'info');
 
-      // Send cancel notification to backend asynchronously in background
       if (interviewId) {
         apiCall('/api/interviews/' + interviewId, { method: 'DELETE' }).catch(err => {
           console.log('Background cancel notification:', err);
@@ -1526,10 +1554,14 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
     window.navigateTo = navigateTo;
     window.openAuthModal = openAuthModal;
     window.closeAuthModal = closeAuthModal;
+    window.openGoogleModal = openGoogleModal;
+    window.closeGoogleModal = closeGoogleModal;
     window.toggleAuthMode = toggleAuthMode;
     window.quickLogin = quickLogin;
     window.handleAuthSubmit = handleAuthSubmit;
     window.handleGoogleSignIn = handleGoogleSignIn;
+    window.selectGoogleAccount = selectGoogleAccount;
+    window.handleCustomGoogleSubmit = handleCustomGoogleSubmit;
     window.handleLogout = handleLogout;
     window.selectJobRole = selectJobRole;
     window.selectDifficulty = selectDifficulty;
