@@ -3,7 +3,6 @@ _backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if _backend_dir not in sys.path: sys.path.insert(0, _backend_dir)
 
 def get_ui_html():
-    # Try reading from root index.html first if available
     _root_dir = os.path.dirname(os.path.dirname(_backend_dir))
     _idx_path = os.path.join(_root_dir, "index.html")
     if os.path.exists(_idx_path):
@@ -124,6 +123,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       background: #475569;
     }
   </style>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white">
 
@@ -758,7 +758,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
   <!-- JAVASCRIPT APP LOGIC -->
   <script>
-    // --- STATE ---
+    // --- STATE & ENVIRONMENT ---
     let token = localStorage.getItem('token') || '';
 
     function getApiBaseUrl() {
@@ -788,7 +788,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
     let chartInstance = null;
     let isAuthRegisterMode = false;
 
-    // --- API HELPER ---
+    // --- API CALL HELPER ---
     async function apiCall(path, options = {}) {
       const cleanPath = path.startsWith('/') ? path : '/' + path;
       let url = '';
@@ -831,7 +831,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       }
     }
 
-    // --- TOAST NOTIFICATIONS ---
+    // --- TOAST SYSTEM ---
     function showToast(message, type) {
       type = type || 'info';
       const container = document.getElementById('toast-container');
@@ -855,7 +855,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       }, 4000);
     }
 
-    // --- NAVIGATION ---
+    // --- NAVIGATION LOGIC ---
     function navigateTo(viewId) {
       document.querySelectorAll('.app-view').forEach(v => v.classList.add('hidden'));
       const target = document.getElementById('view-' + viewId);
@@ -878,7 +878,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // --- AUTH MODAL & FLOWS ---
+    // --- AUTHENTICATION & GOOGLE SIGN-IN ---
     function openAuthModal() {
       const modal = document.getElementById('auth-modal');
       if (modal) modal.classList.remove('hidden');
@@ -891,24 +891,36 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
     function toggleAuthMode() {
       isAuthRegisterMode = !isAuthRegisterMode;
-      document.getElementById('auth-modal-title').innerText = isAuthRegisterMode ? 'Create Your Account' : 'Sign In to Your Account';
+      const title = document.getElementById('auth-modal-title');
+      if (title) title.innerText = isAuthRegisterMode ? 'Create Your Account' : 'Sign In to Your Account';
+
       const nameField = document.getElementById('field-name');
       if (nameField) nameField.classList.toggle('hidden', !isAuthRegisterMode);
-      document.getElementById('btn-auth-submit').innerText = isAuthRegisterMode ? 'Register & Sign In' : 'Sign In';
-      document.getElementById('auth-toggle-prompt').innerText = isAuthRegisterMode ? 'Already have an account?' : "Don't have an account?";
-      document.getElementById('auth-toggle-btn').innerText = isAuthRegisterMode ? 'Sign In' : 'Create Account';
+
+      const submitBtn = document.getElementById('btn-auth-submit');
+      if (submitBtn) submitBtn.innerText = isAuthRegisterMode ? 'Register & Sign In' : 'Sign In';
+
+      const promptEl = document.getElementById('auth-toggle-prompt');
+      if (promptEl) promptEl.innerText = isAuthRegisterMode ? 'Already have an account?' : "Don't have an account?";
+
+      const toggleBtn = document.getElementById('auth-toggle-btn');
+      if (toggleBtn) toggleBtn.innerText = isAuthRegisterMode ? 'Sign In' : 'Create Account';
     }
 
     function quickLogin(email, password) {
-      document.getElementById('auth-email-input').value = email;
-      document.getElementById('auth-password-input').value = password;
+      const emailIn = document.getElementById('auth-email-input');
+      const passIn = document.getElementById('auth-password-input');
+      if (emailIn) emailIn.value = email;
+      if (passIn) passIn.value = password;
       handleAuthSubmit(new Event('submit'));
     }
 
     async function handleAuthSubmit(e) {
       if (e && e.preventDefault) e.preventDefault();
-      const email = document.getElementById('auth-email-input').value;
-      const password = document.getElementById('auth-password-input').value;
+      const emailIn = document.getElementById('auth-email-input');
+      const passIn = document.getElementById('auth-password-input');
+      const email = emailIn ? emailIn.value : '';
+      const password = passIn ? passIn.value : '';
 
       if (isAuthRegisterMode) {
         const nameInput = document.getElementById('auth-name-input');
@@ -919,8 +931,22 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       }
     }
 
+    async function handleGoogleCredentialResponse(response) {
+      if (response && response.credential) {
+        await executeAuth('/api/auth/google', { credential: response.credential });
+      }
+    }
+
     async function handleGoogleSignIn() {
-      const email = prompt("Google One-Tap Sign In\n\nEnter your Google email:", "student@ai.com");
+      if (window.google && window.google.accounts && window.google.accounts.id) {
+        window.google.accounts.id.initialize({
+          client_id: "1092837465019-google-app-id.apps.googleusercontent.com",
+          callback: handleGoogleCredentialResponse
+        });
+        window.google.accounts.id.prompt();
+      }
+
+      const email = prompt("Google Sign In\n\nEnter your Google account email:", "student@ai.com");
       if (!email || !email.includes('@')) return;
       const name = email.split('@')[0].replace(/[._]/g, ' ');
       const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
@@ -1001,7 +1027,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       }
     }
 
-    // --- JOB ROLES SELECTOR ---
+    // --- JOB ROLES & SELECTION ---
     async function loadJobRoles() {
       try {
         jobRoles = await apiCall('/api/questions/roles');
@@ -1065,7 +1091,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       }
     }
 
-    // --- INTERVIEW WORKFLOW ---
+    // --- INTERVIEW SESSION WORKFLOW ---
     async function startInterviewSession() {
       if (!token) {
         openAuthModal();
@@ -1270,7 +1296,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       showToast('Interview cancelled.', 'info');
     }
 
-    // --- REPORT & DASHBOARD LOGIC ---
+    // --- PERFORMANCE REPORT & DASHBOARD ---
     function renderPerformanceReport(data) {
       const iv = data.interview || {};
       const score = Math.round(iv.overall_score || 0);
@@ -1448,7 +1474,25 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       }
     }
 
-    // --- INIT APP ON DOM READY ---
+    // --- ATTACH ALL HANDLERS GLOBALLY TO WINDOW OBJECT ---
+    window.navigateTo = navigateTo;
+    window.openAuthModal = openAuthModal;
+    window.closeAuthModal = closeAuthModal;
+    window.toggleAuthMode = toggleAuthMode;
+    window.quickLogin = quickLogin;
+    window.handleAuthSubmit = handleAuthSubmit;
+    window.handleGoogleSignIn = handleGoogleSignIn;
+    window.handleLogout = handleLogout;
+    window.selectJobRole = selectJobRole;
+    window.selectDifficulty = selectDifficulty;
+    window.startInterviewSession = startInterviewSession;
+    window.submitAnswer = submitAnswer;
+    window.closeEvalModalNext = closeEvalModalNext;
+    window.cancelCurrentInterview = cancelCurrentInterview;
+    window.viewPastReport = viewPastReport;
+    window.saveProfileData = saveProfileData;
+
+    // --- INITIALIZE APP ON DOM READY ---
     document.addEventListener('DOMContentLoaded', async () => {
       await fetchCurrentUser();
       await loadJobRoles();
