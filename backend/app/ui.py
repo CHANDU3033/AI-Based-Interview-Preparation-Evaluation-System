@@ -914,11 +914,9 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
             client_id: "1092837465019-google-app-id.apps.googleusercontent.com",
             callback: handleGoogleCredentialResponse
           });
-          try {
-        window.google.accounts.id.prompt((notification) => {
-          console.log("Google GSI status:", notification);
-        });
-      } catch (e) {}
+          window.google.accounts.id.prompt((notification) => {
+            console.log('Google GSI status:', notification);
+          });
         } catch (e) {}
       }
     }
@@ -1022,17 +1020,10 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       }
     }
 
+    // STRICT LOGGED-OUT DEFAULT: NO AUTO LOGIN FOR NEW VISITORS
     async function fetchCurrentUser() {
       if (!token) {
-        try {
-          const data = await apiCall('/api/auth/login', {
-            method: 'POST',
-            body: JSON.stringify({ email: 'student@ai.com', password: 'password123' })
-          });
-          token = data.access_token;
-          localStorage.setItem('token', token);
-          currentUser = data.user;
-        } catch (e) {}
+        currentUser = null;
         updateAuthUI();
         return;
       }
@@ -1044,16 +1035,6 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
         localStorage.removeItem('token');
         currentUser = null;
         updateAuthUI();
-        try {
-          const data = await apiCall('/api/auth/login', {
-            method: 'POST',
-            body: JSON.stringify({ email: 'student@ai.com', password: 'password123' })
-          });
-          token = data.access_token;
-          localStorage.setItem('token', token);
-          currentUser = data.user;
-          updateAuthUI();
-        } catch (e) {}
       }
     }
 
@@ -1071,7 +1052,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       const dashName = document.getElementById('dash-user-name');
       if (!authArea) return;
 
-      if (currentUser) {
+      if (currentUser && token) {
         if (dashName) dashName.innerText = currentUser.name;
         authArea.innerHTML =
           '<div class="flex items-center gap-3">' +
@@ -1091,7 +1072,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
         authArea.innerHTML =
           '<button onclick="openAuthModal()" class="px-5 py-2.5 rounded-xl text-sm font-semibold btn-gradient text-white shadow-lg hover:shadow-brand-500/25 transition-all flex items-center gap-2">' +
             '<i class="fa-solid fa-right-to-bracket"></i>' +
-            '<span>Sign In</span>' +
+            '<span>Login / Register</span>' +
           '</button>';
       }
     }
@@ -1160,15 +1141,11 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       }
     }
 
-    // --- INTERVIEW SESSION WORKFLOW ---
+    // --- INTERVIEW SESSION WORKFLOW WITH MANDATORY AUTH PERMISSION CHECK ---
     async function startInterviewSession() {
-      if (!token) {
-        await fetchCurrentUser();
-      }
-
-      if (!token) {
+      if (!token || !currentUser) {
         openAuthModal();
-        showToast('Please login first to start an interview session.', 'info');
+        showToast('Please sign in or register first to start a mock interview session.', 'info');
         return;
       }
 
@@ -1579,15 +1556,12 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
     window.viewPastReport = viewPastReport;
     window.saveProfileData = saveProfileData;
 
-    // --- INITIALIZE APP ON DOM READY & ATTACH DIRECT LISTENERS ---
+    // --- INITIALIZE APP ON DOM READY ---
     document.addEventListener('DOMContentLoaded', async () => {
       await fetchCurrentUser();
       await loadJobRoles();
-      loadDashboardData();
-
-      const btnCancel = document.getElementById('btn-cancel-interview');
-      if (btnCancel) {
-        btnCancel.addEventListener('click', cancelCurrentInterview);
+      if (token && currentUser) {
+        loadDashboardData();
       }
     });
   </script>
