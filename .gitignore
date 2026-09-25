@@ -52,7 +52,11 @@ backend/uploads/
 # Models
 *.pkl
 *.joblib
-models/
+# ML model weights
+*.pt
+*.onnx
+*.safetensors
+!backend/app/models/
 
 # Notebooks checkpoints
 .ipynb_checkpoints/
