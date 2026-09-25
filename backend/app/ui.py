@@ -865,7 +865,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
     }
 
     // --- NAVIGATION LOGIC ---
-    function navigateTo(viewId) {
+    function navigateTo(viewId, skipScroll = false) {
       document.querySelectorAll('.view-panel').forEach(v => v.classList.add('hidden'));
       const target = document.getElementById('view-' + viewId);
       if (target) target.classList.remove('hidden');
@@ -884,7 +884,11 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       if (viewId === 'setup') loadJobRoles();
       if (viewId === 'history') loadHistoryData();
       if (viewId === 'profile') loadProfileData();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Do NOT scroll upward when starting or navigating to interview view
+      if (!skipScroll && viewId !== 'interview') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
 
     // --- AUTHENTICATION & GOOGLE SIGN-IN ---
