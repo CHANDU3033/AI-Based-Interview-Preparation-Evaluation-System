@@ -426,7 +426,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
         <!-- Submit & Actions Footer -->
         <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-800/80">
-          <button onclick="cancelCurrentInterview()" class="px-4 py-2.5 rounded-xl text-xs font-semibold text-rose-400 hover:bg-rose-500/10 transition-all">
+          <button type="button" id="btn-cancel-interview" onclick="cancelCurrentInterview()" class="px-4 py-2.5 rounded-xl text-xs font-semibold text-rose-400 hover:bg-rose-500/10 transition-all">
             <i class="fa-solid fa-circle-xmark"></i> Cancel Interview
           </button>
 
@@ -866,7 +866,6 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
     // --- NAVIGATION LOGIC ---
     function navigateTo(viewId) {
-      // Hide all view panels using the exact class .view-panel
       document.querySelectorAll('.view-panel').forEach(v => v.classList.add('hidden'));
       const target = document.getElementById('view-' + viewId);
       if (target) target.classList.remove('hidden');
@@ -1315,22 +1314,30 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       }
     }
 
+    // --- INSTANT UNCONDITIONAL CANCEL INTERVIEW HANDLER ---
     async function cancelCurrentInterview() {
-      if (!confirm('Are you sure you want to cancel this interview session? Progress will be lost.')) return;
-      stopTimer();
-      if (activeInterview) {
-        try {
-          const interviewId = activeInterview.interview_id || (activeInterview.interview ? activeInterview.interview.id : activeInterview.id);
-          if (interviewId) {
-            await apiCall('/api/interviews/' + interviewId, { method: 'DELETE' });
-          }
-        } catch (err) {
-          console.log('Error deleting interview:', err);
-        }
+      let proceed = true;
+      try {
+        proceed = confirm('Are you sure you want to cancel this interview session? Progress will be lost.');
+      } catch (e) {
+        proceed = true;
       }
+      if (!proceed) return;
+
+      const interviewId = activeInterview ? (activeInterview.interview_id || (activeInterview.interview ? activeInterview.interview.id : activeInterview.id)) : null;
+
+      // Immediately & unconditionally switch UI state back to dashboard
+      stopTimer();
       activeInterview = null;
       navigateTo('dashboard');
       showToast('Interview cancelled.', 'info');
+
+      // Send cancel notification to backend asynchronously in background
+      if (interviewId) {
+        apiCall('/api/interviews/' + interviewId, { method: 'DELETE' }).catch(err => {
+          console.log('Background cancel notification:', err);
+        });
+      }
     }
 
     // --- PERFORMANCE REPORT & DASHBOARD ---
@@ -1529,11 +1536,16 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
     window.viewPastReport = viewPastReport;
     window.saveProfileData = saveProfileData;
 
-    // --- INITIALIZE APP ON DOM READY ---
+    // --- INITIALIZE APP ON DOM READY & ATTACH DIRECT LISTENERS ---
     document.addEventListener('DOMContentLoaded', async () => {
       await fetchCurrentUser();
       await loadJobRoles();
       loadDashboardData();
+
+      const btnCancel = document.getElementById('btn-cancel-interview');
+      if (btnCancel) {
+        btnCancel.addEventListener('click', cancelCurrentInterview);
+      }
     });
   </script>
 </body>
