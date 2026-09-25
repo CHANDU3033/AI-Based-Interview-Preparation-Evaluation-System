@@ -821,7 +821,6 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
         }
 
         if (res.status === 401) {
-          // Clear invalid/stale/expired token immediately
           token = '';
           localStorage.removeItem('token');
           currentUser = null;
@@ -841,7 +840,6 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
     // --- TOAST SYSTEM ---
     function showToast(message, type) {
-      // Suppress raw credential errors from spamming popups
       if (message && message.includes('Could not validate credentials')) return;
 
       type = type || 'info';
@@ -868,7 +866,8 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
     // --- NAVIGATION LOGIC ---
     function navigateTo(viewId) {
-      document.querySelectorAll('.app-view').forEach(v => v.classList.add('hidden'));
+      // Hide all view panels using the exact class .view-panel
+      document.querySelectorAll('.view-panel').forEach(v => v.classList.add('hidden'));
       const target = document.getElementById('view-' + viewId);
       if (target) target.classList.remove('hidden');
 
@@ -985,7 +984,6 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
     async function fetchCurrentUser() {
       if (!token) {
-        // Auto-authenticate default demo student if no token present
         try {
           const data = await apiCall('/api/auth/login', {
             method: 'POST',
@@ -1006,7 +1004,6 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
         localStorage.removeItem('token');
         currentUser = null;
         updateAuthUI();
-        // Auto recovery: login default student
         try {
           const data = await apiCall('/api/auth/login', {
             method: 'POST',
@@ -1227,7 +1224,9 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       }
 
       try {
-        const interviewId = activeInterview.interview ? activeInterview.interview.id : activeInterview.id;
+        const interviewId = activeInterview ? (activeInterview.interview_id || (activeInterview.interview ? activeInterview.interview.id : activeInterview.id)) : null;
+        if (!interviewId) throw new Error('No active interview ID found.');
+
         const data = await apiCall('/api/interviews/' + interviewId + '/answer', {
           method: 'POST',
           body: JSON.stringify({
@@ -1304,7 +1303,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
         showToast('Interview Session Complete! Generating Report...', 'success');
         try {
-          const interviewId = activeInterview.interview ? activeInterview.interview.id : activeInterview.id;
+          const interviewId = activeInterview ? (activeInterview.interview_id || (activeInterview.interview ? activeInterview.interview.id : activeInterview.id)) : null;
           const reportData = await apiCall('/api/interviews/' + interviewId + '/complete', {
             method: 'POST'
           });
@@ -1321,8 +1320,10 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       stopTimer();
       if (activeInterview) {
         try {
-          const interviewId = activeInterview.interview ? activeInterview.interview.id : activeInterview.id;
-          await apiCall('/api/interviews/' + interviewId, { method: 'DELETE' });
+          const interviewId = activeInterview.interview_id || (activeInterview.interview ? activeInterview.interview.id : activeInterview.id);
+          if (interviewId) {
+            await apiCall('/api/interviews/' + interviewId, { method: 'DELETE' });
+          }
         } catch (err) {
           console.log('Error deleting interview:', err);
         }
@@ -1334,7 +1335,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
     // --- PERFORMANCE REPORT & DASHBOARD ---
     function renderPerformanceReport(data) {
-      const iv = data.interview || {};
+      const iv = data.interview || data;
       const score = Math.round(iv.overall_score || 0);
 
       document.getElementById('report-role-title').innerText = (iv.role_name || 'Technical') + ' Performance Report';
