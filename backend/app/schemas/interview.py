@@ -11,6 +11,7 @@ class InterviewStartRequest(BaseModel):
     difficulty: str = "Intermediate"   # Beginner | Intermediate | Advanced
     mode: str = "TEXT"                 # TEXT | VOICE
     total_questions: int = 10
+    resume_text: Optional[str] = None
 
 
 class InterviewResponse(BaseModel):

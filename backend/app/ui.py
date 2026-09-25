@@ -566,6 +566,42 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
         </div>
 
         <!-- Submit Button -->
+                <!-- OPTIONAL RESUME & SKILLS UPLOAD CARD -->
+        <div class="glass-card p-6 rounded-2xl space-y-4 border border-slate-700/80 bg-slate-900/40">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-file-pdf text-rose-400 text-base"></i>
+              <h3 class="text-sm font-bold text-white">Upload Resume / Technical Skills (Optional)</h3>
+            </div>
+            <span class="px-2.5 py-0.5 rounded-full bg-brand-500/10 text-brand-300 text-[10px] font-bold border border-brand-500/30 uppercase">Optional</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">Optionally upload your resume (.PDF, .TXT) or paste your key technical skills. Our AI engine will tailor interview questions specifically to your technical background!</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- File Drag & Drop Box -->
+            <div onclick="document.getElementById('setup-resume-file').click()" class="border-2 border-dashed border-slate-700 hover:border-brand-500 rounded-2xl p-4 text-center cursor-pointer transition-all bg-slate-900/60 hover:bg-slate-800/60 space-y-2">
+              <input type="file" id="setup-resume-file" accept=".pdf,.txt,.docx" class="hidden" onchange="handleResumeFileSelect(event)">
+              <div class="w-9 h-9 mx-auto rounded-xl bg-slate-800 flex items-center justify-center text-sky-400">
+                <i class="fa-solid fa-cloud-arrow-up text-base"></i>
+              </div>
+              <div id="resume-file-label" class="text-xs font-semibold text-slate-300">Upload Resume PDF / TXT</div>
+              <div class="text-[10px] text-slate-500">Auto-extracts technical skills</div>
+            </div>
+
+            <!-- Skills Textarea -->
+            <div class="space-y-1">
+              <label class="block text-xs font-semibold text-slate-300">Or Type / Paste Skills Summary</label>
+              <textarea id="setup-resume-text" rows="3" placeholder="e.g. Python, FastAPI, React.js, PostgreSQL, Docker, AWS..." class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-brand-500 resize-none"></textarea>
+            </div>
+          </div>
+
+          <div id="parsed-skills-container" class="hidden flex flex-wrap items-center gap-1.5 pt-1 border-t border-slate-800">
+            <span class="text-xs font-bold text-slate-400 mr-1">Extracted Skills:</span>
+            <div id="parsed-skills-chips" class="flex flex-wrap gap-1.5"></div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
         <button id="btn-start-interview" onclick="startInterviewSession()" class="w-full py-4 rounded-2xl font-extrabold btn-gradient text-white text-lg shadow-2xl flex items-center justify-center gap-3">
           <i class="fa-solid fa-play"></i> Start Interview Session
         </button>
@@ -1032,6 +1068,57 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
     // --- STATE & ENVIRONMENT ---
     let token = localStorage.getItem('token') || '';
 
+    let uploadedResumeText = '';
+
+    async function handleResumeFileSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const label = document.getElementById('resume-file-label');
+      if (label) label.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Extracting skills...';
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const response = await fetch((API_BASE_URL || '') + '/api/interviews/parse-resume', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (!response.ok) throw new Error('Failed to parse file');
+        const data = await response.json();
+
+        uploadedResumeText = data.resume_text || '';
+        const textarea = document.getElementById('setup-resume-text');
+        if (textarea && data.resume_text) {
+          textarea.value = data.resume_text.slice(0, 300) + '...';
+        }
+
+        if (label) label.innerHTML = '<i class="fa-solid fa-check text-emerald-400"></i> ' + file.name;
+        displayParsedSkills(data.skills || []);
+        showToast('Resume parsed! Extracted ' + (data.skills ? data.skills.length : 0) + ' skills.', 'success');
+      } catch (err) {
+        if (label) label.innerText = 'Upload Resume PDF / TXT';
+        showToast('Error uploading resume: ' + err.message, 'error');
+      }
+    }
+
+    function displayParsedSkills(skills) {
+      const container = document.getElementById('parsed-skills-container');
+      const chips = document.getElementById('parsed-skills-chips');
+      if (!container || !chips) return;
+
+      if (skills && skills.length > 0) {
+        container.classList.remove('hidden');
+        chips.innerHTML = skills.map(s => 
+          '<span class="px-2 py-0.5 rounded-md bg-brand-500/20 text-brand-300 font-bold text-[10px] border border-brand-500/30">' + s + '</span>'
+        ).join('');
+      } else {
+        container.classList.add('hidden');
+      }
+    }
+
     function setAppTheme(themeName) {
       const body = document.body;
       body.classList.remove('theme-ocean', 'theme-emerald', 'theme-cosmic', 'theme-sunset', 'theme-rose', 'theme-cyan', 'theme-glacier', 'theme-light', 'light-theme');
@@ -1487,7 +1574,8 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
             role_id: selectedRoleId,
             difficulty: selectedDifficulty,
             total_questions: count,
-            mode: mode
+            mode: mode,
+            resume_text: (document.getElementById("setup-resume-text") ? document.getElementById("setup-resume-text").value.trim() : "") || uploadedResumeText || null
           })
         });
 

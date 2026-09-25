@@ -4,7 +4,7 @@ if _backend_dir not in sys.path: sys.path.insert(0, _backend_dir)
 import json
 from datetime import datetime
 from typing import List
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, File, UploadFile
 from sqlalchemy.orm import Session
 
 from app.database import get_db
@@ -53,6 +53,7 @@ def start_interview(
         role_name=role.role_name,
         difficulty=request.difficulty,
         total_count=request.total_questions,
+        resume_text=request.resume_text,
     )
 
     if not questions:
@@ -344,3 +345,27 @@ def cancel_interview(
     interview.status = "CANCELLED"
     db.commit()
     return {"message": "Interview cancelled", "interview_id": interview_id}
+
+
+@router.post("/parse-resume")
+async def parse_resume(file: UploadFile = File(...)):
+    """Parse uploaded resume file (PDF or TXT) and extract skills."""
+    filename = file.filename.lower()
+    content = ""
+    try:
+        if filename.endswith(".pdf"):
+            import pypdf
+            reader = pypdf.PdfReader(file.file)
+            for page in reader.pages:
+                text = page.extract_text()
+                if text:
+                    content += text + "\n"
+        else:
+            raw = await file.read()
+            content = raw.decode("utf-8", errors="ignore")
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Failed to parse resume file: {str(e)}")
+
+    from app.ai.question_generator import extract_skills_from_text
+    skills = extract_skills_from_text(content)
+    return {"filename": file.filename, "resume_text": content.strip(), "skills": skills}

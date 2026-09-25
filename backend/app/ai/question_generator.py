@@ -63,6 +63,7 @@ def get_hybrid_questions(
     role_name: str,
     difficulty: str,
     total_count: int,
+    resume_text: Optional[str] = None,
 ) -> List[dict]:
     """
     Hybrid strategy: 70% from DB + 30% from Groq AI.
@@ -132,3 +133,23 @@ def get_hybrid_questions(
                 })
 
     return all_questions[:total_count]
+
+
+def extract_skills_from_text(text: str) -> List[str]:
+    """Extract technical keywords from resume text."""
+    if not text:
+        return []
+    keywords = [
+        "python", "django", "fastapi", "flask", "java", "spring", "c++", 
+        "javascript", "typescript", "react", "node", "angular", "vue", 
+        "sql", "postgresql", "mysql", "mongodb", "aws", "docker", 
+        "kubernetes", "terraform", "machine learning", "pandas", "numpy",
+        "scikit-learn", "rest api", "graphql", "redis", "linux", "git",
+        "data structures", "algorithms"
+    ]
+    found = []
+    text_lower = text.lower()
+    for kw in keywords:
+        if kw in text_lower:
+            found.append(kw.title())
+    return list(set(found))
