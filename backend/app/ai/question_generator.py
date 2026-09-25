@@ -7,7 +7,7 @@ Question Generation Engine
 Provides questions for interview sessions via:
   1. DB question bank (primary, deterministic)
   2. Groq AI generation (supplemental, when available)
-  3. Hybrid mix (70% DB + 30% AI)
+  3. Resume-Skill tailored questions + General role questions mix
 """
 
 import json
@@ -20,6 +20,26 @@ from app.models.question import Question
 from app.ai.groq_engine import generate_interview_questions as groq_generate, is_groq_available
 
 logger = logging.getLogger(__name__)
+
+
+def extract_skills_from_text(text: str) -> List[str]:
+    """Extract technical keywords from resume text."""
+    if not text:
+        return []
+    keywords = [
+        "python", "django", "fastapi", "flask", "java", "spring", "c++", 
+        "javascript", "typescript", "react", "node", "angular", "vue", 
+        "sql", "postgresql", "mysql", "mongodb", "aws", "docker", 
+        "kubernetes", "terraform", "machine learning", "pandas", "numpy",
+        "scikit-learn", "rest api", "graphql", "redis", "linux", "git",
+        "data structures", "algorithms"
+    ]
+    found = []
+    text_lower = text.lower()
+    for kw in keywords:
+        if kw in text_lower:
+            found.append(kw.title())
+    return list(set(found))
 
 
 def get_questions_from_db(
@@ -35,7 +55,6 @@ def get_questions_from_db(
         .all()
     )
 
-    # If not enough, pull from adjacent difficulties
     if len(questions) < count:
         all_q = db.query(Question).filter(Question.role_id == role_id).all()
         questions = all_q
@@ -66,63 +85,91 @@ def get_hybrid_questions(
     resume_text: Optional[str] = None,
 ) -> List[dict]:
     """
-    Hybrid strategy: 70% from DB + 30% from Groq AI.
-    Returns list of question dicts ready for interview session.
+    Hybrid strategy:
+    - If resume_text provided: 60% Resume-Skill questions + 40% General Role questions.
+    - If no resume_text: 70% DB + 30% AI questions.
     """
-    db_count = max(int(total_count * 0.7), 1)
-    ai_count = total_count - db_count
+    skills = extract_skills_from_text(resume_text) if resume_text else []
+    
+    final_questions = []
+    used_ids = set()
 
-    db_questions = get_questions_from_db(db, role_id, difficulty, db_count)
-    db_q_dicts = []
-    prev_texts = []
+    if skills:
+        # Split: 60% Resume Skills, 40% General Role
+        resume_count = max(1, int(total_count * 0.6))
+        general_count = total_count - resume_count
 
-    for q in db_questions:
-        concepts = []
-        try:
-            concepts = json.loads(q.expected_concepts) if q.expected_concepts else []
-        except Exception:
-            pass
-        db_q_dicts.append({
-            "id": q.id,
-            "question_text": q.question_text,
-            "category": q.category,
-            "difficulty": q.difficulty,
-            "expected_answer": q.expected_answer or "",
-            "expected_concepts": concepts,
-            "is_ai_generated": False,
-        })
-        prev_texts.append(q.question_text)
+        # 1. Fetch questions matching extracted resume skills from entire DB
+        skill_matched_q = []
+        all_db_q = db.query(Question).all()
+        random.shuffle(all_db_q)
 
-    # Fill with AI-generated questions if Groq available
-    ai_q_dicts = []
-    if ai_count > 0 and is_groq_available():
-        ai_results = generate_ai_questions(role_name, difficulty, ai_count, prev_texts)
-        for q in ai_results:
-            ai_q_dicts.append({
-                "id": None,  # not in DB
-                "question_text": q.get("question_text", ""),
-                "category": q.get("category", "Technical"),
-                "difficulty": difficulty,
-                "expected_answer": q.get("expected_answer", ""),
-                "expected_concepts": q.get("expected_concepts", []),
-                "is_ai_generated": True,
-            })
+        for q in all_db_q:
+            q_text_lower = q.question_text.lower()
+            q_concepts_lower = q.expected_concepts.lower() if q.expected_concepts else ""
+            
+            for sk in skills:
+                sk_lower = sk.lower()
+                if sk_lower in q_text_lower or sk_lower in q_concepts_lower:
+                    if q.id not in used_ids:
+                        used_ids.add(q.id)
+                        concepts = []
+                        try:
+                            concepts = json.loads(q.expected_concepts) if q.expected_concepts else []
+                        except Exception:
+                            pass
+                        
+                        skill_matched_q.append({
+                            "id": q.id,
+                            "question_text": f"[Resume Skill: {sk}] {q.question_text}",
+                            "category": f"Resume Skill ({sk})",
+                            "difficulty": q.difficulty,
+                            "expected_answer": q.expected_answer or "",
+                            "expected_concepts": concepts,
+                            "is_ai_generated": False,
+                        })
+                        break
+            if len(skill_matched_q) >= resume_count:
+                break
 
-    all_questions = db_q_dicts + ai_q_dicts
-    random.shuffle(all_questions)
+        final_questions.extend(skill_matched_q)
 
-    # Ensure we have exactly total_count (top up from DB if AI fails)
-    if len(all_questions) < total_count:
-        extra = get_questions_from_db(db, role_id, difficulty, total_count - len(all_questions))
-        existing_ids = {q["id"] for q in all_questions if q["id"]}
-        for q in extra:
-            if q.id not in existing_ids:
+        # 2. Fetch general questions for role
+        remaining_count = total_count - len(final_questions)
+        general_db_q = get_questions_from_db(db, role_id, difficulty, remaining_count * 2)
+        
+        for q in general_db_q:
+            if q.id not in used_ids and len(final_questions) < total_count:
+                used_ids.add(q.id)
                 concepts = []
                 try:
                     concepts = json.loads(q.expected_concepts) if q.expected_concepts else []
                 except Exception:
                     pass
-                all_questions.append({
+                
+                final_questions.append({
+                    "id": q.id,
+                    "question_text": q.question_text,
+                    "category": q.category or "General Technical",
+                    "difficulty": q.difficulty,
+                    "expected_answer": q.expected_answer or "",
+                    "expected_concepts": concepts,
+                    "is_ai_generated": False,
+                })
+
+    # Fallback or standard flow if no resume or not enough skill matches
+    if len(final_questions) < total_count:
+        needed = total_count - len(final_questions)
+        standard_q = get_questions_from_db(db, role_id, difficulty, needed)
+        for q in standard_q:
+            if q.id not in used_ids and len(final_questions) < total_count:
+                used_ids.add(q.id)
+                concepts = []
+                try:
+                    concepts = json.loads(q.expected_concepts) if q.expected_concepts else []
+                except Exception:
+                    pass
+                final_questions.append({
                     "id": q.id,
                     "question_text": q.question_text,
                     "category": q.category,
@@ -132,24 +179,4 @@ def get_hybrid_questions(
                     "is_ai_generated": False,
                 })
 
-    return all_questions[:total_count]
-
-
-def extract_skills_from_text(text: str) -> List[str]:
-    """Extract technical keywords from resume text."""
-    if not text:
-        return []
-    keywords = [
-        "python", "django", "fastapi", "flask", "java", "spring", "c++", 
-        "javascript", "typescript", "react", "node", "angular", "vue", 
-        "sql", "postgresql", "mysql", "mongodb", "aws", "docker", 
-        "kubernetes", "terraform", "machine learning", "pandas", "numpy",
-        "scikit-learn", "rest api", "graphql", "redis", "linux", "git",
-        "data structures", "algorithms"
-    ]
-    found = []
-    text_lower = text.lower()
-    for kw in keywords:
-        if kw in text_lower:
-            found.append(kw.title())
-    return list(set(found))
+    return final_questions[:total_count]
