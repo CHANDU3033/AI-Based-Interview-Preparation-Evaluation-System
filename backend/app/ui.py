@@ -17,6 +17,9 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🎯 AI Interview Preparation & Evaluation System</title>
   
@@ -911,7 +914,11 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
             client_id: "1092837465019-google-app-id.apps.googleusercontent.com",
             callback: handleGoogleCredentialResponse
           });
-          window.google.accounts.id.prompt();
+          try {
+        window.google.accounts.id.prompt((notification) => {
+          console.log("Google GSI status:", notification);
+        });
+      } catch (e) {}
         } catch (e) {}
       }
     }
