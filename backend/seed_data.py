@@ -10,31 +10,41 @@ from app.models.question import JobRole, Question
 from app.data.question_bank import QUESTION_BANK, JOB_ROLES
 
 
-def seed_database():
+def seed_database(force=False):
     create_tables()
     db = SessionLocal()
     try:
-        if db.query(JobRole).count() > 0:
-            print("[OK] Database already seeded. Skipping.")
+        current_q_count = db.query(Question).count()
+        if not force and current_q_count >= len(QUESTION_BANK):
+            print(f"[OK] Database already contains {current_q_count} questions. Skipping seed.")
             return
 
-        print("Seeding job roles...")
+        print(f"Seeding database with {len(JOB_ROLES)} roles and {len(QUESTION_BANK)} questions...")
+        
+        # Clear existing questions and roles if force or low question count
+        if force or current_q_count < len(QUESTION_BANK):
+            db.query(Question).delete()
+            db.query(JobRole).delete()
+            db.commit()
+
         role_map = {}
         for role_data in JOB_ROLES:
-            role = JobRole(**role_data)
-            db.add(role)
-            db.flush()
-            role_map[role_data["role_name"]] = role.id
-            print(f"  + Role: {role_data['role_name']} (id={role.id})")
+            existing = db.query(JobRole).filter(JobRole.role_name == role_data["role_name"]).first()
+            if not existing:
+                role = JobRole(**role_data)
+                db.add(role)
+                db.flush()
+                role_map[role_data["role_name"]] = role.id
+                print(f"  + Role: {role_data['role_name']} (id={role.id})")
+            else:
+                role_map[role_data["role_name"]] = existing.id
 
-        print(f"\nSeeding {len(QUESTION_BANK)} questions...")
         inserted = 0
         for q_data in QUESTION_BANK:
             q = dict(q_data)
             role_name = q.pop("role")
             role_id = role_map.get(role_name)
             if not role_id:
-                print(f"  [WARNING] Unknown role: {role_name}, skipping question.")
                 continue
             q["role_id"] = role_id
             if isinstance(q.get("expected_concepts"), list):
@@ -42,7 +52,6 @@ def seed_database():
             db.add(Question(**q))
             inserted += 1
 
-        
         # Seed Demo Users
         from app.models.user import User
         from app.utils.auth import hash_password
@@ -65,7 +74,6 @@ def seed_database():
                     branch='Computer Science',
                     is_active=True
                 ))
-                print(f'  + Seeded user: {email}')
 
         db.commit()
         print(f"\n[SUCCESS] Seeded {len(JOB_ROLES)} roles and {inserted} questions successfully!")
@@ -79,4 +87,4 @@ def seed_database():
 
 
 if __name__ == "__main__":
-    seed_database()
+    seed_database(force=True)
