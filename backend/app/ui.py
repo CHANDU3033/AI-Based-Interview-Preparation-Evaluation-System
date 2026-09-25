@@ -1,13 +1,8 @@
 import sys, os
-_backend_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if _backend_dir not in sys.path: sys.path.insert(0, _backend_dir)
-"""
-FastAPI UI Component — AI Interview System
-Provides a complete, single-page interactive web interface directly served by FastAPI.
-"""
 
-def get_ui_html() -> str:
-    return r"""<!DOCTYPE html>
+INDEX_HTML_CONTENT = """<!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
@@ -751,8 +746,26 @@ def get_ui_html() -> str:
 
   <!-- JAVASCRIPT APP LOGIC -->
   <script>
-    // ─── STATE ─────────────────────────────────────────────────────────────────
+    // --- STATE ---
     let token = localStorage.getItem('token') || '';
+    
+    function getApiBaseUrl() {
+      const saved = localStorage.getItem('custom_backend_url');
+      if (saved && saved.trim()) return saved.trim().replace(/\/+$/, '');
+      
+      const host = window.location.hostname;
+      const protocol = window.location.protocol;
+      
+      // If served directly from FastAPI (http://localhost:8000 or http://127.0.0.1:8000)
+      if (protocol !== 'file:' && (host === 'localhost' || host === '127.0.0.1')) {
+        return '';
+      }
+      
+      // Default to Localtunnel HTTPS Host for GitHub Pages / External Browsers
+      return 'https://four-ways-sin.loca.lt';
+    }
+
+    const API_BASE_URL = getApiBaseUrl();
     let currentUser = null;
     let jobRoles = [];
     let selectedRoleId = null;
@@ -766,7 +779,50 @@ def get_ui_html() -> str:
     let chartInstance = null;
     let isAuthRegisterMode = false;
 
-    // ─── INITIALIZATION ────────────────────────────────────────────────────────
+    // --- CENTRAL API CALL HELPER ---
+    async function apiCall(path, options = {}) {
+      let url = path;
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        const cleanPath = path.startsWith('/') ? path : '/' + path;
+        url = API_BASE_URL + cleanPath;
+      }
+
+      const headers = {
+        'Bypass-Tunnel-Reminder': 'true',
+        'ngrok-skip-browser-warning': 'true',
+        ...(options.headers || {})
+      };
+
+      if (options.body && !(options.body instanceof FormData) && !headers['Content-Type']) {
+        headers['Content-Type'] = 'application/json';
+      }
+
+      if (token && !headers['Authorization']) {
+        headers['Authorization'] = Bearer ;
+      }
+
+      const response = await fetch(url, { ...options, headers });
+      
+      const contentType = response.headers.get('content-type') || '';
+      let data;
+      if (contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        const text = await response.text();
+        if (!response.ok) {
+          throw new Error(Server error (): );
+        }
+        try { data = JSON.parse(text); } catch(e) { data = { message: text }; }
+      }
+
+      if (!response.ok) {
+        throw new Error(data.detail || data.message || Request failed ());
+      }
+
+      return data;
+    }
+
+    // --- INITIALIZATION ---
     window.addEventListener('DOMContentLoaded', async () => {
       await fetchJobRoles();
       if (token) {
@@ -777,9 +833,10 @@ def get_ui_html() -> str:
       navigateTo('dashboard');
     });
 
-    // ─── TOAST NOTIFICATIONS ──────────────────────────────────────────────────
+    // --- TOAST NOTIFICATIONS ---
     function showToast(message, type = 'info') {
       const container = document.getElementById('toast-container');
+      if (!container) return;
       const toast = document.createElement('div');
       
       const colors = {
@@ -788,34 +845,32 @@ def get_ui_html() -> str:
         info: 'bg-brand-950/90 border-brand-500/50 text-brand-200',
       };
 
-      toast.className = `p-4 rounded-2xl border backdrop-blur-lg shadow-2xl pointer-events-auto transition-all transform translate-x-10 opacity-0 flex items-center gap-3 text-sm font-medium ${colors[type] || colors.info}`;
-      toast.innerHTML = `
-        <i class="fa-solid ${type === 'success' ? 'fa-circle-check text-emerald-400' : type === 'error' ? 'fa-triangle-exclamation text-rose-400' : 'fa-info-circle text-brand-400'} text-lg"></i>
-        <span>${message}</span>
-      `;
+      toast.className = p-4 rounded-2xl border backdrop-blur-lg shadow-2xl pointer-events-auto transition-all transform translate-x-10 opacity-0 flex items-center gap-3 text-sm font-medium ;
+      toast.innerHTML = 
+        <i class="fa-solid  text-lg"></i>
+        <span></span>
+      ;
 
       container.appendChild(toast);
-      setTimeout(() => {
-        toast.classList.remove('translate-x-10', 'opacity-0');
-      }, 10);
-
+      setTimeout(() => toast.classList.remove('translate-x-10', 'opacity-0'), 10);
       setTimeout(() => {
         toast.classList.add('translate-x-10', 'opacity-0');
         setTimeout(() => toast.remove(), 300);
       }, 4000);
     }
 
-    // ─── NAVIGATION ───────────────────────────────────────────────────────────
+    // --- NAVIGATION ---
     function navigateTo(viewName) {
       document.querySelectorAll('.view-panel').forEach(el => el.classList.add('hidden'));
-      const target = document.getElementById(`view-${viewName}`);
+      const target = document.getElementById(iew-);
       if (target) target.classList.remove('hidden');
 
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('bg-brand-600', 'text-white');
         btn.classList.add('text-slate-300');
       });
-      const activeNavBtn = document.getElementById(`nav-${viewName}`);
+      const activeNavBtn = document.getElementById(
+av-);
       if (activeNavBtn) {
         activeNavBtn.classList.add('bg-brand-600', 'text-white');
       }
@@ -825,7 +880,7 @@ def get_ui_html() -> str:
       if (viewName === 'profile') loadProfileData();
     }
 
-    // ─── AUTHENTICATION ────────────────────────────────────────────────────────
+    // --- AUTHENTICATION ---
     function openAuthModal() {
       document.getElementById('auth-modal').classList.remove('hidden');
     }
@@ -863,32 +918,29 @@ def get_ui_html() -> str:
       }
     }
 
-    
     async function handleGoogleSignIn() {
-      const email = prompt("Google One-Tap Sign In\n\nEnter your Google email:", "candidate@gmail.com");
+      const email = prompt("Google One-Tap Sign In
+
+Enter your Google email:", "student@ai.com");
       if (!email || !email.includes('@')) return;
       const name = email.split('@')[0].replace(/[._]/g, ' ');
       const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
-      const endpoint = (typeof API_BASE_URL !== 'undefined' ? API_BASE_URL : '') + '/api/auth/google';
-      await executeAuth(endpoint, { email, name: formattedName });
+      await executeAuth('/api/auth/google', { email, name: formattedName });
     }
 
     async function executeAuth(endpoint, body) {
       try {
-        const res = await fetch(endpoint, {
+        const data = await apiCall(endpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body),
+          body: JSON.stringify(body)
         });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.detail || 'Authentication failed');
 
         token = data.access_token;
         localStorage.setItem('token', token);
         currentUser = data.user;
         updateAuthUI();
         closeAuthModal();
-        showToast(`Welcome ${currentUser.name}! Authenticated successfully.`, 'success');
+        showToast(Welcome ! Authenticated successfully., 'success');
         loadDashboardData();
       } catch (err) {
         showToast(err.message, 'error');
@@ -897,11 +949,7 @@ def get_ui_html() -> str:
 
     async function fetchCurrentUser() {
       try {
-        const res = await fetch('/api/auth/me', {
-          headers: { 'Authorization': `Bearer ${token}` }
-        });
-        if (!res.ok) throw new Error('Token expired');
-        currentUser = await res.json();
+        currentUser = await apiCall('/api/auth/me');
         updateAuthUI();
       } catch (err) {
         token = '';
@@ -917,26 +965,26 @@ def get_ui_html() -> str:
 
       if (currentUser) {
         if (dashName) dashName.innerText = currentUser.name;
-        authArea.innerHTML = `
+        authArea.innerHTML = 
           <div class="flex items-center gap-3">
             <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl">
               <div class="w-6 h-6 rounded-full bg-brand-500 flex items-center justify-center text-xs font-bold text-white">
-                ${currentUser.name.charAt(0).toUpperCase()}
+                
               </div>
-              <span class="text-xs font-semibold text-slate-200 hidden sm:inline">${currentUser.name}</span>
+              <span class="text-xs font-semibold text-slate-200 hidden sm:inline"></span>
             </div>
             <button onclick="handleLogout()" title="Sign Out" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-rose-400 transition-all border border-slate-700">
               <i class="fa-solid fa-right-from-bracket"></i>
             </button>
           </div>
-        `;
+        ;
       } else {
         if (dashName) dashName.innerText = 'Candidate';
-        authArea.innerHTML = `
+        authArea.innerHTML = 
           <button onclick="openAuthModal()" class="px-5 py-2.5 rounded-xl text-sm font-semibold btn-gradient text-white shadow-lg">
             Login / Register
           </button>
-        `;
+        ;
       }
     }
 
@@ -949,11 +997,10 @@ def get_ui_html() -> str:
       navigateTo('dashboard');
     }
 
-    // ─── JOB ROLES & SETUP ─────────────────────────────────────────────────────
+    // --- JOB ROLES & SETUP ---
     async function fetchJobRoles() {
       try {
-        const res = await fetch('/api/questions/roles');
-        jobRoles = await res.json();
+        jobRoles = await apiCall('/api/questions/roles');
         renderJobRoles();
       } catch (err) {
         console.error('Failed to load roles:', err);
@@ -964,15 +1011,15 @@ def get_ui_html() -> str:
       const container = document.getElementById('roles-selector-container');
       if (!container || !jobRoles.length) return;
 
-      container.innerHTML = jobRoles.map((role, idx) => `
-        <div onclick="selectJobRole(${role.id})" id="role-card-${role.id}" class="role-card p-4 rounded-2xl border ${idx === 0 ? 'border-2 border-brand-500 bg-brand-500/10' : 'border-slate-800 bg-slate-900/60'} hover:bg-slate-800/80 cursor-pointer transition-all space-y-1">
+      container.innerHTML = jobRoles.map((role, idx) => 
+        <div onclick="selectJobRole()" id="role-card-" class="role-card p-4 rounded-2xl border  hover:bg-slate-800/80 cursor-pointer transition-all space-y-1">
           <div class="flex items-center justify-between">
-            <span class="font-bold text-white text-base">${role.role_name}</span>
-            <i class="fa-solid fa-circle-check text-brand-400 ${idx === 0 ? 'opacity-100' : 'opacity-0'} role-check-icon"></i>
+            <span class="font-bold text-white text-base"></span>
+            <i class="fa-solid fa-circle-check text-brand-400  role-check-icon"></i>
           </div>
-          <p class="text-xs text-slate-400 line-clamp-2">${role.description || 'Core technical domain questions'}</p>
+          <p class="text-xs text-slate-400 line-clamp-2"></p>
         </div>
-      `).join('');
+      ).join('');
 
       if (jobRoles.length > 0) {
         selectedRoleId = jobRoles[0].id;
@@ -987,7 +1034,8 @@ def get_ui_html() -> str:
       });
       document.querySelectorAll('.role-check-icon').forEach(el => el.classList.add('opacity-0'));
 
-      const target = document.getElementById(`role-card-${id}`);
+      const target = document.getElementById(
+ole-card-);
       if (target) {
         target.classList.add('border-2', 'border-brand-500', 'bg-brand-500/10');
         target.querySelector('.role-check-icon')?.classList.remove('opacity-0');
@@ -1000,13 +1048,13 @@ def get_ui_html() -> str:
         btn.classList.remove('border-2', 'border-brand-500', 'bg-brand-500/10');
         btn.classList.add('border-slate-800', 'bg-slate-900/60');
       });
-      const target = document.getElementById(`diff-${diff}`);
+      const target = document.getElementById(diff-);
       if (target) {
         target.classList.add('border-2', 'border-brand-500', 'bg-brand-500/10');
       }
     }
 
-    // ─── INTERVIEW WORKFLOW ────────────────────────────────────────────────────
+    // --- INTERVIEW WORKFLOW ---
     async function startInterviewSession() {
       if (!token) {
         openAuthModal();
@@ -1027,12 +1075,8 @@ def get_ui_html() -> str:
       btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Initializing AI Questions...';
 
       try {
-        const res = await fetch('/api/interviews/start', {
+        const data = await apiCall('/api/interviews/start', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
           body: JSON.stringify({
             role_id: selectedRoleId,
             difficulty: selectedDifficulty,
@@ -1040,9 +1084,6 @@ def get_ui_html() -> str:
             mode: mode
           })
         });
-
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.detail || 'Failed to start interview');
 
         activeInterview = data;
         renderInterviewQuestion(data.current_question, 1, data.total_questions);
@@ -1060,7 +1101,7 @@ def get_ui_html() -> str:
     function renderInterviewQuestion(q, currentIdx, total) {
       document.getElementById('interview-role-badge').innerText = activeInterview.role_name;
       document.getElementById('interview-difficulty-badge').innerText = activeInterview.difficulty;
-      document.getElementById('question-progress-text').innerText = `Question ${currentIdx} of ${total}`;
+      document.getElementById('question-progress-text').innerText = Question  of ;
       document.getElementById('question-category-badge').innerText = q.category || 'Technical';
       document.getElementById('current-question-text').innerText = q.question_text;
       document.getElementById('student-answer-input').value = '';
@@ -1070,7 +1111,7 @@ def get_ui_html() -> str:
     function updateWordCount() {
       const text = document.getElementById('student-answer-input').value.trim();
       const words = text ? text.split(/\s+/).length : 0;
-      document.getElementById('word-count-badge').innerText = `${words} words`;
+      document.getElementById('word-count-badge').innerText = ${words} words;
     }
 
     function startTimer() {
@@ -1081,7 +1122,7 @@ def get_ui_html() -> str:
         timerSeconds++;
         const mins = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
         const secs = String(timerSeconds % 60).padStart(2, '0');
-        display.innerText = `${mins}:${secs}`;
+        display.innerText = ${mins}:;
       }, 1000);
     }
 
@@ -1101,22 +1142,14 @@ def get_ui_html() -> str:
       btn.innerHTML = '<i class="fa-solid fa-brain fa-spin"></i> NLP Evaluating...';
 
       try {
-        const res = await fetch(`/api/interviews/${activeInterview.interview_id}/answer`, {
+        const data = await apiCall(/api/interviews//answer, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
           body: JSON.stringify({
             answer_text: text,
             duration_seconds: timerSeconds
           })
         });
 
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.detail || 'Answer submission failed');
-
-        // Show Instant AI Evaluation Modal
         displayEvalModal(data.evaluation, data.next_question, data.interview_complete);
       } catch (err) {
         showToast(err.message, 'error');
@@ -1127,14 +1160,14 @@ def get_ui_html() -> str:
     }
 
     function displayEvalModal(evalData, nextQuestion, isComplete) {
-      document.getElementById('eval-overall-badge').innerText = `Overall: ${evalData.overall_score}%`;
+      document.getElementById('eval-overall-badge').innerText = Overall: %;
       document.getElementById('eval-feedback-text').innerText = evalData.feedback || 'Answer processed.';
 
       const strList = document.getElementById('eval-strengths-list');
-      strList.innerHTML = (evalData.strengths || ['Good attempt']).map(s => `<li>• ${s}</li>`).join('');
+      strList.innerHTML = (evalData.strengths || ['Good attempt']).map(s => <li>✓ </li>).join('');
 
       const impList = document.getElementById('eval-improvements-list');
-      impList.innerHTML = (evalData.improvements || ['Maintain consistency']).map(i => `<li>• ${i}</li>`).join('');
+      impList.innerHTML = (evalData.improvements || ['Maintain consistency']).map(i => <li>➜ </li>).join('');
 
       pendingNextQuestion = { nextQuestion, isComplete };
       document.getElementById('eval-modal').classList.remove('hidden');
@@ -1156,11 +1189,9 @@ def get_ui_html() -> str:
     async function finishInterviewSession() {
       stopTimer();
       try {
-        const res = await fetch(`/api/interviews/${activeInterview.interview_id}/complete`, {
-          method: 'POST',
-          headers: { 'Authorization': `Bearer ${token}` }
+        const reportData = await apiCall(/api/interviews//complete, {
+          method: 'POST'
         });
-        const reportData = await res.json();
         await loadFullReport(activeInterview.interview_id);
         navigateTo('report');
         showToast('Interview Session Complete! Performance report generated.', 'success');
@@ -1174,30 +1205,24 @@ def get_ui_html() -> str:
       stopTimer();
       if (activeInterview) {
         try {
-          await fetch(`/api/interviews/${activeInterview.interview_id}`, {
-            method: 'DELETE',
-            headers: { 'Authorization': `Bearer ${token}` }
-          });
+          await apiCall(/api/interviews/, { method: 'DELETE' });
         } catch (e) {}
       }
       showToast('Interview cancelled.', 'info');
       navigateTo('dashboard');
     }
 
-    // ─── REPORT & BREAKDOWN ────────────────────────────────────────────────────
+    // --- REPORT & BREAKDOWN ---
     async function loadFullReport(interviewId) {
       try {
-        const res = await fetch(`/api/evaluations/${interviewId}`, {
-          headers: { 'Authorization': `Bearer ${token}` }
-        });
-        const data = await res.json();
+        const data = await apiCall(/api/evaluations/);
         const iv = data.interview;
 
-        document.getElementById('report-role-title').innerText = `${iv.role_name} Report`;
-        document.getElementById('report-meta-text').innerText = `${iv.difficulty} • ${iv.mode} Mode • ${data.answers.length} Questions Evaluated`;
+        document.getElementById('report-role-title').innerText = ${iv.role_name} Report;
+        document.getElementById('report-meta-text').innerText = ${iv.difficulty} •  Mode •  Questions Evaluated;
         
         const score = Math.round(iv.overall_score || 0);
-        document.getElementById('report-overall-score').innerText = `${score}%`;
+        document.getElementById('report-overall-score').innerText = ${score}%;
         document.getElementById('report-grade-label').innerText = score >= 85 ? 'Grade: A (Excellent)' : score >= 70 ? 'Grade: B (Good)' : 'Grade: C (Needs Practice)';
 
         // Metric Bars
@@ -1207,36 +1232,36 @@ def get_ui_html() -> str:
         setBar('comm', iv.communication_score);
 
         // Strengths & Recs
-        document.getElementById('report-strengths-list').innerHTML = (iv.strong_areas || ['Strong foundational understanding']).map(s => `
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> ${s}</li>
-        `).join('');
+        document.getElementById('report-strengths-list').innerHTML = (iv.strong_areas || ['Strong foundational understanding']).map(s => 
+          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> </li>
+        ).join('');
 
-        document.getElementById('report-recs-list').innerHTML = (iv.recommendations || ['Continue practicing domain questions']).map(r => `
-          <li class="flex items-start gap-2"><i class="fa-solid fa-arrow-right text-amber-500 mt-1"></i> ${r}</li>
-        `).join('');
+        document.getElementById('report-recs-list').innerHTML = (iv.recommendations || ['Continue practicing domain questions']).map(r => 
+          <li class="flex items-start gap-2"><i class="fa-solid fa-arrow-right text-amber-500 mt-1"></i> </li>
+        ).join('');
 
         // Accordion of Questions
         const accordion = document.getElementById('report-questions-accordion');
         accordion.innerHTML = data.answers.map((ans, idx) => {
           const ev = ans.evaluation || {};
-          return `
+          return 
             <div class="border border-slate-800 rounded-2xl p-5 bg-slate-900/60 space-y-3">
               <div class="flex items-center justify-between">
-                <span class="text-xs font-bold text-brand-400">Q${idx + 1}: ${ans.question_text}</span>
-                <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-bold text-white">Score: ${ev.overall_score || 0}%</span>
+                <span class="text-xs font-bold text-brand-400">Q: </span>
+                <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-bold text-white">Score: %</span>
               </div>
 
               <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800/80 text-xs text-slate-300">
                 <span class="text-slate-500 font-semibold block mb-1">Your Answer:</span>
-                ${ans.answer_text}
+                
               </div>
 
               <div class="text-xs text-slate-300 bg-brand-500/10 border border-brand-500/20 p-3 rounded-xl">
                 <span class="text-brand-300 font-bold block mb-1">AI Feedback:</span>
-                ${ev.feedback || 'Evaluation completed.'}
+                
               </div>
             </div>
-          `;
+          ;
         }).join('');
 
       } catch (err) {
@@ -1246,41 +1271,40 @@ def get_ui_html() -> str:
 
     function setBar(id, val) {
       const num = Math.round(val || 0);
-      document.getElementById(`bar-${id}`).style.width = `${num}%`;
-      document.getElementById(`val-${id}`).innerText = `${num}%`;
+      const bar = document.getElementById(ar-);
+      const txt = document.getElementById(al-);
+      if (bar) bar.style.width = ${num}%;
+      if (txt) txt.innerText = ${num}%;
     }
 
-    // ─── DASHBOARD DATA & CHARTS ───────────────────────────────────────────────
+    // --- DASHBOARD DATA & CHARTS ---
     async function loadDashboardData() {
       if (!token) return;
       try {
-        const [sumRes, progRes, recsRes] = await Promise.all([
-          fetch('/api/dashboard/summary', { headers: { 'Authorization': `Bearer ${token}` } }),
-          fetch('/api/dashboard/progress', { headers: { 'Authorization': `Bearer ${token}` } }),
-          fetch('/api/dashboard/recommendations', { headers: { 'Authorization': `Bearer ${token}` } }),
+        const [sum, prog, recsData] = await Promise.all([
+          apiCall('/api/dashboard/summary').catch(() => null),
+          apiCall('/api/dashboard/progress').catch(() => null),
+          apiCall('/api/dashboard/recommendations').catch(() => null),
         ]);
 
-        if (sumRes.ok) {
-          const sum = await sumRes.json();
-          document.getElementById('stat-total').innerText = sum.total_interviews;
-          document.getElementById('stat-avg').innerText = `${Math.round(sum.avg_score)}%`;
-          document.getElementById('stat-best').innerText = `${Math.round(sum.best_score)}%`;
+        if (sum) {
+          document.getElementById('stat-total').innerText = sum.total_interviews || 0;
+          document.getElementById('stat-avg').innerText = ${Math.round(sum.avg_score || 0)}%;
+          document.getElementById('stat-best').innerText = ${Math.round(sum.best_score || 0)}%;
         }
 
-        if (progRes.ok) {
-          const prog = await progRes.json();
+        if (prog) {
           renderProgressionChart(prog);
         }
 
-        if (recsRes.ok) {
-          const recsData = await recsRes.json();
+        if (recsData && recsData.recommendations) {
           const recsList = document.getElementById('dash-recs-list');
-          recsList.innerHTML = (recsData.recommendations || []).map(r => `
+          recsList.innerHTML = recsData.recommendations.map(r => 
             <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs text-slate-300 flex items-start gap-2.5">
               <i class="fa-solid fa-lightbulb text-amber-400 mt-0.5"></i>
-              <span>${r}</span>
+              <span></span>
             </div>
-          `).join('');
+          ).join('');
         }
       } catch (err) {
         console.error('Dashboard data load failed:', err);
@@ -1288,10 +1312,12 @@ def get_ui_html() -> str:
     }
 
     function renderProgressionChart(data) {
-      const ctx = document.getElementById('progressionChart').getContext('2d');
+      const canvas = document.getElementById('progressionChart');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
       if (chartInstance) chartInstance.destroy();
 
-      const labels = data.length ? data.map(d => d.date || `Session ${d.interview_number}`) : ['Session 1', 'Session 2', 'Session 3'];
+      const labels = data.length ? data.map(d => d.date || Session ) : ['Session 1', 'Session 2', 'Session 3'];
       const scores = data.length ? data.map(d => d.overall_score) : [65, 78, 85];
 
       chartInstance = new Chart(ctx, {
@@ -1332,47 +1358,45 @@ def get_ui_html() -> str:
       });
     }
 
-    // ─── HISTORY DATA ──────────────────────────────────────────────────────────
+    // --- HISTORY DATA ---
     async function loadHistoryData() {
       if (!token) return;
       try {
-        const res = await fetch('/api/interviews/history', {
-          headers: { 'Authorization': `Bearer ${token}` }
-        });
-        const list = await res.json();
+        const list = await apiCall('/api/interviews/history');
         const tbody = document.getElementById('history-table-body');
+        if (!tbody) return;
 
         if (!list.length) {
-          tbody.innerHTML = `
+          tbody.innerHTML = 
             <tr>
               <td colspan="8" class="px-6 py-8 text-center text-slate-400">
                 No past interview sessions found. Start a new session above!
               </td>
             </tr>
-          `;
+          ;
           return;
         }
 
-        tbody.innerHTML = list.map(iv => `
+        tbody.innerHTML = list.map(iv => 
           <tr class="hover:bg-slate-800/40 transition-all">
-            <td class="px-6 py-4 font-mono text-xs text-slate-400">#${iv.id}</td>
-            <td class="px-6 py-4 font-bold text-white">${iv.role_name}</td>
-            <td class="px-6 py-4 text-xs"><span class="px-2.5 py-1 rounded-full bg-slate-800 text-slate-300">${iv.difficulty}</span></td>
-            <td class="px-6 py-4 text-xs">${iv.questions_answered} / ${iv.total_questions}</td>
-            <td class="px-6 py-4 font-bold ${iv.overall_score >= 75 ? 'text-emerald-400' : 'text-brand-400'}">${iv.overall_score ? iv.overall_score + '%' : 'N/A'}</td>
+            <td class="px-6 py-4 font-mono text-xs text-slate-400">#</td>
+            <td class="px-6 py-4 font-bold text-white"></td>
+            <td class="px-6 py-4 text-xs"><span class="px-2.5 py-1 rounded-full bg-slate-800 text-slate-300"></span></td>
+            <td class="px-6 py-4 text-xs"> / </td>
+            <td class="px-6 py-4 font-bold "></td>
             <td class="px-6 py-4 text-xs">
-              <span class="px-2.5 py-1 rounded-full ${iv.status === 'COMPLETED' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'}">
-                ${iv.status}
+              <span class="px-2.5 py-1 rounded-full ">
+                
               </span>
             </td>
-            <td class="px-6 py-4 text-xs text-slate-400">${iv.started_at ? new Date(iv.started_at).toLocaleDateString() : ''}</td>
+            <td class="px-6 py-4 text-xs text-slate-400"></td>
             <td class="px-6 py-4 text-right">
-              <button onclick="viewPastReport(${iv.id})" class="px-3.5 py-1.5 rounded-xl bg-brand-600/20 hover:bg-brand-600/40 text-brand-300 text-xs font-bold border border-brand-500/30 transition-all">
+              <button onclick="viewPastReport()" class="px-3.5 py-1.5 rounded-xl bg-brand-600/20 hover:bg-brand-600/40 text-brand-300 text-xs font-bold border border-brand-500/30 transition-all">
                 View Report
               </button>
             </td>
           </tr>
-        `).join('');
+        ).join('');
 
       } catch (err) {
         showToast('Failed to load interview history.', 'error');
@@ -1384,7 +1408,7 @@ def get_ui_html() -> str:
       navigateTo('report');
     }
 
-    // ─── PROFILE DATA ──────────────────────────────────────────────────────────
+    // --- PROFILE DATA ---
     function loadProfileData() {
       if (!currentUser) return;
       document.getElementById('prof-name').innerText = currentUser.name;
@@ -1398,12 +1422,8 @@ def get_ui_html() -> str:
     async function handleProfileUpdate(e) {
       e.preventDefault();
       try {
-        const res = await fetch('/api/auth/me', {
+        const data = await apiCall('/api/auth/me', {
           method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
           body: JSON.stringify({
             target_role: document.getElementById('prof-target-role').value,
             education: document.getElementById('prof-education').value,
@@ -1412,8 +1432,6 @@ def get_ui_html() -> str:
           })
         });
 
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.detail || 'Profile update failed');
         currentUser = data;
         showToast('Profile updated successfully!', 'success');
       } catch (err) {
@@ -1423,3 +1441,6 @@ def get_ui_html() -> str:
   </script>
 </body>
 </html>"""
+
+def get_ui_html() -> str:
+    return INDEX_HTML_CONTENT

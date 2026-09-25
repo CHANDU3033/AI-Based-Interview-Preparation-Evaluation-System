@@ -40,14 +40,14 @@ class InterviewDetailResponse(InterviewResponse):
 
 
 class AnswerSubmitRequest(BaseModel):
-    question_id: int
+    question_id: Optional[int] = None
     answer_text: str
     duration_seconds: Optional[int] = None
 
 
 class AnswerSubmitResponse(BaseModel):
     answer_id: int
-    question_id: int
+    question_id: Optional[int] = None
     evaluation: dict
     next_question: Optional[dict] = None
     interview_complete: bool = False

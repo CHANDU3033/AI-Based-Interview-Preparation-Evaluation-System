@@ -40,9 +40,9 @@ class UserResponse(BaseModel):
     education: Optional[str] = None
     college: Optional[str] = None
     branch: Optional[str] = None
-    experience_years: float = 0.0
+    experience_years: Optional[float] = 0.0
     role: str
-    created_at: datetime
+    created_at: Optional[datetime] = None
 
 
 class Token(BaseModel):

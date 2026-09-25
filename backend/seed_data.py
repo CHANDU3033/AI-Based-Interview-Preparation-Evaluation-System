@@ -42,6 +42,31 @@ def seed_database():
             db.add(Question(**q))
             inserted += 1
 
+        
+        # Seed Demo Users
+        from app.models.user import User
+        from app.utils.auth import hash_password
+
+        demo_users = [
+            ('student@ai.com', 'password123', 'Demo Student', 'student', 'Python Developer'),
+            ('admin@ai.com', 'admin123', 'Demo Admin', 'admin', 'System Administrator'),
+            ('teststudent@ai.com', 'password123', 'Test Student', 'student', 'Software Engineer')
+        ]
+        for email, pwd, name, role, target_role in demo_users:
+            if not db.query(User).filter(User.email == email).first():
+                db.add(User(
+                    email=email,
+                    password_hash=hash_password(pwd),
+                    name=name,
+                    role=role,
+                    target_role=target_role,
+                    education='B.Tech',
+                    college='AI Institute',
+                    branch='Computer Science',
+                    is_active=True
+                ))
+                print(f'  + Seeded user: {email}')
+
         db.commit()
         print(f"\n[SUCCESS] Seeded {len(JOB_ROLES)} roles and {inserted} questions successfully!")
 
