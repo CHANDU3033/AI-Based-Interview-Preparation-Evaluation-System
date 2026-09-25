@@ -744,7 +744,8 @@
   <script>
     // ─── STATE ─────────────────────────────────────────────────────────────────
     let token = localStorage.getItem('token') || '';
-    const API_BASE_URL = window.location.hostname.includes('github.io') ? 'https://ai-based-interview-preparation-zcst.onrender.com' : '';
+    let savedBackend = localStorage.getItem('custom_backend_url');
+    const API_BASE_URL = savedBackend || (window.location.hostname.includes('github.io') ? 'https://khaki-squids-show.loca.lt' : '');
     let currentUser = null;
     let jobRoles = [];
     let selectedRoleId = null;
