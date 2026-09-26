@@ -3,8 +3,8 @@ _backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if _backend_dir not in sys.path: sys.path.insert(0, _backend_dir)
 
 """
-Curated Question Bank - 500+ Technical Questions across 5 Major Roles
-Covers Python, Java, C++, JS, SQL, AI/ML, Data Analysis, and Systems.
+Curated Question Bank - 300 Official Structured Questions across 5 Major Roles & 3 Difficulty Levels
+(Beginner, Intermediate, Advanced - 20 questions each per role)
 """
 
 JOB_ROLES = [
@@ -35,126 +35,142 @@ QUESTION_BANK = [
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "What is the difference between a list and a tuple in Python?",
-        "expected_answer": "Lists are mutable and use []. Tuples are immutable and use (). Tuples are faster and use less memory.",
+        "question_text": "What is Python?",
+        "expected_answer": "Clear technical explanation of python? covering key principles and practical usage.",
         "expected_concepts": [
-            "mutable",
-            "immutable",
+            "Python"
+        ]
+    },
+    {
+        "role": "Python Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What are the main features of Python?",
+        "expected_answer": "Clear technical explanation of what are the main features of python? covering key principles and practical usage.",
+        "expected_concepts": [
+            "main",
+            "features",
+            "Python"
+        ]
+    },
+    {
+        "role": "Python Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What are Python's built-in data types?",
+        "expected_answer": "Clear technical explanation of what are python's built-in data types? covering key principles and practical usage.",
+        "expected_concepts": [
+            "Python's",
+            "built-in",
+            "data",
+            "types"
+        ]
+    },
+    {
+        "role": "Python Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is the difference between a list and a tuple?",
+        "expected_answer": "Clear technical explanation of the difference between a list and a tuple? covering key principles and practical usage.",
+        "expected_concepts": [
             "list",
             "tuple"
         ]
     },
     {
         "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "What are Python decorators?",
-        "expected_answer": "A decorator is a function wrapping another function to extend behavior without modifying source code. Syntax uses @decorator.",
-        "expected_concepts": [
-            "decorator",
-            "wrapper",
-            "function",
-            "@syntax"
-        ]
-    },
-    {
-        "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Explain '==' vs 'is' operators.",
-        "expected_answer": "'==' checks value equality. 'is' checks object memory identity.",
-        "expected_concepts": [
-            "equality",
-            "identity",
-            "memory",
-            "object"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "What are Python built-in data types?",
-        "expected_answer": "int, float, str, bool, list, tuple, dict, set, frozenset, NoneType, bytes.",
-        "expected_concepts": [
-            "int",
-            "float",
-            "str",
-            "dict",
-            "list"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "What is the use of 'self' in Python?",
-        "expected_answer": "'self' refers to instance of the class to access instance attributes and methods.",
-        "expected_concepts": [
-            "self",
-            "instance",
-            "class",
-            "attribute"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "What is dictionary comprehension?",
-        "expected_answer": "Syntax to construct dictionaries from iterables: {k: v for k, v in iterable}.",
+        "question_text": "What is a dictionary in Python?",
+        "expected_answer": "Clear technical explanation of a dictionary in python? covering key principles and practical usage.",
         "expected_concepts": [
             "dictionary",
-            "comprehension",
-            "iterable"
+            "Python"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "How does memory management work in Python?",
-        "expected_answer": "CPython uses reference counting and generational garbage collector.",
+        "question_text": "What is a set?",
+        "expected_answer": "Clear technical explanation of a set? covering key principles and practical usage.",
         "expected_concepts": [
-            "memory",
-            "reference counting",
-            "garbage collector"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Shallow copy vs deep copy?",
-        "expected_answer": "Shallow copy duplicates top-level object; deep copy recursively copies nested objects.",
-        "expected_concepts": [
-            "shallow copy",
-            "deep copy",
-            "nested"
+            "set"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "What are *args and **kwargs?",
-        "expected_answer": "*args passes variable positional args tuple; **kwargs passes keyword args dict.",
+        "question_text": "What is a variable in Python?",
+        "expected_answer": "Clear technical explanation of a variable in python? covering key principles and practical usage.",
         "expected_concepts": [
-            "args",
-            "kwargs",
-            "positional",
-            "keyword"
+            "variable",
+            "Python"
         ]
     },
     {
         "role": "Python Developer",
-        "category": "Conceptual",
+        "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "What are lambda functions?",
-        "expected_answer": "Anonymous single-line functions created using lambda keyword.",
+        "question_text": "What is type casting?",
+        "expected_answer": "Clear technical explanation of type casting? covering key principles and practical usage.",
         "expected_concepts": [
-            "lambda",
-            "anonymous",
+            "type",
+            "casting"
+        ]
+    },
+    {
+        "role": "Python Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is the difference between input() and print()?",
+        "expected_answer": "Clear technical explanation of the difference between input() and print()? covering key principles and practical usage.",
+        "expected_concepts": [
+            "input",
+            "print"
+        ]
+    },
+    {
+        "role": "Python Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What are conditional statements?",
+        "expected_answer": "Clear technical explanation of what are conditional statements? covering key principles and practical usage.",
+        "expected_concepts": [
+            "conditional",
+            "statements"
+        ]
+    },
+    {
+        "role": "Python Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What are loops in Python?",
+        "expected_answer": "Clear technical explanation of what are loops in python? covering key principles and practical usage.",
+        "expected_concepts": [
+            "loops",
+            "Python"
+        ]
+    },
+    {
+        "role": "Python Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "Difference between for and while loops?",
+        "expected_answer": "Clear technical explanation of difference between for and while loops? covering key principles and practical usage.",
+        "expected_concepts": [
+            "while",
+            "loops"
+        ]
+    },
+    {
+        "role": "Python Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is a function?",
+        "expected_answer": "Clear technical explanation of a function? covering key principles and practical usage.",
+        "expected_concepts": [
             "function"
         ]
     },
@@ -162,6751 +178,3166 @@ QUESTION_BANK = [
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Python Technical Question #11: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #11.",
+        "question_text": "What are function parameters and arguments?",
+        "expected_answer": "Clear technical explanation of what are function parameters and arguments? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #12: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #12.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "function",
+            "parameters",
+            "arguments"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Python Technical Question #13: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #13.",
+        "question_text": "What is the difference between return and print()?",
+        "expected_answer": "Clear technical explanation of the difference between return and print()? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #14: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #14.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "return",
+            "print"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Python Technical Question #15: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #15.",
+        "question_text": "What is a string in Python?",
+        "expected_answer": "Clear technical explanation of a string in python? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #16: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #16.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "string",
+            "Python"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Python Technical Question #17: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #17.",
+        "question_text": "How do you reverse a string?",
+        "expected_answer": "Clear technical explanation of how do you reverse a string? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #18: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #18.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "reverse",
+            "string"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Python Technical Question #19: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #19.",
+        "question_text": "What is list slicing?",
+        "expected_answer": "Clear technical explanation of list slicing? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #20: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #20.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "list",
+            "slicing"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Python Technical Question #21: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #21.",
+        "question_text": "What is exception handling?",
+        "expected_answer": "Clear technical explanation of exception handling? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #22: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #22.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "exception",
+            "handling"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Python Technical Question #23: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #23.",
+        "question_text": "What is the purpose of import in Python?",
+        "expected_answer": "Clear technical explanation of the purpose of import in python? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #24: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #24.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #25: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #25.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #26: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #26.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #27: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #27.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #28: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #28.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #29: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #29.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #30: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #30.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #31: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #31.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #32: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #32.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #33: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #33.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #34: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #34.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Python Technical Question #35: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #35.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #36: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #36.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "purpose",
+            "import",
+            "Python"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #37: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #37.",
+        "question_text": "Explain mutable and immutable objects.",
+        "expected_answer": "Clear technical explanation of mutable and immutable objects. covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #38: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #38.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "mutable",
+            "immutable",
+            "objects"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #39: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #39.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
+        "question_text": "Difference between == and is.",
+        "expected_answer": "Clear technical explanation of difference between == and is. covering key principles and practical usage.",
+        "expected_concepts": []
     },
     {
         "role": "Python Developer",
-        "category": "Conceptual",
+        "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #40: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #40.",
+        "question_text": "Explain shallow copy and deep copy.",
+        "expected_answer": "Clear technical explanation of shallow copy and deep copy. covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "shallow",
+            "copy",
+            "deep",
+            "copy"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #41: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #41.",
+        "question_text": "What are *args and **kwargs?",
+        "expected_answer": "Clear technical explanation of what are *args and **kwargs? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #42: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #42.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "*args",
+            "**kwargs"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #43: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #43.",
+        "question_text": "What is list comprehension?",
+        "expected_answer": "Clear technical explanation of list comprehension? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #44: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #44.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "list",
+            "comprehension"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #45: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #45.",
+        "question_text": "Explain lambda functions.",
+        "expected_answer": "Clear technical explanation of lambda functions. covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #46: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #46.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "lambda",
+            "functions"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #47: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #47.",
+        "question_text": "Explain map(), filter(), and reduce().",
+        "expected_answer": "Clear technical explanation of map(), filter(), and reduce(). covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #48: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #48.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "map",
+            "filter",
+            "reduce"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #49: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #49.",
+        "question_text": "What are iterators and generators?",
+        "expected_answer": "Clear technical explanation of what are iterators and generators? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #50: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #50.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "iterators",
+            "generators"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #51: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #51.",
+        "question_text": "What is the purpose of yield?",
+        "expected_answer": "Clear technical explanation of the purpose of yield? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #52: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #52.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "purpose",
+            "yield"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #53: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #53.",
+        "question_text": "Explain try, except, else, and finally.",
+        "expected_answer": "Clear technical explanation of try, except, else, and finally. covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #54: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #54.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "try",
+            "except",
+            "else",
+            "finally"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #55: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #55.",
+        "question_text": "What are modules and packages?",
+        "expected_answer": "Clear technical explanation of what are modules and packages? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #56: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #56.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "modules",
+            "packages"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #57: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #57.",
+        "question_text": "Explain OOP concepts in Python.",
+        "expected_answer": "Clear technical explanation of oop concepts in python. covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #58: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #58.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "concepts",
+            "Python"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #59: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #59.",
+        "question_text": "What is inheritance?",
+        "expected_answer": "Clear technical explanation of inheritance? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #60: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #60.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "inheritance"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #61: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #61.",
+        "question_text": "What is polymorphism?",
+        "expected_answer": "Clear technical explanation of polymorphism? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #62: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #62.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "polymorphism"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #63: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #63.",
+        "question_text": "What is encapsulation?",
+        "expected_answer": "Clear technical explanation of encapsulation? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #64: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #64.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "encapsulation"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #65: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #65.",
+        "question_text": "What is abstraction?",
+        "expected_answer": "Clear technical explanation of abstraction? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #66: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #66.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "abstraction"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #67: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #67.",
+        "question_text": "What are decorators?",
+        "expected_answer": "Clear technical explanation of what are decorators? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #68: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #68.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "decorators"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #69: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #69.",
+        "question_text": "Difference between class and instance variables.",
+        "expected_answer": "Clear technical explanation of difference between class and instance variables. covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "class",
+            "instance",
+            "variables"
         ]
     },
     {
         "role": "Python Developer",
-        "category": "Conceptual",
+        "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Python Technical Question #70: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #70.",
+        "question_text": "Explain @staticmethod and @classmethod.",
+        "expected_answer": "Clear technical explanation of @staticmethod and @classmethod. covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "@staticmethod",
+            "@classmethod"
+        ]
+    },
+    {
+        "role": "Python Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "How can you optimize Python code?",
+        "expected_answer": "Clear technical explanation of how can you optimize python code? covering key principles and practical usage.",
+        "expected_concepts": [
+            "optimize",
+            "Python",
+            "code"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #71: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #71.",
+        "question_text": "Explain Python's memory management.",
+        "expected_answer": "Clear technical explanation of python's memory management. covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Python Technical Question #72: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #72.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "Python's",
+            "memory",
+            "management"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #73: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #73.",
+        "question_text": "What is garbage collection in Python?",
+        "expected_answer": "Clear technical explanation of garbage collection in python? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Python Technical Question #74: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #74.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "garbage",
+            "collection",
+            "Python"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #75: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #75.",
+        "question_text": "Explain Python's Global Interpreter Lock (GIL).",
+        "expected_answer": "Clear technical explanation of python's global interpreter lock (gil). covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Python Technical Question #76: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #76.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "Python's",
+            "Global",
+            "Interpreter",
+            "Lock"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #77: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #77.",
+        "question_text": "How does Python handle multithreading?",
+        "expected_answer": "Clear technical explanation of how does python handle multithreading? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Python Technical Question #78: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #78.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "Python",
+            "handle",
+            "multithreading"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #79: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #79.",
+        "question_text": "Difference between multiprocessing and multithreading.",
+        "expected_answer": "Clear technical explanation of difference between multiprocessing and multithreading. covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Python Technical Question #80: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #80.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "multiprocessing",
+            "multithreading"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #81: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #81.",
+        "question_text": "Explain asynchronous programming using async and await.",
+        "expected_answer": "Clear technical explanation of asynchronous programming using async and await. covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
+            "asynchronous",
             "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Python Technical Question #82: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #82.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "async",
+            "await"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #83: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #83.",
+        "question_text": "How do decorators work internally?",
+        "expected_answer": "Clear technical explanation of how do decorators work internally? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Python Technical Question #84: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #84.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "decorators",
+            "work",
+            "internally"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #85: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #85.",
+        "question_text": "What are context managers?",
+        "expected_answer": "Clear technical explanation of what are context managers? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Python Technical Question #86: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #86.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "context",
+            "managers"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #87: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #87.",
+        "question_text": "Explain the with statement.",
+        "expected_answer": "Clear technical explanation of the with statement. covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Python Technical Question #88: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #88.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "statement"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #89: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #89.",
+        "question_text": "What are metaclasses?",
+        "expected_answer": "Clear technical explanation of what are metaclasses? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Python Technical Question #90: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #90.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "metaclasses"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #91: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #91.",
+        "question_text": "Explain method resolution order (MRO).",
+        "expected_answer": "Clear technical explanation of method resolution order (mro). covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Python Technical Question #92: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #92.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "method",
+            "resolution",
+            "order",
+            "MRO"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #93: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #93.",
+        "question_text": "What are magic/dunder methods?",
+        "expected_answer": "Clear technical explanation of what are magic/dunder methods? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Python Technical Question #94: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #94.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "magic/dunder",
+            "methods"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #95: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #95.",
+        "question_text": "Explain __init__, __str__, and __repr__.",
+        "expected_answer": "Clear technical explanation of __init__, __str__, and __repr__. covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Python Technical Question #96: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #96.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "__init__",
+            "__str__",
+            "__repr__"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #97: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #97.",
+        "question_text": "How does Python dictionary hashing work?",
+        "expected_answer": "Clear technical explanation of how does python dictionary hashing work? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
-        ]
-    },
-    {
-        "role": "Python Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Python Technical Question #98: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #98.",
-        "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "Python",
+            "dictionary",
+            "hashing",
+            "work"
         ]
     },
     {
         "role": "Python Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #99: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #99.",
+        "question_text": "How would you optimize memory usage in Python?",
+        "expected_answer": "Clear technical explanation of how would you optimize memory usage in python? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "would",
+            "optimize",
+            "memory",
+            "usage"
         ]
     },
     {
         "role": "Python Developer",
-        "category": "Conceptual",
+        "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Python Technical Question #100: Explain topic related to Python programming, data structures, or web frameworks (FastAPI/Django).",
-        "expected_answer": "Comprehensive technical answer covering core Python concepts, memory management, design patterns, or async execution for question #100.",
+        "question_text": "How would you debug a memory leak?",
+        "expected_answer": "Clear technical explanation of how would you debug a memory leak? covering key principles and practical usage.",
         "expected_concepts": [
-            "python",
-            "programming",
-            "backend",
-            "data structures"
+            "would",
+            "debug",
+            "memory",
+            "leak"
+        ]
+    },
+    {
+        "role": "Python Developer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "How would you design a scalable Python application?",
+        "expected_answer": "Clear technical explanation of how would you design a scalable python application? covering key principles and practical usage.",
+        "expected_concepts": [
+            "would",
+            "design",
+            "scalable",
+            "Python"
+        ]
+    },
+    {
+        "role": "Python Developer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "What is dependency management in Python?",
+        "expected_answer": "Clear technical explanation of dependency management in python? covering key principles and practical usage.",
+        "expected_concepts": [
+            "dependency",
+            "management",
+            "Python"
+        ]
+    },
+    {
+        "role": "Python Developer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "How would you improve the performance of a large Python application?",
+        "expected_answer": "Clear technical explanation of how would you improve the performance of a large python application? covering key principles and practical usage.",
+        "expected_concepts": [
+            "would",
+            "improve",
+            "performance",
+            "large"
+        ]
+    },
+    {
+        "role": "Python Developer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "Explain how you would structure a production-level Python project.",
+        "expected_answer": "Clear technical explanation of how you would structure a production-level python project. covering key principles and practical usage.",
+        "expected_concepts": [
+            "would",
+            "structure",
+            "production-level",
+            "Python"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "What is the difference between JDK, JRE, and JVM?",
-        "expected_answer": "JDK is Development Kit (compiler + JRE). JRE is Runtime Environment. JVM is Virtual Machine executing bytecode.",
+        "question_text": "What is Java?",
+        "expected_answer": "Clear technical explanation of java? covering key principles and practical usage.",
         "expected_concepts": [
-            "JDK",
-            "JRE",
-            "JVM",
-            "bytecode"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Explain OOP principles in Java.",
-        "expected_answer": "Abstraction, Encapsulation, Inheritance, and Polymorphism.",
-        "expected_concepts": [
-            "OOP",
-            "Abstraction",
-            "Encapsulation",
-            "Inheritance",
-            "Polymorphism"
+            "Java"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "String vs StringBuilder vs StringBuffer?",
-        "expected_answer": "String is immutable. StringBuilder is mutable non-thread-safe. StringBuffer is mutable thread-safe.",
+        "question_text": "What are the features of Java?",
+        "expected_answer": "Clear technical explanation of what are the features of java? covering key principles and practical usage.",
+        "expected_concepts": [
+            "features",
+            "Java"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "Why is Java platform independent?",
+        "expected_answer": "Clear technical explanation of why is java platform independent? covering key principles and practical usage.",
+        "expected_concepts": [
+            "Java",
+            "platform",
+            "independent"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is JVM?",
+        "expected_answer": "Clear technical explanation of jvm? covering key principles and practical usage.",
+        "expected_concepts": [
+            "JVM"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is JDK?",
+        "expected_answer": "Clear technical explanation of jdk? covering key principles and practical usage.",
+        "expected_concepts": [
+            "JDK"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is JRE?",
+        "expected_answer": "Clear technical explanation of jre? covering key principles and practical usage.",
+        "expected_concepts": [
+            "JRE"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is a class?",
+        "expected_answer": "Clear technical explanation of a class? covering key principles and practical usage.",
+        "expected_concepts": [
+            "class"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is an object?",
+        "expected_answer": "Clear technical explanation of an object? covering key principles and practical usage.",
+        "expected_concepts": [
+            "object"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is a constructor?",
+        "expected_answer": "Clear technical explanation of a constructor? covering key principles and practical usage.",
+        "expected_concepts": [
+            "constructor"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is inheritance?",
+        "expected_answer": "Clear technical explanation of inheritance? covering key principles and practical usage.",
+        "expected_concepts": [
+            "inheritance"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is polymorphism?",
+        "expected_answer": "Clear technical explanation of polymorphism? covering key principles and practical usage.",
+        "expected_concepts": [
+            "polymorphism"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is encapsulation?",
+        "expected_answer": "Clear technical explanation of encapsulation? covering key principles and practical usage.",
+        "expected_concepts": [
+            "encapsulation"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is abstraction?",
+        "expected_answer": "Clear technical explanation of abstraction? covering key principles and practical usage.",
+        "expected_concepts": [
+            "abstraction"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is method overloading?",
+        "expected_answer": "Clear technical explanation of method overloading? covering key principles and practical usage.",
+        "expected_concepts": [
+            "method",
+            "overloading"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is method overriding?",
+        "expected_answer": "Clear technical explanation of method overriding? covering key principles and practical usage.",
+        "expected_concepts": [
+            "method",
+            "overriding"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is the this keyword?",
+        "expected_answer": "Clear technical explanation of the this keyword? covering key principles and practical usage.",
+        "expected_concepts": [
+            "this",
+            "keyword"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is the super keyword?",
+        "expected_answer": "Clear technical explanation of the super keyword? covering key principles and practical usage.",
+        "expected_concepts": [
+            "super",
+            "keyword"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is an interface?",
+        "expected_answer": "Clear technical explanation of an interface? covering key principles and practical usage.",
+        "expected_concepts": [
+            "interface"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is an abstract class?",
+        "expected_answer": "Clear technical explanation of an abstract class? covering key principles and practical usage.",
+        "expected_concepts": [
+            "abstract",
+            "class"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is exception handling?",
+        "expected_answer": "Clear technical explanation of exception handling? covering key principles and practical usage.",
+        "expected_concepts": [
+            "exception",
+            "handling"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "Difference between == and .equals().",
+        "expected_answer": "Clear technical explanation of difference between == and .equals(). covering key principles and practical usage.",
+        "expected_concepts": [
+            "equals"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "Explain checked and unchecked exceptions.",
+        "expected_answer": "Clear technical explanation of checked and unchecked exceptions. covering key principles and practical usage.",
+        "expected_concepts": [
+            "checked",
+            "unchecked",
+            "exceptions"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "Explain final, finally, and finalize().",
+        "expected_answer": "Clear technical explanation of final, finally, and finalize(). covering key principles and practical usage.",
+        "expected_concepts": [
+            "final",
+            "finally",
+            "finalize"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "Explain ArrayList and LinkedList.",
+        "expected_answer": "Clear technical explanation of arraylist and linkedlist. covering key principles and practical usage.",
+        "expected_concepts": [
+            "ArrayList",
+            "LinkedList"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "Difference between HashMap and HashSet.",
+        "expected_answer": "Clear technical explanation of difference between hashmap and hashset. covering key principles and practical usage.",
+        "expected_concepts": [
+            "HashMap",
+            "HashSet"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "How does HashMap work?",
+        "expected_answer": "Clear technical explanation of how does hashmap work? covering key principles and practical usage.",
+        "expected_concepts": [
+            "HashMap",
+            "work"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What is multithreading?",
+        "expected_answer": "Clear technical explanation of multithreading? covering key principles and practical usage.",
+        "expected_concepts": [
+            "multithreading"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What is a thread?",
+        "expected_answer": "Clear technical explanation of a thread? covering key principles and practical usage.",
+        "expected_concepts": [
+            "thread"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What is synchronization?",
+        "expected_answer": "Clear technical explanation of synchronization? covering key principles and practical usage.",
+        "expected_concepts": [
+            "synchronization"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What is garbage collection?",
+        "expected_answer": "Clear technical explanation of garbage collection? covering key principles and practical usage.",
+        "expected_concepts": [
+            "garbage",
+            "collection"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What are Java Collections?",
+        "expected_answer": "Clear technical explanation of what are java collections? covering key principles and practical usage.",
+        "expected_concepts": [
+            "Java",
+            "Collections"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What is an Iterator?",
+        "expected_answer": "Clear technical explanation of an iterator? covering key principles and practical usage.",
+        "expected_concepts": [
+            "Iterator"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What are Generics?",
+        "expected_answer": "Clear technical explanation of what are generics? covering key principles and practical usage.",
+        "expected_concepts": [
+            "Generics"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What is the difference between String, StringBuilder, and StringBuffer?",
+        "expected_answer": "Clear technical explanation of the difference between string, stringbuilder, and stringbuffer? covering key principles and practical usage.",
         "expected_concepts": [
             "String",
             "StringBuilder",
-            "StringBuffer",
-            "immutable"
+            "StringBuffer"
         ]
     },
     {
         "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "What is Garbage Collection in Java?",
-        "expected_answer": "Automatic memory management process in JVM that reclaims memory allocated to unreferenced objects.",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What is an immutable object?",
+        "expected_answer": "Clear technical explanation of an immutable object? covering key principles and practical usage.",
         "expected_concepts": [
-            "Garbage Collection",
-            "JVM",
-            "heap",
+            "immutable",
+            "object"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What is an enum?",
+        "expected_answer": "Clear technical explanation of an enum? covering key principles and practical usage.",
+        "expected_concepts": [
+            "enum"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What are lambda expressions?",
+        "expected_answer": "Clear technical explanation of what are lambda expressions? covering key principles and practical usage.",
+        "expected_concepts": [
+            "lambda",
+            "expressions"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What are functional interfaces?",
+        "expected_answer": "Clear technical explanation of what are functional interfaces? covering key principles and practical usage.",
+        "expected_concepts": [
+            "functional",
+            "interfaces"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What are Java Streams?",
+        "expected_answer": "Clear technical explanation of what are java streams? covering key principles and practical usage.",
+        "expected_concepts": [
+            "Java",
+            "Streams"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What is the difference between Comparable and Comparator?",
+        "expected_answer": "Clear technical explanation of the difference between comparable and comparator? covering key principles and practical usage.",
+        "expected_concepts": [
+            "Comparable",
+            "Comparator"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "Explain JVM architecture.",
+        "expected_answer": "Clear technical explanation of jvm architecture. covering key principles and practical usage.",
+        "expected_concepts": [
+            "architecture"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "Explain Java memory management.",
+        "expected_answer": "Clear technical explanation of java memory management. covering key principles and practical usage.",
+        "expected_concepts": [
+            "Java",
+            "memory",
+            "management"
+        ]
+    },
+    {
+        "role": "Java Developer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "Explain Heap and Stack memory.",
+        "expected_answer": "Clear technical explanation of heap and stack memory. covering key principles and practical usage.",
+        "expected_concepts": [
+            "Heap",
+            "Stack",
             "memory"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "What is Spring Boot and auto-configuration?",
-        "expected_answer": "Spring Boot simplifies Spring app setup using auto-configuration (@EnableAutoConfiguration) to wire beans based on classpath.",
-        "expected_concepts": [
-            "Spring Boot",
-            "auto-configuration",
-            "beans",
-            "classpath"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #6: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #6.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #7: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #7.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #8: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #8.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #9: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #9.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #10: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #10.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #11: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #11.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #12: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #12.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #13: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #13.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #14: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #14.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #15: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #15.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #16: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #16.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #17: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #17.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #18: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #18.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #19: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #19.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #20: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #20.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #21: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #21.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #22: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #22.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #23: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #23.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #24: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #24.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #25: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #25.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #26: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #26.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #27: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #27.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #28: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #28.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #29: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #29.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #30: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #30.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #31: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #31.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #32: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #32.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #33: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #33.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #34: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #34.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Java Technical Question #35: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #35.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #36: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #36.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #37: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #37.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #38: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #38.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #39: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #39.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #40: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #40.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #41: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #41.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #42: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #42.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #43: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #43.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #44: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #44.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #45: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #45.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #46: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #46.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #47: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #47.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #48: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #48.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #49: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #49.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #50: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #50.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #51: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #51.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #52: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #52.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #53: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #53.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #54: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #54.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #55: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #55.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #56: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #56.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #57: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #57.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #58: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #58.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #59: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #59.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #60: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #60.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #61: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #61.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #62: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #62.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #63: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #63.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #64: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #64.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #65: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #65.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #66: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #66.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #67: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #67.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #68: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #68.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #69: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #69.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Java Technical Question #70: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #70.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+        "difficulty": "Advanced",
+        "question_text": "Explain garbage collector algorithms.",
+        "expected_answer": "Clear technical explanation of garbage collector algorithms. covering key principles and practical usage.",
+        "expected_concepts": [
+            "garbage",
+            "collector",
+            "algorithms"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #71: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #71.",
+        "question_text": "Explain Java concurrency.",
+        "expected_answer": "Clear technical explanation of java concurrency. covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Java Technical Question #72: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #72.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "Java",
+            "concurrency"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #73: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #73.",
+        "question_text": "What is ExecutorService?",
+        "expected_answer": "Clear technical explanation of executorservice? covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Java Technical Question #74: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #74.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "ExecutorService"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #75: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #75.",
+        "question_text": "What is a thread pool?",
+        "expected_answer": "Clear technical explanation of a thread pool? covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Java Technical Question #76: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #76.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "thread",
+            "pool"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #77: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #77.",
+        "question_text": "What is deadlock?",
+        "expected_answer": "Clear technical explanation of deadlock? covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Java Technical Question #78: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #78.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "deadlock"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #79: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #79.",
+        "question_text": "How can deadlocks be prevented?",
+        "expected_answer": "Clear technical explanation of how can deadlocks be prevented? covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Java Technical Question #80: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #80.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "deadlocks",
+            "prevented"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #81: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #81.",
+        "question_text": "What are race conditions?",
+        "expected_answer": "Clear technical explanation of what are race conditions? covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Java Technical Question #82: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #82.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "race",
+            "conditions"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #83: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #83.",
+        "question_text": "Explain volatile variables.",
+        "expected_answer": "Clear technical explanation of volatile variables. covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Java Technical Question #84: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #84.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "volatile",
+            "variables"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #85: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #85.",
+        "question_text": "Explain synchronized blocks and methods.",
+        "expected_answer": "Clear technical explanation of synchronized blocks and methods. covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Java Technical Question #86: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #86.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "synchronized",
+            "blocks",
+            "methods"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #87: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #87.",
+        "question_text": "What are atomic classes?",
+        "expected_answer": "Clear technical explanation of what are atomic classes? covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Java Technical Question #88: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #88.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "atomic",
+            "classes"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #89: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #89.",
+        "question_text": "Explain CompletableFuture.",
+        "expected_answer": "Clear technical explanation of completablefuture. covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Java Technical Question #90: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #90.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "CompletableFuture"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #91: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #91.",
+        "question_text": "Explain Java Stream optimization.",
+        "expected_answer": "Clear technical explanation of java stream optimization. covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Java Technical Question #92: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #92.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "Java",
+            "Stream",
+            "optimization"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #93: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #93.",
+        "question_text": "What are design patterns in Java?",
+        "expected_answer": "Clear technical explanation of what are design patterns in java? covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Java Technical Question #94: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #94.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "design",
+            "patterns",
+            "Java"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #95: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #95.",
+        "question_text": "Explain Singleton, Factory, and Observer patterns.",
+        "expected_answer": "Clear technical explanation of singleton, factory, and observer patterns. covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Java Technical Question #96: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #96.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "Singleton",
+            "Factory",
+            "Observer",
+            "patterns"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #97: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #97.",
+        "question_text": "What is dependency injection?",
+        "expected_answer": "Clear technical explanation of dependency injection? covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
-        ]
-    },
-    {
-        "role": "Java Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Java Technical Question #98: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #98.",
-        "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "dependency",
+            "injection"
         ]
     },
     {
         "role": "Java Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #99: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #99.",
+        "question_text": "How would you design a scalable Java application?",
+        "expected_answer": "Clear technical explanation of how would you design a scalable java application? covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "would",
+            "design",
+            "scalable",
+            "Java"
         ]
     },
     {
         "role": "Java Developer",
-        "category": "Conceptual",
+        "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Java Technical Question #100: Explain JVM internal, Spring Boot architecture, or multithreading concurrency in Java.",
-        "expected_answer": "Technical answer covering Java memory model, garbage collection, collections framework, or microservices patterns for question #100.",
+        "question_text": "How would you improve the performance of a Java application?",
+        "expected_answer": "Clear technical explanation of how would you improve the performance of a java application? covering key principles and practical usage.",
         "expected_concepts": [
-            "java",
-            "spring boot",
-            "jvm",
-            "multithreading",
-            "oop"
+            "would",
+            "improve",
+            "performance",
+            "Java"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "What is RAII in C++?",
-        "expected_answer": "Resource Acquisition Is Initialization - ties resource lifecycle to object stack lifetime.",
+        "question_text": "What is software?",
+        "expected_answer": "Clear technical explanation of software? covering key principles and practical usage.",
         "expected_concepts": [
-            "RAII",
-            "C++",
-            "destructor",
-            "resource"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "What is Event Loop in JavaScript?",
-        "expected_answer": "Mechanism executing async callbacks by checking call stack and task queues.",
-        "expected_concepts": [
-            "Event Loop",
-            "JavaScript",
-            "call stack",
-            "async"
+            "software"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Pointers vs References in C++?",
-        "expected_answer": "Pointers hold memory address and can be null/reassigned. References are aliases and must be initialized.",
+        "question_text": "What is software development?",
+        "expected_answer": "Clear technical explanation of software development? covering key principles and practical usage.",
         "expected_concepts": [
-            "pointer",
-            "reference",
-            "memory",
-            "C++"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "What are Closures in JavaScript?",
-        "expected_answer": "Function retaining access to lexical scope outer variables even after outer function returns.",
-        "expected_concepts": [
-            "closure",
-            "lexical scope",
-            "JavaScript"
+            "software",
+            "development"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Virtual functions & polymorphism in C++?",
-        "expected_answer": "Virtual functions allow runtime dynamic dispatch using vtable.",
+        "question_text": "What is SDLC?",
+        "expected_answer": "Clear technical explanation of sdlc? covering key principles and practical usage.",
         "expected_concepts": [
-            "virtual function",
-            "vtable",
-            "polymorphism",
-            "C++"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #6: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #6.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "SDLC"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #7: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #7.",
+        "question_text": "Explain the stages of SDLC.",
+        "expected_answer": "Clear technical explanation of the stages of sdlc. covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #8: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #8.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "stages",
+            "SDLC"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #9: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #9.",
+        "question_text": "What is the Waterfall model?",
+        "expected_answer": "Clear technical explanation of the waterfall model? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #10: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #10.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "Waterfall",
+            "model"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #11: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #11.",
+        "question_text": "What is Agile?",
+        "expected_answer": "Clear technical explanation of agile? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #12: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #12.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "Agile"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #13: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #13.",
+        "question_text": "What is Scrum?",
+        "expected_answer": "Clear technical explanation of scrum? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #14: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #14.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "Scrum"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #15: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #15.",
+        "question_text": "What is a requirement?",
+        "expected_answer": "Clear technical explanation of a requirement? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #16: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #16.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "requirement"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #17: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #17.",
+        "question_text": "What is functional requirement?",
+        "expected_answer": "Clear technical explanation of functional requirement? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #18: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #18.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "functional",
+            "requirement"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #19: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #19.",
+        "question_text": "What is non-functional requirement?",
+        "expected_answer": "Clear technical explanation of non-functional requirement? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #20: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #20.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "non-functional",
+            "requirement"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #21: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #21.",
+        "question_text": "What is debugging?",
+        "expected_answer": "Clear technical explanation of debugging? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #22: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #22.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "debugging"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #23: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #23.",
+        "question_text": "What is software testing?",
+        "expected_answer": "Clear technical explanation of software testing? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #24: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #24.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "software",
+            "testing"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #25: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #25.",
+        "question_text": "What is unit testing?",
+        "expected_answer": "Clear technical explanation of unit testing? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #26: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #26.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "unit",
+            "testing"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #27: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #27.",
+        "question_text": "What is integration testing?",
+        "expected_answer": "Clear technical explanation of integration testing? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #28: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #28.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "integration",
+            "testing"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #29: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #29.",
+        "question_text": "What is Git?",
+        "expected_answer": "Clear technical explanation of git? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #30: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #30.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "Git"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #31: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #31.",
+        "question_text": "What is GitHub?",
+        "expected_answer": "Clear technical explanation of github? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #32: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #32.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "GitHub"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #33: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #33.",
+        "question_text": "What is a Git repository?",
+        "expected_answer": "Clear technical explanation of a git repository? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #34: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #34.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "repository"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "Software Engineering Question #35: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #35.",
+        "question_text": "What is a Git branch?",
+        "expected_answer": "Clear technical explanation of a git branch? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "branch"
         ]
     },
     {
         "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #36: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #36.",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is an API?",
+        "expected_answer": "Clear technical explanation of an api? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "API"
+        ]
+    },
+    {
+        "role": "Software Developer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is a database?",
+        "expected_answer": "Clear technical explanation of a database? covering key principles and practical usage.",
+        "expected_concepts": [
+            "database"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #37: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #37.",
+        "question_text": "Explain Agile methodology.",
+        "expected_answer": "Clear technical explanation of agile methodology. covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #38: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #38.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "Agile",
+            "methodology"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #39: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #39.",
+        "question_text": "What are Scrum roles?",
+        "expected_answer": "Clear technical explanation of what are scrum roles? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #40: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #40.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "Scrum",
+            "roles"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #41: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #41.",
+        "question_text": "What is a user story?",
+        "expected_answer": "Clear technical explanation of a user story? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #42: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #42.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "user",
+            "story"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #43: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #43.",
+        "question_text": "What is an API?",
+        "expected_answer": "Clear technical explanation of an api? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #44: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #44.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "API"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #45: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #45.",
+        "question_text": "What is REST API?",
+        "expected_answer": "Clear technical explanation of rest api? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #46: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #46.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "REST",
+            "API"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #47: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #47.",
+        "question_text": "Difference between REST and SOAP.",
+        "expected_answer": "Clear technical explanation of difference between rest and soap. covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #48: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #48.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "REST",
+            "SOAP"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #49: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #49.",
+        "question_text": "Explain GET, POST, PUT, PATCH, and DELETE.",
+        "expected_answer": "Clear technical explanation of get, post, put, patch, and delete. covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #50: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #50.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #51: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #51.",
+        "question_text": "Explain common HTTP status codes.",
+        "expected_answer": "Clear technical explanation of common http status codes. covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #52: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #52.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "common",
+            "HTTP",
+            "status",
+            "codes"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #53: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #53.",
+        "question_text": "What is authentication?",
+        "expected_answer": "Clear technical explanation of authentication? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #54: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #54.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "authentication"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #55: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #55.",
+        "question_text": "What is authorization?",
+        "expected_answer": "Clear technical explanation of authorization? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #56: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #56.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "authorization"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #57: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #57.",
+        "question_text": "Explain OOP principles.",
+        "expected_answer": "Clear technical explanation of oop principles. covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #58: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #58.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "principles"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #59: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #59.",
+        "question_text": "What are SOLID principles?",
+        "expected_answer": "Clear technical explanation of what are solid principles? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #60: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #60.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "SOLID",
+            "principles"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #61: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #61.",
+        "question_text": "Difference between high-level and low-level design.",
+        "expected_answer": "Clear technical explanation of difference between high-level and low-level design. covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #62: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #62.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "high-level",
+            "low-level",
+            "design"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #63: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #63.",
+        "question_text": "Difference between Git merge and rebase.",
+        "expected_answer": "Clear technical explanation of difference between git merge and rebase. covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #64: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #64.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "merge",
+            "rebase"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #65: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #65.",
+        "question_text": "What is a pull request?",
+        "expected_answer": "Clear technical explanation of a pull request? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #66: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #66.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "pull",
+            "request"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #67: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #67.",
+        "question_text": "What is CI/CD?",
+        "expected_answer": "Clear technical explanation of ci/cd? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #68: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #68.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "CI/CD"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #69: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #69.",
+        "question_text": "Difference between unit and integration testing.",
+        "expected_answer": "Clear technical explanation of difference between unit and integration testing. covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "unit",
+            "integration",
+            "testing"
         ]
     },
     {
         "role": "Software Developer",
-        "category": "Conceptual",
+        "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Software Engineering Question #70: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #70.",
+        "question_text": "What is database normalization?",
+        "expected_answer": "Clear technical explanation of database normalization? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "database",
+            "normalization"
+        ]
+    },
+    {
+        "role": "Software Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What is exception handling?",
+        "expected_answer": "Clear technical explanation of exception handling? covering key principles and practical usage.",
+        "expected_concepts": [
+            "exception",
+            "handling"
+        ]
+    },
+    {
+        "role": "Software Developer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "How would you debug a production issue?",
+        "expected_answer": "Clear technical explanation of how would you debug a production issue? covering key principles and practical usage.",
+        "expected_concepts": [
+            "would",
+            "debug",
+            "production",
+            "issue"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #71: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #71.",
+        "question_text": "How would you design a scalable application?",
+        "expected_answer": "Clear technical explanation of how would you design a scalable application? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #72: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #72.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "would",
+            "design",
+            "scalable",
+            "application"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #73: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #73.",
+        "question_text": "What is system design?",
+        "expected_answer": "Clear technical explanation of system design? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #74: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #74.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "system",
+            "design"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #75: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #75.",
+        "question_text": "What is a microservices architecture?",
+        "expected_answer": "Clear technical explanation of a microservices architecture? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #76: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #76.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "microservices",
+            "architecture"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #77: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #77.",
+        "question_text": "Monolithic vs microservices architecture?",
+        "expected_answer": "Clear technical explanation of monolithic vs microservices architecture? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #78: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #78.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "Monolithic",
+            "microservices",
+            "architecture"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #79: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #79.",
+        "question_text": "What is service-oriented architecture?",
+        "expected_answer": "Clear technical explanation of service-oriented architecture? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #80: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #80.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "service-oriented",
+            "architecture"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #81: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #81.",
+        "question_text": "What is load balancing?",
+        "expected_answer": "Clear technical explanation of load balancing? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #82: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #82.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "load",
+            "balancing"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #83: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #83.",
+        "question_text": "What is caching?",
+        "expected_answer": "Clear technical explanation of caching? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #84: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #84.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "caching"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #85: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #85.",
+        "question_text": "What is database sharding?",
+        "expected_answer": "Clear technical explanation of database sharding? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #86: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #86.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "database",
+            "sharding"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #87: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #87.",
+        "question_text": "What is replication?",
+        "expected_answer": "Clear technical explanation of replication? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #88: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #88.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "replication"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #89: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #89.",
+        "question_text": "What is message queuing?",
+        "expected_answer": "Clear technical explanation of message queuing? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #90: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #90.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "message",
+            "queuing"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #91: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #91.",
+        "question_text": "Explain Kafka/RabbitMQ concepts.",
+        "expected_answer": "Clear technical explanation of kafka/rabbitmq concepts. covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #92: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #92.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "Kafka/RabbitMQ",
+            "concepts"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #93: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #93.",
+        "question_text": "What is an API gateway?",
+        "expected_answer": "Clear technical explanation of an api gateway? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #94: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #94.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "gateway"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #95: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #95.",
+        "question_text": "What is rate limiting?",
+        "expected_answer": "Clear technical explanation of rate limiting? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #96: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #96.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "rate",
+            "limiting"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #97: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #97.",
+        "question_text": "What is fault tolerance?",
+        "expected_answer": "Clear technical explanation of fault tolerance? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
-        ]
-    },
-    {
-        "role": "Software Developer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #98: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #98.",
-        "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "fault",
+            "tolerance"
         ]
     },
     {
         "role": "Software Developer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #99: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #99.",
+        "question_text": "What is horizontal vs vertical scaling?",
+        "expected_answer": "Clear technical explanation of horizontal vs vertical scaling? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "horizontal",
+            "vertical",
+            "scaling"
         ]
     },
     {
         "role": "Software Developer",
-        "category": "Conceptual",
+        "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Software Engineering Question #100: Explain memory management, data structures, or modern web API design.",
-        "expected_answer": "Detailed software engineering answer covering algorithms, system design, modern JS/C++ standards, or API performance for question #100.",
+        "question_text": "What is eventual consistency?",
+        "expected_answer": "Clear technical explanation of eventual consistency? covering key principles and practical usage.",
         "expected_concepts": [
-            "software engineering",
-            "algorithms",
-            "c++",
-            "javascript",
-            "system design"
+            "eventual",
+            "consistency"
+        ]
+    },
+    {
+        "role": "Software Developer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "What are design patterns?",
+        "expected_answer": "Clear technical explanation of what are design patterns? covering key principles and practical usage.",
+        "expected_concepts": [
+            "design",
+            "patterns"
+        ]
+    },
+    {
+        "role": "Software Developer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "How do you secure a REST API?",
+        "expected_answer": "Clear technical explanation of how do you secure a rest api? covering key principles and practical usage.",
+        "expected_concepts": [
+            "secure",
+            "REST",
+            "API"
+        ]
+    },
+    {
+        "role": "Software Developer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "How would you troubleshoot a slow application?",
+        "expected_answer": "Clear technical explanation of how would you troubleshoot a slow application? covering key principles and practical usage.",
+        "expected_concepts": [
+            "would",
+            "troubleshoot",
+            "slow",
+            "application"
+        ]
+    },
+    {
+        "role": "Software Developer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "Design a basic e-commerce / banking / interview platform architecture.",
+        "expected_answer": "Clear technical explanation of design a basic e-commerce / banking / interview platform architecture. covering key principles and practical usage.",
+        "expected_concepts": [
+            "Design",
+            "basic",
+            "e-commerce",
+            "banking"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "What is the difference between supervised and unsupervised learning?",
-        "expected_answer": "Supervised learning uses labeled dataset. Unsupervised learning finds hidden patterns in unlabeled data.",
+        "question_text": "What is data analysis?",
+        "expected_answer": "Clear technical explanation of data analysis? covering key principles and practical usage.",
+        "expected_concepts": [
+            "data",
+            "analysis"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is artificial intelligence?",
+        "expected_answer": "Clear technical explanation of artificial intelligence? covering key principles and practical usage.",
+        "expected_concepts": [
+            "artificial",
+            "intelligence"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is machine learning?",
+        "expected_answer": "Clear technical explanation of machine learning? covering key principles and practical usage.",
+        "expected_concepts": [
+            "machine",
+            "learning"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is deep learning?",
+        "expected_answer": "Clear technical explanation of deep learning? covering key principles and practical usage.",
+        "expected_concepts": [
+            "deep",
+            "learning"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "Difference between AI, ML, and DL.",
+        "expected_answer": "Clear technical explanation of difference between ai, ml, and dl. covering key principles and practical usage.",
+        "expected_concepts": []
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is a dataset?",
+        "expected_answer": "Clear technical explanation of a dataset? covering key principles and practical usage.",
+        "expected_concepts": [
+            "dataset"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is structured data?",
+        "expected_answer": "Clear technical explanation of structured data? covering key principles and practical usage.",
+        "expected_concepts": [
+            "structured",
+            "data"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is unstructured data?",
+        "expected_answer": "Clear technical explanation of unstructured data? covering key principles and practical usage.",
+        "expected_concepts": [
+            "unstructured",
+            "data"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is data preprocessing?",
+        "expected_answer": "Clear technical explanation of data preprocessing? covering key principles and practical usage.",
+        "expected_concepts": [
+            "data",
+            "preprocessing"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is missing data?",
+        "expected_answer": "Clear technical explanation of missing data? covering key principles and practical usage.",
+        "expected_concepts": [
+            "missing",
+            "data"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is an outlier?",
+        "expected_answer": "Clear technical explanation of an outlier? covering key principles and practical usage.",
+        "expected_concepts": [
+            "outlier"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is mean?",
+        "expected_answer": "Clear technical explanation of mean? covering key principles and practical usage.",
+        "expected_concepts": [
+            "mean"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is median?",
+        "expected_answer": "Clear technical explanation of median? covering key principles and practical usage.",
+        "expected_concepts": [
+            "median"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is mode?",
+        "expected_answer": "Clear technical explanation of mode? covering key principles and practical usage.",
+        "expected_concepts": [
+            "mode"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is variance?",
+        "expected_answer": "Clear technical explanation of variance? covering key principles and practical usage.",
+        "expected_concepts": [
+            "variance"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is standard deviation?",
+        "expected_answer": "Clear technical explanation of standard deviation? covering key principles and practical usage.",
+        "expected_concepts": [
+            "standard",
+            "deviation"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is correlation?",
+        "expected_answer": "Clear technical explanation of correlation? covering key principles and practical usage.",
+        "expected_concepts": [
+            "correlation"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is EDA?",
+        "expected_answer": "Clear technical explanation of eda? covering key principles and practical usage.",
+        "expected_concepts": [
+            "EDA"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is supervised learning?",
+        "expected_answer": "Clear technical explanation of supervised learning? covering key principles and practical usage.",
         "expected_concepts": [
             "supervised",
+            "learning"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is unsupervised learning?",
+        "expected_answer": "Clear technical explanation of unsupervised learning? covering key principles and practical usage.",
+        "expected_concepts": [
             "unsupervised",
-            "machine learning",
-            "labels"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "What is overfitting and how do you prevent it?",
-        "expected_answer": "Overfitting occurs when model learns noise. Prevent using cross-validation, regularization (L1/L2), and dropout.",
-        "expected_concepts": [
-            "overfitting",
-            "regularization",
-            "cross-validation",
-            "dropout"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Explain Pandas DataFrame vs Series.",
-        "expected_answer": "DataFrame is 2D tabular data structure with rows and columns. Series is 1D labeled array.",
-        "expected_concepts": [
-            "Pandas",
-            "DataFrame",
-            "Series",
-            "python"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "What is Confusion Matrix?",
-        "expected_answer": "Table evaluating classification model performance showing TP, FP, TN, FN metrics.",
-        "expected_concepts": [
-            "Confusion Matrix",
-            "Precision",
-            "Recall",
-            "F1-Score"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "What is Bias-Variance Tradeoff?",
-        "expected_answer": "Bias is error from underfitting assumptions. Variance is error from sensitivity to training noise.",
-        "expected_concepts": [
-            "Bias",
-            "Variance",
-            "tradeoff",
-            "machine learning"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #6: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #6.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #7: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #7.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #8: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #8.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #9: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #9.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #10: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #10.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #11: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #11.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #12: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #12.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #13: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #13.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #14: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #14.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #15: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #15.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #16: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #16.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #17: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #17.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #18: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #18.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #19: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #19.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #20: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #20.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #21: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #21.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #22: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #22.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #23: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #23.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #24: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #24.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #25: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #25.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #26: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #26.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #27: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #27.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #28: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #28.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #29: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #29.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #30: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #30.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #31: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #31.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #32: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #32.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #33: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #33.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #34: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #34.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "Data Science & AI Question #35: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #35.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #36: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #36.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "learning"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #37: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #37.",
+        "question_text": "How do you handle missing values?",
+        "expected_answer": "Clear technical explanation of how do you handle missing values? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #38: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #38.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "handle",
+            "missing",
+            "values"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #39: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #39.",
+        "question_text": "How do you handle outliers?",
+        "expected_answer": "Clear technical explanation of how do you handle outliers? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #40: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #40.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "handle",
+            "outliers"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #41: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #41.",
+        "question_text": "Normalization vs standardization.",
+        "expected_answer": "Clear technical explanation of normalization vs standardization. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #42: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #42.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "Normalization",
+            "standardization"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #43: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #43.",
+        "question_text": "Explain feature engineering.",
+        "expected_answer": "Clear technical explanation of feature engineering. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #44: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #44.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "feature",
+            "engineering"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #45: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #45.",
+        "question_text": "Explain feature selection.",
+        "expected_answer": "Clear technical explanation of feature selection. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #46: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #46.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "feature",
+            "selection"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #47: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #47.",
+        "question_text": "Classification vs regression.",
+        "expected_answer": "Clear technical explanation of classification vs regression. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #48: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #48.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "Classification",
+            "regression"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #49: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #49.",
+        "question_text": "Explain train, validation, and test data.",
+        "expected_answer": "Clear technical explanation of train, validation, and test data. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #50: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #50.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "train",
+            "validation",
+            "test",
+            "data"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #51: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #51.",
+        "question_text": "What is overfitting?",
+        "expected_answer": "Clear technical explanation of overfitting? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #52: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #52.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "overfitting"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #53: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #53.",
+        "question_text": "What is underfitting?",
+        "expected_answer": "Clear technical explanation of underfitting? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #54: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #54.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "underfitting"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #55: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #55.",
+        "question_text": "Explain bias-variance tradeoff.",
+        "expected_answer": "Clear technical explanation of bias-variance tradeoff. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #56: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #56.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "bias-variance",
+            "tradeoff"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #57: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #57.",
+        "question_text": "What is cross-validation?",
+        "expected_answer": "Clear technical explanation of cross-validation? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #58: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #58.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "cross-validation"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #59: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #59.",
+        "question_text": "Explain confusion matrix.",
+        "expected_answer": "Clear technical explanation of confusion matrix. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #60: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #60.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "confusion",
+            "matrix"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #61: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #61.",
+        "question_text": "Explain accuracy, precision, recall, and F1-score.",
+        "expected_answer": "Clear technical explanation of accuracy, precision, recall, and f1-score. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #62: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #62.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "accuracy",
+            "precision",
+            "recall",
+            "F1-score"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #63: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #63.",
+        "question_text": "What is class imbalance?",
+        "expected_answer": "Clear technical explanation of class imbalance? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #64: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #64.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "class",
+            "imbalance"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #65: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #65.",
+        "question_text": "How do you handle imbalanced datasets?",
+        "expected_answer": "Clear technical explanation of how do you handle imbalanced datasets? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #66: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #66.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "handle",
+            "imbalanced",
+            "datasets"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #67: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #67.",
+        "question_text": "What is a decision tree?",
+        "expected_answer": "Clear technical explanation of a decision tree? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #68: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #68.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "decision",
+            "tree"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #69: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #69.",
+        "question_text": "What is random forest?",
+        "expected_answer": "Clear technical explanation of random forest? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "random",
+            "forest"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
+        "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "Data Science & AI Question #70: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #70.",
+        "question_text": "What is linear regression?",
+        "expected_answer": "Clear technical explanation of linear regression? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "linear",
+            "regression"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What is logistic regression?",
+        "expected_answer": "Clear technical explanation of logistic regression? covering key principles and practical usage.",
+        "expected_concepts": [
+            "logistic",
+            "regression"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "How do you select an ML algorithm?",
+        "expected_answer": "Clear technical explanation of how do you select an ml algorithm? covering key principles and practical usage.",
+        "expected_concepts": [
+            "select",
+            "algorithm"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #71: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #71.",
+        "question_text": "Explain ensemble learning.",
+        "expected_answer": "Clear technical explanation of ensemble learning. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #72: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #72.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "ensemble",
+            "learning"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #73: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #73.",
+        "question_text": "Bagging vs boosting.",
+        "expected_answer": "Clear technical explanation of bagging vs boosting. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #74: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #74.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "Bagging",
+            "boosting"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #75: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #75.",
+        "question_text": "Explain Random Forest internally.",
+        "expected_answer": "Clear technical explanation of random forest internally. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #76: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #76.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "Random",
+            "Forest",
+            "internally"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #77: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #77.",
+        "question_text": "Explain Gradient Boosting.",
+        "expected_answer": "Clear technical explanation of gradient boosting. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #78: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #78.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "Gradient",
+            "Boosting"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #79: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #79.",
+        "question_text": "What is XGBoost?",
+        "expected_answer": "Clear technical explanation of xgboost? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #80: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #80.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "XGBoost"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #81: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #81.",
+        "question_text": "What is hyperparameter tuning?",
+        "expected_answer": "Clear technical explanation of hyperparameter tuning? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #82: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #82.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "hyperparameter",
+            "tuning"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #83: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #83.",
+        "question_text": "Grid Search vs Random Search.",
+        "expected_answer": "Clear technical explanation of grid search vs random search. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #84: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #84.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "Grid",
+            "Search",
+            "Random",
+            "Search"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #85: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #85.",
+        "question_text": "What is dimensionality reduction?",
+        "expected_answer": "Clear technical explanation of dimensionality reduction? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #86: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #86.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "dimensionality",
+            "reduction"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #87: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #87.",
+        "question_text": "Explain PCA.",
+        "expected_answer": "Clear technical explanation of pca. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #88: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #88.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "PCA"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #89: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #89.",
+        "question_text": "What is feature importance?",
+        "expected_answer": "Clear technical explanation of feature importance? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #90: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #90.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "feature",
+            "importance"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #91: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #91.",
+        "question_text": "What is model interpretability?",
+        "expected_answer": "Clear technical explanation of model interpretability? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #92: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #92.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "model",
+            "interpretability"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #93: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #93.",
+        "question_text": "What is data leakage?",
+        "expected_answer": "Clear technical explanation of data leakage? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #94: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #94.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "data",
+            "leakage"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #95: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #95.",
+        "question_text": "How can data leakage be prevented?",
+        "expected_answer": "Clear technical explanation of how can data leakage be prevented? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #96: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #96.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "data",
+            "leakage",
+            "prevented"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #97: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #97.",
+        "question_text": "Explain ROC-AUC.",
+        "expected_answer": "Clear technical explanation of roc-auc. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
-        ]
-    },
-    {
-        "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #98: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #98.",
-        "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "ROC-AUC"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #99: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #99.",
+        "question_text": "When is F1-score better than accuracy?",
+        "expected_answer": "Clear technical explanation of when is f1-score better than accuracy? covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "When",
+            "F1-score",
+            "better",
+            "than"
         ]
     },
     {
         "role": "Data Analyst & AI Engineer",
-        "category": "Conceptual",
+        "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "Data Science & AI Question #100: Explain statistical modeling, ML algorithm optimization, or Pandas data manipulation.",
-        "expected_answer": "Technical answer covering machine learning metrics, data cleaning, neural networks, or exploratory data analysis for question #100.",
+        "question_text": "Explain neural network architecture.",
+        "expected_answer": "Clear technical explanation of neural network architecture. covering key principles and practical usage.",
         "expected_concepts": [
-            "data science",
-            "pandas",
-            "machine learning",
-            "statistics",
-            "ai"
+            "neural",
+            "network",
+            "architecture"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "Explain backpropagation.",
+        "expected_answer": "Clear technical explanation of backpropagation. covering key principles and practical usage.",
+        "expected_concepts": [
+            "backpropagation"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "What is transfer learning?",
+        "expected_answer": "Clear technical explanation of transfer learning? covering key principles and practical usage.",
+        "expected_concepts": [
+            "transfer",
+            "learning"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "How would you deploy an ML model?",
+        "expected_answer": "Clear technical explanation of how would you deploy an ml model? covering key principles and practical usage.",
+        "expected_concepts": [
+            "would",
+            "deploy",
+            "model"
+        ]
+    },
+    {
+        "role": "Data Analyst & AI Engineer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "How would you design an end-to-end AI system from data collection \u2192 preprocessing \u2192 training \u2192 evaluation \u2192 deployment \u2192 monitoring?",
+        "expected_answer": "Clear technical explanation of how would you design an end-to-end ai system from data collection \u2192 preprocessing \u2192 training \u2192 evaluation \u2192 deployment \u2192 monitoring? covering key principles and practical usage.",
+        "expected_concepts": [
+            "would",
+            "design",
+            "end-to-end",
+            "system"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Beginner",
-        "question_text": "What is the difference between WHERE and HAVING clauses?",
-        "expected_answer": "WHERE filters rows before aggregation. HAVING filters aggregated groups after GROUP BY.",
+        "question_text": "What is SQL?",
+        "expected_answer": "Clear technical explanation of sql? covering key principles and practical usage.",
+        "expected_concepts": [
+            "SQL"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is DBMS?",
+        "expected_answer": "Clear technical explanation of dbms? covering key principles and practical usage.",
+        "expected_concepts": [
+            "DBMS"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is RDBMS?",
+        "expected_answer": "Clear technical explanation of rdbms? covering key principles and practical usage.",
+        "expected_concepts": [
+            "RDBMS"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is a table?",
+        "expected_answer": "Clear technical explanation of a table? covering key principles and practical usage.",
+        "expected_concepts": [
+            "table"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is a row?",
+        "expected_answer": "Clear technical explanation of a row? covering key principles and practical usage.",
+        "expected_concepts": [
+            "row"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is a column?",
+        "expected_answer": "Clear technical explanation of a column? covering key principles and practical usage.",
+        "expected_concepts": [
+            "column"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is a primary key?",
+        "expected_answer": "Clear technical explanation of a primary key? covering key principles and practical usage.",
+        "expected_concepts": [
+            "primary",
+            "key"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is a foreign key?",
+        "expected_answer": "Clear technical explanation of a foreign key? covering key principles and practical usage.",
+        "expected_concepts": [
+            "foreign",
+            "key"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is a unique key?",
+        "expected_answer": "Clear technical explanation of a unique key? covering key principles and practical usage.",
+        "expected_concepts": [
+            "unique",
+            "key"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is SELECT?",
+        "expected_answer": "Clear technical explanation of select? covering key principles and practical usage.",
+        "expected_concepts": [
+            "SELECT"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is WHERE?",
+        "expected_answer": "Clear technical explanation of where? covering key principles and practical usage.",
+        "expected_concepts": [
+            "WHERE"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is ORDER BY?",
+        "expected_answer": "Clear technical explanation of order by? covering key principles and practical usage.",
+        "expected_concepts": [
+            "ORDER"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is GROUP BY?",
+        "expected_answer": "Clear technical explanation of group by? covering key principles and practical usage.",
+        "expected_concepts": [
+            "GROUP"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is HAVING?",
+        "expected_answer": "Clear technical explanation of having? covering key principles and practical usage.",
+        "expected_concepts": [
+            "HAVING"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What are aggregate functions?",
+        "expected_answer": "Clear technical explanation of what are aggregate functions? covering key principles and practical usage.",
+        "expected_concepts": [
+            "aggregate",
+            "functions"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is a JOIN?",
+        "expected_answer": "Clear technical explanation of a join? covering key principles and practical usage.",
+        "expected_concepts": [
+            "JOIN"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is an INNER JOIN?",
+        "expected_answer": "Clear technical explanation of an inner join? covering key principles and practical usage.",
+        "expected_concepts": [
+            "INNER",
+            "JOIN"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is a LEFT JOIN?",
+        "expected_answer": "Clear technical explanation of a left join? covering key principles and practical usage.",
+        "expected_concepts": [
+            "LEFT",
+            "JOIN"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is a subquery?",
+        "expected_answer": "Clear technical explanation of a subquery? covering key principles and practical usage.",
+        "expected_concepts": [
+            "subquery"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Beginner",
+        "question_text": "What is database normalization?",
+        "expected_answer": "Clear technical explanation of database normalization? covering key principles and practical usage.",
+        "expected_concepts": [
+            "database",
+            "normalization"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "Explain all types of SQL JOINs.",
+        "expected_answer": "Clear technical explanation of all types of sql joins. covering key principles and practical usage.",
+        "expected_concepts": [
+            "types",
+            "JOINs"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "WHERE vs HAVING.",
+        "expected_answer": "Clear technical explanation of where vs having. covering key principles and practical usage.",
         "expected_concepts": [
             "WHERE",
-            "HAVING",
-            "GROUP BY",
-            "SQL"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "Explain ACID properties in relational databases.",
-        "expected_answer": "Atomicity, Consistency, Isolation, Durability.",
-        "expected_concepts": [
-            "ACID",
-            "transactions",
-            "database",
-            "relational"
+            "HAVING"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "INNER JOIN vs LEFT JOIN?",
-        "expected_answer": "INNER JOIN returns matching rows in both tables. LEFT JOIN returns all rows from left table and matched rows from right.",
+        "difficulty": "Intermediate",
+        "question_text": "GROUP BY vs ORDER BY.",
+        "expected_answer": "Clear technical explanation of group by vs order by. covering key principles and practical usage.",
         "expected_concepts": [
-            "JOIN",
-            "INNER JOIN",
-            "LEFT JOIN",
-            "SQL"
+            "GROUP",
+            "ORDER"
         ]
     },
     {
         "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "What is Database Indexing?",
-        "expected_answer": "Data structure (B-Tree/Hash) improving data retrieval speed on columns at cost of write performance.",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What is a correlated subquery?",
+        "expected_answer": "Clear technical explanation of a correlated subquery? covering key principles and practical usage.",
+        "expected_concepts": [
+            "correlated",
+            "subquery"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What is a CTE?",
+        "expected_answer": "Clear technical explanation of a cte? covering key principles and practical usage.",
+        "expected_concepts": [
+            "CTE"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What are window functions?",
+        "expected_answer": "Clear technical explanation of what are window functions? covering key principles and practical usage.",
+        "expected_concepts": [
+            "window",
+            "functions"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "Explain ROW_NUMBER().",
+        "expected_answer": "Clear technical explanation of row_number(). covering key principles and practical usage.",
+        "expected_concepts": [
+            "ROW_NUMBER"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "Difference between RANK() and DENSE_RANK().",
+        "expected_answer": "Clear technical explanation of difference between rank() and dense_rank(). covering key principles and practical usage.",
+        "expected_concepts": [
+            "RANK",
+            "DENSE_RANK"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "What is an index?",
+        "expected_answer": "Clear technical explanation of an index? covering key principles and practical usage.",
+        "expected_concepts": [
+            "index"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "How does an index improve performance?",
+        "expected_answer": "Clear technical explanation of how does an index improve performance? covering key principles and practical usage.",
         "expected_concepts": [
             "index",
-            "B-Tree",
-            "query performance",
-            "SQL"
+            "improve",
+            "performance"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "What is Normalization (1NF, 2NF, 3NF)?",
-        "expected_answer": "Process organizing columns and tables to minimize data redundancy and dependency anomalies.",
+        "difficulty": "Intermediate",
+        "question_text": "What is normalization?",
+        "expected_answer": "Clear technical explanation of normalization? covering key principles and practical usage.",
         "expected_concepts": [
-            "normalization",
+            "normalization"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Intermediate",
+        "question_text": "Explain 1NF, 2NF, and 3NF.",
+        "expected_answer": "Clear technical explanation of 1nf, 2nf, and 3nf. covering key principles and practical usage.",
+        "expected_concepts": [
             "1NF",
             "2NF",
-            "3NF",
-            "redundancy"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #6: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #6.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #7: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #7.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #8: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #8.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #9: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #9.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #10: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #10.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #11: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #11.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #12: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #12.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #13: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #13.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #14: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #14.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #15: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #15.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #16: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #16.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #17: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #17.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #18: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #18.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #19: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #19.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #20: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #20.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #21: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #21.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #22: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #22.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #23: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #23.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #24: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #24.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #25: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #25.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #26: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #26.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #27: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #27.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #28: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #28.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #29: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #29.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #30: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #30.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #31: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #31.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #32: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #32.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #33: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #33.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #34: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #34.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Beginner",
-        "question_text": "SQL & DB Question #35: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #35.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #36: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #36.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "3NF"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #37: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #37.",
+        "question_text": "What is denormalization?",
+        "expected_answer": "Clear technical explanation of denormalization? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #38: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #38.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "denormalization"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #39: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #39.",
+        "question_text": "What are transactions?",
+        "expected_answer": "Clear technical explanation of what are transactions? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #40: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #40.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "transactions"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #41: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #41.",
+        "question_text": "Explain ACID properties.",
+        "expected_answer": "Clear technical explanation of acid properties. covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #42: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #42.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "ACID",
+            "properties"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #43: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #43.",
+        "question_text": "What is a view?",
+        "expected_answer": "Clear technical explanation of a view? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #44: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #44.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "view"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #45: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #45.",
+        "question_text": "What is a stored procedure?",
+        "expected_answer": "Clear technical explanation of a stored procedure? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #46: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #46.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "stored",
+            "procedure"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #47: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #47.",
+        "question_text": "What is a trigger?",
+        "expected_answer": "Clear technical explanation of a trigger? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #48: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #48.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "trigger"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #49: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #49.",
+        "question_text": "What is a self join?",
+        "expected_answer": "Clear technical explanation of a self join? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #50: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #50.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "self",
+            "join"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #51: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #51.",
+        "question_text": "How would you optimize a slow SQL query?",
+        "expected_answer": "Clear technical explanation of how would you optimize a slow sql query? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #52: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #52.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #53: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #53.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #54: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #54.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #55: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #55.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #56: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #56.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #57: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #57.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #58: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #58.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #59: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #59.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #60: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #60.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #61: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #61.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #62: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #62.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #63: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #63.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #64: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #64.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #65: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #65.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #66: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #66.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #67: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #67.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #68: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #68.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Technical",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #69: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #69.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Intermediate",
-        "question_text": "SQL & DB Question #70: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #70.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "would",
+            "optimize",
+            "slow",
+            "query"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #71: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #71.",
+        "question_text": "Explain database indexing internally.",
+        "expected_answer": "Clear technical explanation of database indexing internally. covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
             "database",
             "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #72: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #72.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "internally"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #73: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #73.",
+        "question_text": "Clustered vs non-clustered indexes.",
+        "expected_answer": "Clear technical explanation of clustered vs non-clustered indexes. covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #74: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #74.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "Clustered",
+            "non-clustered",
+            "indexes"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #75: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #75.",
+        "question_text": "What is a composite index?",
+        "expected_answer": "Clear technical explanation of a composite index? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #76: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #76.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "composite",
+            "index"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #77: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #77.",
+        "question_text": "What is query execution planning?",
+        "expected_answer": "Clear technical explanation of query execution planning? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #78: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #78.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "query",
+            "execution",
+            "planning"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #79: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #79.",
+        "question_text": "What is an execution plan?",
+        "expected_answer": "Clear technical explanation of an execution plan? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #80: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #80.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "execution",
+            "plan"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #81: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #81.",
+        "question_text": "How do you identify a slow SQL query?",
+        "expected_answer": "Clear technical explanation of how do you identify a slow sql query? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #82: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #82.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "identify",
+            "slow",
+            "query"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #83: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #83.",
+        "question_text": "What is database partitioning?",
+        "expected_answer": "Clear technical explanation of database partitioning? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
             "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #84: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #84.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "partitioning"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #85: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #85.",
+        "question_text": "What is database sharding?",
+        "expected_answer": "Clear technical explanation of database sharding? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
             "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #86: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #86.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "sharding"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #87: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #87.",
+        "question_text": "Explain replication.",
+        "expected_answer": "Clear technical explanation of replication. covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #88: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #88.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "replication"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #89: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #89.",
+        "question_text": "What is master-slave/primary-replica architecture?",
+        "expected_answer": "Clear technical explanation of master-slave/primary-replica architecture? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #90: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #90.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "master-slave/primary-replica",
+            "architecture"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #91: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #91.",
+        "question_text": "What is a deadlock in databases?",
+        "expected_answer": "Clear technical explanation of a deadlock in databases? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #92: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #92.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "deadlock",
+            "databases"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #93: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #93.",
+        "question_text": "How can database deadlocks be prevented?",
+        "expected_answer": "Clear technical explanation of how can database deadlocks be prevented? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
             "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #94: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #94.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "deadlocks",
+            "prevented"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #95: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #95.",
+        "question_text": "Explain transaction isolation levels.",
+        "expected_answer": "Clear technical explanation of transaction isolation levels. covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #96: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #96.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "transaction",
+            "isolation",
+            "levels"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #97: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #97.",
+        "question_text": "What are dirty reads?",
+        "expected_answer": "Clear technical explanation of what are dirty reads? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
-        ]
-    },
-    {
-        "role": "SQL & Database Engineer",
-        "category": "Conceptual",
-        "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #98: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #98.",
-        "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "dirty",
+            "reads"
         ]
     },
     {
         "role": "SQL & Database Engineer",
         "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #99: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #99.",
+        "question_text": "What are phantom reads?",
+        "expected_answer": "Clear technical explanation of what are phantom reads? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
-            "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "phantom",
+            "reads"
         ]
     },
     {
         "role": "SQL & Database Engineer",
-        "category": "Conceptual",
+        "category": "Technical",
         "difficulty": "Advanced",
-        "question_text": "SQL & DB Question #100: Explain database query optimization, window functions, CTEs, or transaction isolation levels.",
-        "expected_answer": "Detailed database answer covering SQL joins, indexes, transaction locks, normalization, or query execution plans for question #100.",
+        "question_text": "What is optimistic vs pessimistic locking?",
+        "expected_answer": "Clear technical explanation of optimistic vs pessimistic locking? covering key principles and practical usage.",
         "expected_concepts": [
-            "sql",
+            "optimistic",
+            "pessimistic",
+            "locking"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "How would you design a database for a large-scale application?",
+        "expected_answer": "Clear technical explanation of how would you design a database for a large-scale application? covering key principles and practical usage.",
+        "expected_concepts": [
+            "would",
+            "design",
             "database",
-            "indexing",
-            "joins",
-            "query optimization"
+            "large-scale"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "How would you optimize a database containing millions of records?",
+        "expected_answer": "Clear technical explanation of how would you optimize a database containing millions of records? covering key principles and practical usage.",
+        "expected_concepts": [
+            "would",
+            "optimize",
+            "database",
+            "containing"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "How would you handle database backup and recovery?",
+        "expected_answer": "Clear technical explanation of how would you handle database backup and recovery? covering key principles and practical usage.",
+        "expected_concepts": [
+            "would",
+            "handle",
+            "database",
+            "backup"
+        ]
+    },
+    {
+        "role": "SQL & Database Engineer",
+        "category": "Technical",
+        "difficulty": "Advanced",
+        "question_text": "Design the database architecture for an e-commerce / banking / job portal system.",
+        "expected_answer": "Clear technical explanation of design the database architecture for an e-commerce / banking / job portal system. covering key principles and practical usage.",
+        "expected_concepts": [
+            "Design",
+            "database",
+            "architecture",
+            "e-commerce"
         ]
     }
 ]

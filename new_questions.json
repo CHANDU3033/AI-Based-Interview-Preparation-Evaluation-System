@@ -1,0 +1,27 @@
+[
+  {
+    "role_name": "Python Developer",
+    "category": "Technical",
+    "difficulty": "Intermediate",
+    "question_text": "What are Python decorators and how do they work?",
+    "expected_answer": "Decorators modify or extend the behavior of functions without modifying their code structure using the @decorator syntax.",
+    "expected_concepts": [
+      "functions as first-class objects",
+      "wrapper functions",
+      "@decorator syntax",
+      "functools.wraps"
+    ]
+  },
+  {
+    "role_name": "Java Developer",
+    "category": "Technical",
+    "difficulty": "Intermediate",
+    "question_text": "Explain the difference between final, finally, and finalize in Java.",
+    "expected_answer": "final is a keyword for immutability, finally is a try-catch block for cleanup, and finalize is a method called before garbage collection.",
+    "expected_concepts": [
+      "final keyword",
+      "finally block",
+      "garbage collection"
+    ]
+  }
+]
