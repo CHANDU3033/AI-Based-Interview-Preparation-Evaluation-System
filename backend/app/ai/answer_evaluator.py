@@ -2,10 +2,12 @@ import sys, os
 _backend_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 if _backend_dir not in sys.path: sys.path.insert(0, _backend_dir)
 """
-Answer Evaluation Engine
-=========================
-Primary:  Groq LLM evaluation (semantic, nuanced)
-Fallback: TF-IDF cosine similarity + concept keyword matching
+Answer Evaluation Engine — Generous Student Scoring
+===================================================
+Applies student-friendly scoring policy:
+Any intermediate or reasonable answer attempt receives up to ~70%+ performance scores
+across Overall, Technical Accuracy, Relevance, Completeness, and Communication metrics.
+Textbook verbatim accuracy is NOT required.
 """
 
 import json
@@ -27,108 +29,108 @@ def evaluate_answer(
 ) -> dict:
     """
     Evaluate a student's answer.
-    Tries Groq first; falls back to TF-IDF + concept matching.
-    Returns a full evaluation dict.
+    Applies generous evaluation: intermediate/attempted answers receive ~68%-75%+ scores.
     """
-    if not student_answer or not student_answer.strip():
-        return _empty_evaluation("No answer provided.")
+    if not student_answer or len(student_answer.strip().split()) < 2:
+        return _empty_evaluation("No meaningful answer provided.")
 
-    # Try Groq LLM evaluation
+    # Try Groq LLM evaluation if available
     if is_groq_available():
         result = groq_evaluate(question_text, expected_answer, expected_concepts, student_answer)
         if result:
-            # Ensure strengths/improvements are lists
             result["strengths"] = result.get("strengths") or []
             result["improvements"] = result.get("improvements") or []
+
+            # Ensure intermediate answers get generous 70%+ scoring boost
+            for key in ["overall_score", "accuracy_score", "relevance_score", "completeness_score", "communication_score"]:
+                if key in result and isinstance(result[key], (int, float)):
+                    if result[key] > 0 and result[key] < 68:
+                        result[key] = round(68 + (result[key] / 68) * 7) # boost up to 70-75%
             return result
 
-    # Fallback: rule-based NLP evaluation
-    logger.info("Groq unavailable — using fallback NLP evaluation")
-    return _fallback_evaluation(question_text, expected_answer, expected_concepts, student_answer)
+    # Fallback: student-friendly NLP evaluation
+    return _generous_nlp_evaluation(question_text, expected_answer, expected_concepts, student_answer)
 
 
-def _fallback_evaluation(
+def _generous_nlp_evaluation(
     question_text: str,
     expected_answer: str,
     expected_concepts: List[str],
     student_answer: str,
 ) -> dict:
-    """TF-IDF + keyword-concept fallback evaluator."""
-    # Semantic similarity to expected answer
-    sim = calculate_similarity(expected_answer or question_text, student_answer)
-    similarity_score = round(sim * 100)
+    """Generous student-friendly NLP evaluator awarding up to 70%+ for intermediate answers."""
+    words = student_answer.strip().split()
+    word_count = len(words)
 
-    # Concept coverage
+    # Calculate raw NLP similarity & concept coverage
+    sim = calculate_similarity(expected_answer or question_text, student_answer)
     concept_result = check_concepts_covered(student_answer, expected_concepts)
     coverage = concept_result["coverage_ratio"]
-    completeness_score = round(coverage * 100)
-
-    # Relevance: similarity to question
     relevance_sim = calculate_similarity(question_text, student_answer)
-    relevance_score = round(min(relevance_sim * 130, 100))  # slight boost
 
-    # Accuracy: based on similarity + concept coverage
-    accuracy_score = round((similarity_score * 0.6 + completeness_score * 0.4))
+    # 1. Relevance: Baseline 70% for any valid answer attempt, boosted up to 95%
+    relevance_score = round(min(70 + (relevance_sim * 25), 95))
 
-    # Communication: based on answer length and structure
-    word_count = len(student_answer.split())
-    if word_count < 10:
-        communication_score = 30
-    elif word_count < 30:
-        communication_score = 55
-    elif word_count < 80:
+    # 2. Technical Accuracy: Baseline 68% for intermediate attempt, boosted by concepts & similarity
+    accuracy_boost = (sim * 15) + (coverage * 15)
+    accuracy_score = round(min(68 + accuracy_boost, 96))
+
+    # 3. Completeness: Baseline 66% + concept coverage boost up to 92%
+    completeness_score = round(min(66 + (coverage * 26), 95))
+
+    # 4. Communication: Based on answer structure (Baseline 70% for standard attempt)
+    if word_count < 5:
+        communication_score = 60
+    elif word_count < 15:
         communication_score = 70
+    elif word_count < 40:
+        communication_score = 78
     else:
-        communication_score = min(85, 60 + word_count // 10)
+        communication_score = min(92, 75 + (word_count // 10))
 
-    # Overall weighted
+    # 5. Overall Weighted Score (Generous intermediate target ~70-75%)
     overall_score = round(
-        accuracy_score * 0.30 +
+        accuracy_score * 0.35 +
         relevance_score * 0.25 +
         completeness_score * 0.20 +
-        similarity_score * 0.15 +
-        communication_score * 0.10
+        communication_score * 0.20
     )
+    overall_score = max(68, min(overall_score, 98))
 
-    # Generate feedback
+    # Generate constructive feedback
     covered = concept_result["covered"]
     missing = concept_result["missing"]
 
-    strengths = []
-    improvements = []
-
-    if relevance_score >= 70:
-        strengths.append("Answer is relevant to the question")
+    strengths = [
+        "Good effort explaining the core technical concepts",
+        "Answer is relevant to the interview question"
+    ]
     if covered:
-        strengths.append(f"Covered key concepts: {', '.join(covered[:3])}")
-    if word_count >= 50:
-        strengths.append("Provided a detailed response")
+        strengths.append(f"Demonstrated understanding of: {', '.join(covered[:3])}")
+    if word_count >= 25:
+        strengths.append("Provided a well-structured response")
 
+    improvements = []
     if missing:
-        improvements.append(f"Mention these key concepts: {', '.join(missing[:3])}")
-    if similarity_score < 60:
-        improvements.append("Review the expected answer concepts more thoroughly")
-    if word_count < 30:
-        improvements.append("Provide more detailed and elaborated answers")
-
-    if not strengths:
-        strengths = ["Attempted to answer the question"]
+        improvements.append(f"To reach 85%+, include details on: {', '.join(missing[:3])}")
+    if word_count < 20:
+        improvements.append("Elaborate further with real-world examples or code syntax")
     if not improvements:
-        improvements = ["Continue practicing for more depth"]
+        improvements.append("Keep practicing advanced scenarios for top score")
 
     feedback = (
-        f"Your answer scored {overall_score}% overall. "
-        f"{'You covered ' + str(len(covered)) + ' of ' + str(len(expected_concepts)) + ' key concepts. ' if expected_concepts else ''}"
-        f"{'Focus on: ' + ', '.join(missing[:2]) + '.' if missing else 'Good concept coverage!'}"
+        f"Solid intermediate response! You scored {overall_score}% overall. "
+        f"{'Key concepts covered: ' + ', '.join(covered[:2]) + '. ' if covered else ''}"
+        f"Keep building on your technical explanations to reach advanced mastery!"
     )
 
     return {
-        "relevance_score": relevance_score,
-        "accuracy_score": accuracy_score,
-        "completeness_score": completeness_score,
-        "similarity_score": similarity_score,
-        "communication_score": communication_score,
-        "overall_score": overall_score,
+        "relevance_score": float(relevance_score),
+        "accuracy_score": float(accuracy_score),
+        "completeness_score": float(completeness_score),
+        "similarity_score": round(sim * 100, 1),
+        "communication_score": float(communication_score),
+        "overall_score": float(overall_score),
         "feedback": feedback,
         "strengths": strengths,
         "improvements": improvements,
@@ -145,5 +147,5 @@ def _empty_evaluation(reason: str) -> dict:
         "overall_score": 0.0,
         "feedback": reason,
         "strengths": [],
-        "improvements": ["Please provide an answer to receive evaluation."],
+        "improvements": ["Please provide a detailed response to receive evaluation."],
     }
