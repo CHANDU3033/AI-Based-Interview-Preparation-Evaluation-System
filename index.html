@@ -311,7 +311,13 @@
       <div class="flex items-center gap-3">
                 
 
-                                <!-- 7-COLOR THEME SELECTOR DROPDOWN -->
+                                <!-- BACKEND API SERVER CONNECT BUTTON -->
+        <button type="button" id="btn-backend-status" onclick="openBackendModal()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-2 text-xs font-bold transition-all shadow">
+          <span id="backend-status-dot" class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+          <span id="backend-status-text" class="hidden sm:inline">Backend API</span>
+        </button>
+
+        <!-- 7-COLOR THEME SELECTOR DROPDOWN -->
         <div class="relative group">
           <button type="button" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-2 text-xs font-bold transition-all shadow">
             <i class="fa-solid fa-palette text-sky-400"></i>
@@ -1214,7 +1220,8 @@
         return '';
       }
 
-      return 'https://ai-interview-backend-qlso.onrender.com';
+      // Default to Local Backend (or Cloud fallback) for GitHub Pages
+      return 'http://127.0.0.1:8000';
     }
 
     const API_BASE_URL = getApiBaseUrl();
@@ -2177,10 +2184,70 @@
       if (micStatus) micStatus.classList.add('hidden');
     }
 
+    
+    // --- BACKEND API CONNECTION MANAGER ---
+    function openBackendModal() {
+      const input = document.getElementById('custom-backend-input');
+      if (input) input.value = localStorage.getItem('custom_backend_url') || getApiBaseUrl();
+      const modal = document.getElementById('backend-modal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeBackendModal() {
+      const modal = document.getElementById('backend-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function setBackendUrl(url) {
+      localStorage.setItem('custom_backend_url', url);
+      closeBackendModal();
+      showToast('Backend URL set to: ' + url + '. Reconnecting...', 'success');
+      setTimeout(() => window.location.reload(), 800);
+    }
+
+    function saveCustomBackendUrl() {
+      const input = document.getElementById('custom-backend-input');
+      const val = input ? input.value.trim() : '';
+      if (!val) {
+        localStorage.removeItem('custom_backend_url');
+      } else {
+        localStorage.setItem('custom_backend_url', val);
+      }
+      closeBackendModal();
+      showToast('Custom Backend URL updated!', 'success');
+      setTimeout(() => window.location.reload(), 800);
+    }
+
+    async function checkBackendConnection() {
+      const dot = document.getElementById('backend-status-dot');
+      const text = document.getElementById('backend-status-text');
+      const currentUrl = getApiBaseUrl() || 'http://127.0.0.1:8000';
+
+      try {
+        const res = await fetch(currentUrl + '/health', { method: 'GET' });
+        if (res.ok) {
+          if (dot) {
+            dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
+          }
+          if (text) text.innerText = 'Backend: Online';
+          return;
+        }
+      } catch (e) {}
+
+      if (dot) {
+        dot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping';
+      }
+      if (text) text.innerText = 'Backend: Offline (Click)';
+    }
+
     // --- ATTACH ALL HANDLERS GLOBALLY TO WINDOW OBJECT ---
     window.toggleSpeechRecognition = toggleSpeechRecognition;
     window.startSpeechRecording = startSpeechRecording;
     window.stopSpeechRecording = stopSpeechRecording;
+    window.openBackendModal = openBackendModal;
+    window.closeBackendModal = closeBackendModal;
+    window.setBackendUrl = setBackendUrl;
+    window.saveCustomBackendUrl = saveCustomBackendUrl;
     window.navigateTo = navigateTo;
     window.openAuthModal = openAuthModal;
     window.closeAuthModal = closeAuthModal;
@@ -2206,6 +2273,7 @@
     document.addEventListener('DOMContentLoaded', async () => {
       await fetchCurrentUser();
       await loadJobRoles();
+      checkBackendConnection();
       if (token && currentUser) {
         loadDashboardData();
       }
