@@ -106,6 +106,6 @@ def health_check():
             "groq_ai": is_groq_available(),
             "text_interview": True,
             "nlp_evaluation": True,
-            "voice_interview": False,  # Phase 2
+            "voice_interview": True,  # Phase 2
         },
     }

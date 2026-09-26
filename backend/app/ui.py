@@ -556,8 +556,9 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
               <i class="fa-solid fa-keyboard text-accent-emerald"></i> Response Mode
             </label>
             <select id="setup-mode" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 focus:outline-none focus:border-brand-500 font-medium">
-              <option value="TEXT" selected>Text Answer (Type & Submit)</option>
-              <option value="VOICE" disabled>Voice / Speech-to-Text (Phase 2)</option>
+              <option value="TEXT" selected>⌨️ Text Answer (Type & Submit)</option>
+              <option value="VOICE">🎙️ Voice / Speech-to-Text (Microphone AI Transcribe)</option>
+              <option value="HYBRID">⚡ Hybrid (Voice Microphone + Text Editor)</option>
             </select>
           </div>
         </div>
@@ -618,6 +619,9 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
           <span id="interview-difficulty-badge" class="px-3 py-1 rounded-xl bg-slate-800 text-slate-300 font-semibold text-xs border border-slate-700">
             Intermediate
           </span>
+          <span id="interview-mode-badge" class="px-3 py-1 rounded-xl bg-emerald-500/10 text-emerald-400 font-semibold text-xs border border-emerald-500/20">
+            ⌨️ Text Mode
+          </span>
         </div>
 
         <!-- Timer Card -->
@@ -647,11 +651,19 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
 
         <!-- Student Answer Field -->
         <div class="space-y-3 pt-2">
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between flex-wrap gap-2">
             <label class="text-sm font-semibold text-slate-300 flex items-center gap-2">
               <i class="fa-solid fa-pen-nib text-brand-400"></i> Your Detailed Technical Response:
             </label>
-            <span id="word-count-badge" class="text-xs font-mono text-slate-400">0 words</span>
+            <div class="flex items-center gap-3">
+              <button type="button" id="btn-mic-toggle" onclick="toggleSpeechRecognition()" class="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center gap-2 transition-all border border-slate-700">
+                <i class="fa-solid fa-microphone text-brand-400"></i> <span id="mic-btn-label">Speak Answer</span>
+              </button>
+              <span id="word-count-badge" class="text-xs font-mono text-slate-400">0 words</span>
+            </div>
+          </div>
+          <div id="mic-status" class="hidden text-xs text-rose-400 font-semibold flex items-center gap-2 animate-pulse bg-rose-500/10 px-3 py-2 rounded-xl border border-rose-500/20">
+            <i class="fa-solid fa-circle text-[8px] text-rose-500"></i> <span>Listening to microphone... Speak clearly. Click 'Stop Recording' when done.</span>
           </div>
 
           <textarea id="student-answer-input" rows="7" oninput="updateWordCount()" placeholder="Type your answer here clearly. Explain core concepts, syntax, use cases, and trade-offs to maximize your score..." class="w-full bg-slate-950/80 border border-slate-800 rounded-2xl p-4 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all font-sans text-base leading-relaxed"></textarea>
@@ -1699,6 +1711,12 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       if (!activeInterview || !q) return;
       document.getElementById('interview-role-badge').innerText = activeInterview.role_name || 'Technical';
       document.getElementById('interview-difficulty-badge').innerText = activeInterview.difficulty || 'Intermediate';
+      const modeBadge = document.getElementById('interview-mode-badge');
+      if (modeBadge) {
+        const m = activeInterview.mode || 'TEXT';
+        modeBadge.innerText = (m === 'VOICE' ? '🎙️ Voice Mode' : m === 'HYBRID' ? '⚡ Hybrid Mode' : '⌨️ Text Mode');
+      }
+      stopSpeechRecording();
       document.getElementById('question-progress-text').innerText = 'Question ' + currentIdx + ' of ' + total;
       document.getElementById('question-category-badge').innerText = q.category || 'Technical';
       document.getElementById('current-question-text').innerText = q.question_text || '';
@@ -2038,7 +2056,117 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       }
     }
 
+    
+    // --- WEB SPEECH API & VOICE RESPONSE MODE ENGINE ---
+    let recognitionInstance = null;
+    let isSpeechRecording = false;
+
+    function toggleSpeechRecognition() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        showToast("Speech Recognition is not supported in this browser. You can type your response instead.", "info");
+        return;
+      }
+
+      if (!recognitionInstance) {
+        try {
+          recognitionInstance = new SpeechRecognition();
+          recognitionInstance.continuous = true;
+          recognitionInstance.interimResults = true;
+          recognitionInstance.lang = 'en-US';
+
+          recognitionInstance.onresult = (event) => {
+            let finalTranscript = '';
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+              if (event.results[i].isFinal) {
+                finalTranscript += event.results[i][0].transcript + ' ';
+              }
+            }
+            if (finalTranscript) {
+              const input = document.getElementById('student-answer-input');
+              if (input) {
+                input.value = (input.value ? input.value.trim() + ' ' : '') + finalTranscript.trim();
+                updateWordCount();
+              }
+            }
+          };
+
+          recognitionInstance.onerror = (event) => {
+            console.error('Speech recognition error:', event.error);
+            stopRecordingState();
+            if (event.error !== 'no-speech') {
+              showToast('Microphone error: ' + event.error + '. You can still type your response.', 'error');
+            }
+          };
+
+          recognitionInstance.onend = () => {
+            if (isSpeechRecording) {
+              try { recognitionInstance.start(); } catch(e) {}
+            } else {
+              stopRecordingState();
+            }
+          };
+        } catch (e) {
+          console.error('Failed to init speech recognition:', e);
+          showToast('Speech recognition initialization error.', 'error');
+          return;
+        }
+      }
+
+      if (isSpeechRecording) {
+        stopSpeechRecording();
+      } else {
+        startSpeechRecording();
+      }
+    }
+
+    function startSpeechRecording() {
+      if (!recognitionInstance) return toggleSpeechRecognition();
+      try {
+        recognitionInstance.start();
+        isSpeechRecording = true;
+        const micBtn = document.getElementById('btn-mic-toggle');
+        const micLabel = document.getElementById('mic-btn-label');
+        const micStatus = document.getElementById('mic-status');
+
+        if (micBtn) {
+          micBtn.classList.remove('bg-slate-800', 'text-slate-300');
+          micBtn.classList.add('bg-rose-600', 'text-white', 'animate-pulse');
+        }
+        if (micLabel) micLabel.innerText = 'Stop Recording';
+        if (micStatus) micStatus.classList.remove('hidden');
+        showToast("Microphone active! Listening to your response...", "info");
+      } catch (err) {
+        console.error("Start speech error:", err);
+      }
+    }
+
+    function stopSpeechRecording() {
+      isSpeechRecording = false;
+      if (recognitionInstance) {
+        try { recognitionInstance.stop(); } catch(e) {}
+      }
+      stopRecordingState();
+    }
+
+    function stopRecordingState() {
+      isSpeechRecording = false;
+      const micBtn = document.getElementById('btn-mic-toggle');
+      const micLabel = document.getElementById('mic-btn-label');
+      const micStatus = document.getElementById('mic-status');
+
+      if (micBtn) {
+        micBtn.classList.remove('bg-rose-600', 'text-white', 'animate-pulse');
+        micBtn.classList.add('bg-slate-800', 'text-slate-300');
+      }
+      if (micLabel) micLabel.innerText = 'Speak Answer';
+      if (micStatus) micStatus.classList.add('hidden');
+    }
+
     // --- ATTACH ALL HANDLERS GLOBALLY TO WINDOW OBJECT ---
+    window.toggleSpeechRecognition = toggleSpeechRecognition;
+    window.startSpeechRecording = startSpeechRecording;
+    window.stopSpeechRecording = stopSpeechRecording;
     window.navigateTo = navigateTo;
     window.openAuthModal = openAuthModal;
     window.closeAuthModal = closeAuthModal;
