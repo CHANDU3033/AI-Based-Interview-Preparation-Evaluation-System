@@ -2,12 +2,12 @@ import sys, os
 _backend_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 if _backend_dir not in sys.path: sys.path.insert(0, _backend_dir)
 """
-Answer Evaluation Engine — Generous Student Scoring
-===================================================
-Applies student-friendly scoring policy:
-Any intermediate or reasonable answer attempt receives up to ~70%+ performance scores
+Answer Evaluation Engine — Student Friendly 60% to 70% Intermediate Policy
+========================================================================
+Applies calibrated scoring policy:
+Intermediate level answer attempts receive 60% to 70% performance scores
 across Overall, Technical Accuracy, Relevance, Completeness, and Communication metrics.
-Textbook verbatim accuracy is NOT required.
+Textbook exact answers are not expected for intermediate grades.
 """
 
 import json
@@ -29,7 +29,7 @@ def evaluate_answer(
 ) -> dict:
     """
     Evaluate a student's answer.
-    Applies generous evaluation: intermediate/attempted answers receive ~68%-75%+ scores.
+    Applies calibrated evaluation: intermediate attempts receive 60% to 70% scores.
     """
     if not student_answer or len(student_answer.strip().split()) < 2:
         return _empty_evaluation("No meaningful answer provided.")
@@ -41,24 +41,24 @@ def evaluate_answer(
             result["strengths"] = result.get("strengths") or []
             result["improvements"] = result.get("improvements") or []
 
-            # Ensure intermediate answers get generous 70%+ scoring boost
+            # Calibrate intermediate scores to 60-70% range
             for key in ["overall_score", "accuracy_score", "relevance_score", "completeness_score", "communication_score"]:
                 if key in result and isinstance(result[key], (int, float)):
-                    if result[key] > 0 and result[key] < 68:
-                        result[key] = round(68 + (result[key] / 68) * 7) # boost up to 70-75%
+                    if 0 < result[key] < 75:
+                        result[key] = round(60 + (result[key] / 75) * 10, 1) # scale into 60-70% range
             return result
 
     # Fallback: student-friendly NLP evaluation
-    return _generous_nlp_evaluation(question_text, expected_answer, expected_concepts, student_answer)
+    return _intermediate_60_70_nlp_evaluation(question_text, expected_answer, expected_concepts, student_answer)
 
 
-def _generous_nlp_evaluation(
+def _intermediate_60_70_nlp_evaluation(
     question_text: str,
     expected_answer: str,
     expected_concepts: List[str],
     student_answer: str,
 ) -> dict:
-    """Generous student-friendly NLP evaluator awarding up to 70%+ for intermediate answers."""
+    """NLP evaluator placing intermediate attempts in 60% to 70% performance range."""
     words = student_answer.strip().split()
     word_count = len(words)
 
@@ -68,60 +68,61 @@ def _generous_nlp_evaluation(
     coverage = concept_result["coverage_ratio"]
     relevance_sim = calculate_similarity(question_text, student_answer)
 
-    # 1. Relevance: Baseline 70% for any valid answer attempt, boosted up to 95%
-    relevance_score = round(min(70 + (relevance_sim * 25), 95))
+    # 1. Relevance: Baseline 62% for valid answer attempt, capped at 70% for intermediate
+    relevance_score = round(min(62 + (relevance_sim * 8), 70), 1)
 
-    # 2. Technical Accuracy: Baseline 68% for intermediate attempt, boosted by concepts & similarity
-    accuracy_boost = (sim * 15) + (coverage * 15)
-    accuracy_score = round(min(68 + accuracy_boost, 96))
+    # 2. Technical Accuracy: Baseline 60% for intermediate attempt, capped at 70%
+    accuracy_boost = (sim * 5) + (coverage * 5)
+    accuracy_score = round(min(60 + accuracy_boost, 70), 1)
 
-    # 3. Completeness: Baseline 66% + concept coverage boost up to 92%
-    completeness_score = round(min(66 + (coverage * 26), 95))
+    # 3. Completeness: Baseline 60% + concept coverage boost up to 70%
+    completeness_score = round(min(60 + (coverage * 10), 70), 1)
 
-    # 4. Communication: Based on answer structure (Baseline 70% for standard attempt)
+    # 4. Communication: Baseline 62% for standard attempt, up to 70%
     if word_count < 5:
-        communication_score = 60
+        communication_score = 55.0
     elif word_count < 15:
-        communication_score = 70
+        communication_score = 62.0
     elif word_count < 40:
-        communication_score = 78
+        communication_score = 66.0
     else:
-        communication_score = min(92, 75 + (word_count // 10))
+        communication_score = min(70.0, 65.0 + (word_count // 10))
 
-    # 5. Overall Weighted Score (Generous intermediate target ~70-75%)
+    # 5. Overall Weighted Score (Strictly calibrated inside 60% - 70% for intermediate attempts)
     overall_score = round(
         accuracy_score * 0.35 +
         relevance_score * 0.25 +
         completeness_score * 0.20 +
-        communication_score * 0.20
+        communication_score * 0.20,
+        1
     )
-    overall_score = max(68, min(overall_score, 98))
+    overall_score = max(60.0, min(overall_score, 70.0))
 
     # Generate constructive feedback
     covered = concept_result["covered"]
     missing = concept_result["missing"]
 
     strengths = [
-        "Good effort explaining the core technical concepts",
-        "Answer is relevant to the interview question"
+        "Good intermediate effort explaining key concepts",
+        "Answer is relevant to the question topic"
     ]
     if covered:
-        strengths.append(f"Demonstrated understanding of: {', '.join(covered[:3])}")
-    if word_count >= 25:
-        strengths.append("Provided a well-structured response")
+        strengths.append(f"Demonstrated concept understanding: {', '.join(covered[:3])}")
+    if word_count >= 20:
+        strengths.append("Provided a clear response")
 
     improvements = []
     if missing:
-        improvements.append(f"To reach 85%+, include details on: {', '.join(missing[:3])}")
-    if word_count < 20:
-        improvements.append("Elaborate further with real-world examples or code syntax")
+        improvements.append(f"To reach 80%+, include details on: {', '.join(missing[:3])}")
+    if word_count < 25:
+        improvements.append("Provide further elaboration and code/syntax examples")
     if not improvements:
-        improvements.append("Keep practicing advanced scenarios for top score")
+        improvements.append("Keep practicing advanced technical topics for higher scores")
 
     feedback = (
-        f"Solid intermediate response! You scored {overall_score}% overall. "
+        f"Intermediate performance! You scored {overall_score}% overall. "
         f"{'Key concepts covered: ' + ', '.join(covered[:2]) + '. ' if covered else ''}"
-        f"Keep building on your technical explanations to reach advanced mastery!"
+        f"Continue refining your technical explanations to reach advanced levels!"
     )
 
     return {
