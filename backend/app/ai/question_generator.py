@@ -5,7 +5,7 @@ if _backend_dir not in sys.path: sys.path.insert(0, _backend_dir)
 Question Generation Engine
 ===========================
 Provides questions for interview sessions via:
-  1. DB question bank (primary, deterministic)
+  1. DB question bank (primary, deterministic with strict deduplication)
   2. Groq AI generation (supplemental, when available)
   3. Resume-Skill tailored questions + General role questions mix
 """
@@ -48,7 +48,7 @@ def get_questions_from_db(
     difficulty: str,
     count: int,
 ) -> List[Question]:
-    """Fetch random questions from DB for the given role and difficulty."""
+    """Fetch distinct random questions from DB for the given role and difficulty."""
     questions = (
         db.query(Question)
         .filter(Question.role_id == role_id, Question.difficulty == difficulty)
@@ -59,8 +59,18 @@ def get_questions_from_db(
         all_q = db.query(Question).filter(Question.role_id == role_id).all()
         questions = all_q
 
-    random.shuffle(questions)
-    return questions[:count]
+    # Deduplicate questions by normalized question_text
+    seen_texts = set()
+    unique_q = []
+    for q in questions:
+        norm_text = q.question_text.strip().lower()
+        if norm_text not in seen_texts:
+            seen_texts.add(norm_text)
+            unique_q.append(q)
+
+    # Use random.sample to guarantee completely distinct, non-repeating items
+    sample_size = min(count, len(unique_q))
+    return random.sample(unique_q, sample_size) if sample_size > 0 else []
 
 
 def generate_ai_questions(
@@ -85,22 +95,30 @@ def get_hybrid_questions(
     resume_text: Optional[str] = None,
 ) -> List[dict]:
     """
-    Hybrid strategy:
+    Hybrid strategy with strict deduplication:
     - If resume_text provided: 60% Resume-Skill questions + 40% General Role questions.
-    - If no resume_text: 70% DB + 30% AI questions.
+    - If no resume_text: DB questions filtered by role & difficulty.
+    Guarantees that NO question is ever repeated.
     """
     skills = extract_skills_from_text(resume_text) if resume_text else []
     
     final_questions = []
     used_ids = set()
+    used_texts = set()
+
+    def add_question(q_dict):
+        q_id = q_dict.get("id")
+        norm_text = q_dict["question_text"].strip().lower()
+        if (q_id and q_id in used_ids) or (norm_text in used_texts):
+            return False
+        if q_id:
+            used_ids.add(q_id)
+        used_texts.add(norm_text)
+        final_questions.append(q_dict)
+        return True
 
     if skills:
-        # Split: 60% Resume Skills, 40% General Role
         resume_count = max(1, int(total_count * 0.6))
-        general_count = total_count - resume_count
-
-        # 1. Fetch questions matching extracted resume skills from entire DB
-        skill_matched_q = []
         all_db_q = db.query(Question).all()
         random.shuffle(all_db_q)
 
@@ -111,72 +129,68 @@ def get_hybrid_questions(
             for sk in skills:
                 sk_lower = sk.lower()
                 if sk_lower in q_text_lower or sk_lower in q_concepts_lower:
-                    if q.id not in used_ids:
-                        used_ids.add(q.id)
-                        concepts = []
-                        try:
-                            concepts = json.loads(q.expected_concepts) if q.expected_concepts else []
-                        except Exception:
-                            pass
-                        
-                        skill_matched_q.append({
-                            "id": q.id,
-                            "question_text": f"[Resume Skill: {sk}] {q.question_text}",
-                            "category": f"Resume Skill ({sk})",
-                            "difficulty": q.difficulty,
-                            "expected_answer": q.expected_answer or "",
-                            "expected_concepts": concepts,
-                            "is_ai_generated": False,
-                        })
+                    concepts = []
+                    try:
+                        concepts = json.loads(q.expected_concepts) if q.expected_concepts else []
+                    except Exception:
+                        pass
+                    
+                    added = add_question({
+                        "id": q.id,
+                        "question_text": f"[Resume Skill: {sk}] {q.question_text}",
+                        "category": f"Resume Skill ({sk})",
+                        "difficulty": q.difficulty,
+                        "expected_answer": q.expected_answer or "",
+                        "expected_concepts": concepts,
+                        "is_ai_generated": False,
+                    })
+                    if added and len(final_questions) >= resume_count:
                         break
-            if len(skill_matched_q) >= resume_count:
+            if len(final_questions) >= resume_count:
                 break
 
-        final_questions.extend(skill_matched_q)
-
-        # 2. Fetch general questions for role
-        remaining_count = total_count - len(final_questions)
-        general_db_q = get_questions_from_db(db, role_id, difficulty, remaining_count * 2)
-        
-        for q in general_db_q:
-            if q.id not in used_ids and len(final_questions) < total_count:
-                used_ids.add(q.id)
-                concepts = []
-                try:
-                    concepts = json.loads(q.expected_concepts) if q.expected_concepts else []
-                except Exception:
-                    pass
-                
-                final_questions.append({
-                    "id": q.id,
-                    "question_text": q.question_text,
-                    "category": q.category or "General Technical",
-                    "difficulty": q.difficulty,
-                    "expected_answer": q.expected_answer or "",
-                    "expected_concepts": concepts,
-                    "is_ai_generated": False,
-                })
-
-    # Fallback or standard flow if no resume or not enough skill matches
+    # Fill remaining / primary questions from DB matching role and difficulty
     if len(final_questions) < total_count:
         needed = total_count - len(final_questions)
-        standard_q = get_questions_from_db(db, role_id, difficulty, needed)
-        for q in standard_q:
-            if q.id not in used_ids and len(final_questions) < total_count:
-                used_ids.add(q.id)
-                concepts = []
-                try:
-                    concepts = json.loads(q.expected_concepts) if q.expected_concepts else []
-                except Exception:
-                    pass
-                final_questions.append({
-                    "id": q.id,
-                    "question_text": q.question_text,
-                    "category": q.category,
-                    "difficulty": q.difficulty,
-                    "expected_answer": q.expected_answer or "",
-                    "expected_concepts": concepts,
-                    "is_ai_generated": False,
-                })
+        db_qs = get_questions_from_db(db, role_id, difficulty, needed * 3)
+        for q in db_qs:
+            if len(final_questions) >= total_count:
+                break
+            concepts = []
+            try:
+                concepts = json.loads(q.expected_concepts) if q.expected_concepts else []
+            except Exception:
+                pass
+            add_question({
+                "id": q.id,
+                "question_text": q.question_text,
+                "category": q.category or "Technical",
+                "difficulty": q.difficulty,
+                "expected_answer": q.expected_answer or "",
+                "expected_concepts": concepts,
+                "is_ai_generated": False,
+            })
+
+    # Extra safety net: If for any reason total_count is still not reached, fill from all questions of role
+    if len(final_questions) < total_count:
+        all_role_qs = db.query(Question).filter(Question.role_id == role_id).all()
+        random.shuffle(all_role_qs)
+        for q in all_role_qs:
+            if len(final_questions) >= total_count:
+                break
+            concepts = []
+            try:
+                concepts = json.loads(q.expected_concepts) if q.expected_concepts else []
+            except Exception:
+                pass
+            add_question({
+                "id": q.id,
+                "question_text": q.question_text,
+                "category": q.category or "Technical",
+                "difficulty": q.difficulty,
+                "expected_answer": q.expected_answer or "",
+                "expected_concepts": concepts,
+                "is_ai_generated": False,
+            })
 
     return final_questions[:total_count]
