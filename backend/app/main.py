@@ -35,8 +35,13 @@ app.add_middleware(
 @app.get("/", response_class=HTMLResponse, include_in_schema=False)
 @app.get("/ui", response_class=HTMLResponse, include_in_schema=False)
 def get_standalone_ui():
-    """Serves the complete single-page Web Application interface directly from FastAPI."""
-    return get_ui_html()
+    """Serves the complete single-page Web Application interface directly from FastAPI with strict no-cache headers."""
+    headers = {
+        "Cache-Control": "no-cache, no-store, must-revalidate, max-age=0",
+        "Pragma": "no-cache",
+        "Expires": "0"
+    }
+    return HTMLResponse(content=get_ui_html(), headers=headers)
 
 # ─── Routers ───────────────────────────────────────────────────────────────────
 app.include_router(auth.router,          prefix="/api")
