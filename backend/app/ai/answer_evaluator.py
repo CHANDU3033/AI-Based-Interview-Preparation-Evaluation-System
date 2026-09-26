@@ -2,13 +2,12 @@ import sys, os
 _backend_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 if _backend_dir not in sys.path: sys.path.insert(0, _backend_dir)
 """
-Answer Evaluation Engine — Strict Echo/Junk Filter + Calibrated 60-70% Intermediate Policy
-========================================================================================
+Answer Evaluation Engine - Dynamic Semantic AI Evaluator with Echo and Junk Filter
+===================================================================================
 Rules:
 1. Candidate repeating/copying the question text as the answer = 0% Score.
 2. Junk/nonsense/unrelated text = 0% Score.
-3. Intermediate level student response = 60% to 70% Score range.
-4. Advanced comprehensive response = 75% to 95% Score range.
+3. Realistic semantic AI evaluation based on accuracy, relevance, completeness, and communication.
 """
 
 import json
@@ -51,7 +50,7 @@ def evaluate_answer(
     student_answer: str,
     duration_seconds: Optional[int] = None,
 ) -> dict:
-    """Evaluate student answer with strict echo & junk detection."""
+    """Evaluate student answer with strict echo and junk detection."""
     if not student_answer or len(student_answer.strip().split()) < 1:
         return _empty_evaluation("No answer provided.")
 
@@ -87,11 +86,11 @@ def _calibrated_nlp_evaluation(
     expected_concepts: List[str],
     student_answer: str,
 ) -> dict:
-    """Calibrated NLP evaluator enforcing 0% for junk/echo, 60-70% for intermediate, >75% for advanced answers."""
+    """Dynamic NLP evaluator enforcing 0% for junk/echo and realistic continuous scoring."""
     words = student_answer.strip().split()
     word_count = len(words)
 
-    # Calculate NLP similarity & concept coverage
+    # Calculate NLP similarity and concept coverage
     sim = calculate_similarity(expected_answer or question_text, student_answer)
     concept_result = check_concepts_covered(student_answer, expected_concepts)
     coverage = concept_result["coverage_ratio"]
@@ -111,35 +110,37 @@ def _calibrated_nlp_evaluation(
             "improvements": ["Focus on the specific technical subject", "Include relevant core terminology"],
         }
 
-    # 3. Intermediate vs Advanced Scoring
-    # Advanced comprehensive response with multiple concept matches
-    if coverage >= 0.75 and word_count >= 30:
-        accuracy_score = round(min(75 + (sim * 15) + (coverage * 10), 96), 1)
-        relevance_score = round(min(75 + (relevance_sim * 20), 95), 1)
-        completeness_score = round(min(70 + (coverage * 25), 95), 1)
-        communication_score = round(min(80 + (word_count // 10), 95), 1)
-        overall_score = round(accuracy_score * 0.35 + relevance_score * 0.25 + completeness_score * 0.20 + communication_score * 0.20, 1)
-    else:
-        # Standard Intermediate level response attempt -> 60% to 70% range
-        relevance_score = round(min(62.0 + (relevance_sim * 8), 70.0), 1)
-        accuracy_score = round(min(60.0 + (sim * 5) + (coverage * 5), 70.0), 1)
-        completeness_score = round(min(60.0 + (coverage * 10), 70.0), 1)
-        communication_score = round(min(66.0, 60.0 + (word_count // 5)), 1)
-        overall_score = round(accuracy_score * 0.35 + relevance_score * 0.25 + completeness_score * 0.20 + communication_score * 0.20, 1)
-        overall_score = max(60.0, min(overall_score, 70.0))
+    # Dynamic continuous score calculation based on semantic NLP and concept coverage
+    accuracy_score = round(min(100.0, max(0.0, (sim * 55.0) + (coverage * 45.0))), 1)
+    relevance_score = round(min(100.0, max(0.0, (relevance_sim * 40.0) + (sim * 60.0))), 1)
+    
+    length_factor = min(1.0, word_count / 25.0)
+    completeness_score = round(min(100.0, max(0.0, (coverage * 65.0) + (length_factor * 35.0))), 1)
+    
+    comm_base = min(95.0, 50.0 + (word_count * 1.5))
+    communication_score = round(min(100.0, max(0.0, comm_base)), 1)
+
+    overall_score = round(
+        (accuracy_score * 0.35) + 
+        (relevance_score * 0.25) + 
+        (completeness_score * 0.20) + 
+        (communication_score * 0.20), 1
+    )
 
     covered = concept_result["covered"]
     missing = concept_result["missing"]
 
-    strengths = ["Answer is relevant to the question topic"]
+    strengths = []
+    if relevance_score >= 50:
+        strengths.append("Answer is relevant to the question topic")
     if covered:
         strengths.append(f"Demonstrated concept understanding: {', '.join(covered[:3])}")
-    if word_count >= 20:
-        strengths.append("Provided a clear response")
+    if word_count >= 15:
+        strengths.append("Provided a structured response")
 
     improvements = []
     if missing:
-        improvements.append(f"To reach advanced grade (80%+), mention: {', '.join(missing[:3])}")
+        improvements.append(f"To improve your score, include: {', '.join(missing[:3])}")
     if word_count < 25:
         improvements.append("Provide further elaboration and code/syntax examples")
 
@@ -155,6 +156,7 @@ def _calibrated_nlp_evaluation(
         "completeness_score": float(completeness_score),
         "similarity_score": round(sim * 100, 1),
         "communication_score": float(communication_score),
+        "overall_score": float(communication_score),
         "overall_score": float(overall_score),
         "feedback": feedback,
         "strengths": strengths,
