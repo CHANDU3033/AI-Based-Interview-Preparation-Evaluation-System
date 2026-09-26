@@ -2221,22 +2221,38 @@
     async function checkBackendConnection() {
       const dot = document.getElementById('backend-status-dot');
       const text = document.getElementById('backend-status-text');
-      const currentUrl = getApiBaseUrl() || 'http://127.0.0.1:8000';
-
-      try {
-        const res = await fetch(currentUrl + '/health', { method: 'GET' });
-        if (res.ok) {
-          if (dot) {
-            dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
-          }
-          if (text) text.innerText = 'Backend: Online';
-          return;
-        }
-      } catch (e) {}
-
-      if (dot) {
-        dot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping';
+      let currentUrl = getApiBaseUrl();
+      if (!currentUrl || currentUrl === '') {
+        currentUrl = 'http://127.0.0.1:8000';
       }
+
+      const endpoints = ['/health', '/api/health', '/api/v1/health'];
+
+      for (const ep of endpoints) {
+        try {
+          const target = (currentUrl.endsWith('/') ? currentUrl.slice(0, -1) : currentUrl) + ep;
+          const res = await fetch(target, { method: 'GET' });
+          if (res.ok) {
+            if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
+            if (text) text.innerText = 'Backend: Online';
+            return;
+          }
+        } catch (e) {}
+      }
+
+      // Try explicit localhost fallback
+      for (const ep of endpoints) {
+        try {
+          const res = await fetch('http://127.0.0.1:8000' + ep, { method: 'GET' });
+          if (res.ok) {
+            if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
+            if (text) text.innerText = 'Backend: Online';
+            return;
+          }
+        } catch (e) {}
+      }
+
+      if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping';
       if (text) text.innerText = 'Backend: Offline (Click)';
     }
 

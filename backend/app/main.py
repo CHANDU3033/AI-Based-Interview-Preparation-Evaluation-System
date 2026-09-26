@@ -78,6 +78,8 @@ def startup_event():
 
 # ─── Health Check ──────────────────────────────────────────────────────────────
 @app.get("/health", tags=["Health"])
+@app.get("/api/health", tags=["Health"])
+@app.get("/api/v1/health", tags=["Health"])
 def health_check():
     from app.models.user import User
     from app.models.question import JobRole, Question
