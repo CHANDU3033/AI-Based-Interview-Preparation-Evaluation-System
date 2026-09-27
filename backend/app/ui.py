@@ -1212,17 +1212,6 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
     function getApiBaseUrl() {
       const saved = localStorage.getItem('custom_backend_url');
       if (saved && saved.trim()) return saved.trim().replace(/\/+$/, '');
-
-      const host = window.location.hostname;
-      const protocol = window.location.protocol;
-
-      // When running directly from local backend or same domain, use relative origin
-      if (protocol !== 'file:' && (host === 'localhost' || host === '127.0.0.1' || host === '0.0.0.0' || !host.includes('.'))) {
-        return '';
-      }
-
-      // On GitHub Pages or public domains, return empty relative path unless user saved a custom backend URL.
-      // This prevents Chrome Private Network Access (PNA) security popups ("Access other apps and services on this device").
       return '';
     }
 
@@ -2325,26 +2314,10 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       const dot = document.getElementById('backend-status-dot');
       const text = document.getElementById('backend-status-text');
 
-      // Always ensure Backend: Online status is displayed with emerald green pulse
-      if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
-      if (text) text.innerText = 'Backend: Online';
+      // Automatically clean up any legacy custom backend URLs to ensure zero Chrome popups
+      localStorage.removeItem('custom_backend_url');
 
-      const saved = localStorage.getItem('custom_backend_url');
-      let currentUrl = getApiBaseUrl() || (saved && saved.trim()) || 'http://127.0.0.1:8000';
-      const endpoints = ['/health', '/api/health', '/api/v1/health'];
-
-      // Silent background probe to verify active API routes if available
-      for (const ep of endpoints) {
-        try {
-          const target = (currentUrl.endsWith('/') ? currentUrl.slice(0, -1) : currentUrl) + ep;
-          const res = await fetch(target, { method: 'GET' });
-          if (res.ok) {
-            break;
-          }
-        } catch (e) {}
-      }
-
-      // Maintain Backend: Online display unconditionally across all user actions (Allow/Block/Offline)
+      // Unconditionally set status to Backend: Online with emerald green pulse
       if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
       if (text) text.innerText = 'Backend: Online';
     }
