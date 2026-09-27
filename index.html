@@ -1593,52 +1593,3386 @@
     }
 
     
-    // --- FALLBACK JOB ROLES & OFFLINE QUESTION BANK ---
+        // --- OFFICIAL 300 QUESTION BANK (5 ROLES, 3 DIFFICULTIES: BEGINNER, INTERMEDIATE, ADVANCED) ---
     const FALLBACK_JOB_ROLES = [
-      { id: 1, role_name: "Python Developer", description: "Core Python, OOP, Data Structures, Multithreading & Async, FastAPI/Django." },
-      { id: 2, role_name: "Full Stack Web Developer", description: "JavaScript/TypeScript, React, Node.js, REST APIs, HTML5/CSS3 & Databases." },
-      { id: 3, role_name: "Data Scientist & ML Engineer", description: "Python, Machine Learning, Pandas/NumPy, Deep Learning, SQL & NLP." },
-      { id: 4, role_name: "DevOps & Cloud Engineer", description: "Docker, Kubernetes, CI/CD Pipelines, AWS/Azure, Linux & Shell Scripting." },
-      { id: 5, role_name: "React & Frontend Developer", description: "Modern React, Redux/Zustand, TailwindCSS, State Management & Web Performance." }
-    ];
+      {
+            "id": 1,
+            "role_name": "Python Developer",
+            "description": "Build applications, web APIs, and automation scripts using Python, Django, FastAPI, and data structures."
+      },
+      {
+            "id": 2,
+            "role_name": "Java Developer",
+            "description": "Develop enterprise applications, microservices, and high-performance backend systems using Java, Spring Boot, and JVM."
+      },
+      {
+            "id": 3,
+            "role_name": "Software Developer",
+            "description": "Build software systems using modern C++, JavaScript, Web APIs, and core algorithms."
+      },
+      {
+            "id": 4,
+            "role_name": "Data Analyst & AI Engineer",
+            "description": "Analyze data, perform statistical modeling, and build ML models using Python, SQL, Pandas, and ML algorithms."
+      },
+      {
+            "id": 5,
+            "role_name": "SQL & Database Engineer",
+            "description": "Design, optimize, and manage relational database schemas, complex queries, transactions, and indexing."
+      }
+];
 
     const OFFLINE_QUESTION_BANK = {
-      1: [
-        { id: 101, question_text: "How does Python handle multithreading? What is the Global Interpreter Lock (GIL)?", category: "Core Python", difficulty: "Intermediate" },
-        { id: 102, question_text: "What are decorators in Python and how do they work under the hood?", category: "OOP & Functions", difficulty: "Intermediate" },
-        { id: 103, question_text: "Explain the difference between deepcopy and shallowcopy in Python.", category: "Data Structures", difficulty: "Intermediate" },
-        { id: 104, question_text: "What are generators and iterators in Python? How do yield statements work?", category: "Advanced Python", difficulty: "Intermediate" },
-        { id: 105, question_text: "How does exception handling work in Python, and when should you use try-except-else-finally?", category: "Core Python", difficulty: "Intermediate" }
-      ],
-      2: [
-        { id: 201, question_text: "What is the Virtual DOM in React and how does reconciliation work?", category: "Frontend", difficulty: "Intermediate" },
-        { id: 202, question_text: "Explain how CORS (Cross-Origin Resource Sharing) works and how to handle it in Node/Express.", category: "Backend", difficulty: "Intermediate" },
-        { id: 203, question_text: "What is the event loop in Node.js? Explain call stack, task queue, and microtask queue.", category: "JavaScript", difficulty: "Intermediate" },
-        { id: 204, question_text: "What is the difference between SQL and NoSQL databases? When should you choose which?", category: "Databases", difficulty: "Intermediate" },
-        { id: 205, question_text: "Explain JWT (JSON Web Tokens) authentication flow in full stack web apps.", category: "Security", difficulty: "Intermediate" }
-      ],
-      3: [
-        { id: 301, question_text: "What is the bias-variance tradeoff in Machine Learning? How do you diagnose underfitting vs overfitting?", category: "Machine Learning", difficulty: "Intermediate" },
-        { id: 302, question_text: "Explain Precision, Recall, and F1-Score. When is Precision more important than Recall?", category: "Evaluation Metrics", difficulty: "Intermediate" },
-        { id: 303, question_text: "How does Gradient Descent work in training machine learning models?", category: "Optimization", difficulty: "Intermediate" },
-        { id: 304, question_text: "What is PCA (Principal Component Analysis) and how does it reduce dimensionality?", category: "Unsupervised Learning", difficulty: "Intermediate" },
-        { id: 305, question_text: "What is tokenization and vectorization in NLP (TF-IDF vs Word Embeddings)?", category: "NLP", difficulty: "Intermediate" }
-      ],
-      4: [
-        { id: 401, question_text: "What is the difference between a Docker Container and a Virtual Machine?", category: "Containerization", difficulty: "Intermediate" },
-        { id: 402, question_text: "Explain Kubernetes Pods, Deployments, and Services.", category: "Orchestration", difficulty: "Intermediate" },
-        { id: 403, question_text: "How does a CI/CD pipeline automate testing and deployment?", category: "Automation", difficulty: "Intermediate" },
-        { id: 404, question_text: "What is Infrastructure as Code (IaC) and how does Terraform work?", category: "Cloud Infrastructure", difficulty: "Intermediate" },
-        { id: 405, question_text: "How do load balancers distribute traffic across server instances?", category: "Networking", difficulty: "Intermediate" }
-      ],
-      5: [
-        { id: 501, question_text: "Explain the React Component Lifecycle and useEffect hook dependencies.", category: "React Hooks", difficulty: "Intermediate" },
-        { id: 502, question_text: "What is state management in React? Compare useState/useReducer vs Redux/Zustand.", category: "State Management", difficulty: "Intermediate" },
-        { id: 503, question_text: "How do CSS flexbox and grid differ, and when should you use each?", category: "CSS & Styling", difficulty: "Intermediate" },
-        { id: 504, question_text: "What are Web Vitals (LCP, INP, CLS) and how do you optimize web app performance?", category: "Performance", difficulty: "Intermediate" },
-        { id: 505, question_text: "Explain event delegation and event bubbling in JavaScript DOM.", category: "JavaScript DOM", difficulty: "Intermediate" }
-      ]
-    };
+      "1": {
+            "Beginner": [
+                  {
+                        "id": 1,
+                        "question_text": "What is Python?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of python? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Python"
+                        ]
+                  },
+                  {
+                        "id": 2,
+                        "question_text": "What are the main features of Python?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of what are the main features of python? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "main",
+                              "features",
+                              "Python"
+                        ]
+                  },
+                  {
+                        "id": 3,
+                        "question_text": "What are Python's built-in data types?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of what are python's built-in data types? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Python's",
+                              "built-in",
+                              "data",
+                              "types"
+                        ]
+                  },
+                  {
+                        "id": 4,
+                        "question_text": "What is the difference between a list and a tuple?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of the difference between a list and a tuple? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "list",
+                              "tuple"
+                        ]
+                  },
+                  {
+                        "id": 5,
+                        "question_text": "What is a dictionary in Python?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a dictionary in python? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "dictionary",
+                              "Python"
+                        ]
+                  },
+                  {
+                        "id": 6,
+                        "question_text": "What is a set?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a set? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "set"
+                        ]
+                  },
+                  {
+                        "id": 7,
+                        "question_text": "What is a variable in Python?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a variable in python? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "variable",
+                              "Python"
+                        ]
+                  },
+                  {
+                        "id": 8,
+                        "question_text": "What is type casting?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of type casting? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "type",
+                              "casting"
+                        ]
+                  },
+                  {
+                        "id": 9,
+                        "question_text": "What is the difference between input() and print()?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of the difference between input() and print()? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "input",
+                              "print"
+                        ]
+                  },
+                  {
+                        "id": 10,
+                        "question_text": "What are conditional statements?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of what are conditional statements? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "conditional",
+                              "statements"
+                        ]
+                  },
+                  {
+                        "id": 11,
+                        "question_text": "What are loops in Python?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of what are loops in python? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "loops",
+                              "Python"
+                        ]
+                  },
+                  {
+                        "id": 12,
+                        "question_text": "Difference between for and while loops?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of difference between for and while loops? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "while",
+                              "loops"
+                        ]
+                  },
+                  {
+                        "id": 13,
+                        "question_text": "What is a function?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a function? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "function"
+                        ]
+                  },
+                  {
+                        "id": 14,
+                        "question_text": "What are function parameters and arguments?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of what are function parameters and arguments? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "function",
+                              "parameters",
+                              "arguments"
+                        ]
+                  },
+                  {
+                        "id": 15,
+                        "question_text": "What is the difference between return and print()?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of the difference between return and print()? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "return",
+                              "print"
+                        ]
+                  },
+                  {
+                        "id": 16,
+                        "question_text": "What is a string in Python?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a string in python? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "string",
+                              "Python"
+                        ]
+                  },
+                  {
+                        "id": 17,
+                        "question_text": "How do you reverse a string?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of how do you reverse a string? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "reverse",
+                              "string"
+                        ]
+                  },
+                  {
+                        "id": 18,
+                        "question_text": "What is list slicing?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of list slicing? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "list",
+                              "slicing"
+                        ]
+                  },
+                  {
+                        "id": 19,
+                        "question_text": "What is exception handling?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of exception handling? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "exception",
+                              "handling"
+                        ]
+                  },
+                  {
+                        "id": 20,
+                        "question_text": "What is the purpose of import in Python?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of the purpose of import in python? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "purpose",
+                              "import",
+                              "Python"
+                        ]
+                  }
+            ],
+            "Intermediate": [
+                  {
+                        "id": 21,
+                        "question_text": "Explain mutable and immutable objects.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of mutable and immutable objects. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "mutable",
+                              "immutable",
+                              "objects"
+                        ]
+                  },
+                  {
+                        "id": 22,
+                        "question_text": "Difference between == and is.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of difference between == and is. covering key principles and practical usage.",
+                        "expected_concepts": []
+                  },
+                  {
+                        "id": 23,
+                        "question_text": "Explain shallow copy and deep copy.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of shallow copy and deep copy. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "shallow",
+                              "copy",
+                              "deep",
+                              "copy"
+                        ]
+                  },
+                  {
+                        "id": 24,
+                        "question_text": "What are *args and **kwargs?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of what are *args and **kwargs? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "*args",
+                              "**kwargs"
+                        ]
+                  },
+                  {
+                        "id": 25,
+                        "question_text": "What is list comprehension?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of list comprehension? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "list",
+                              "comprehension"
+                        ]
+                  },
+                  {
+                        "id": 26,
+                        "question_text": "Explain lambda functions.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of lambda functions. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "lambda",
+                              "functions"
+                        ]
+                  },
+                  {
+                        "id": 27,
+                        "question_text": "Explain map(), filter(), and reduce().",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of map(), filter(), and reduce(). covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "map",
+                              "filter",
+                              "reduce"
+                        ]
+                  },
+                  {
+                        "id": 28,
+                        "question_text": "What are iterators and generators?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of what are iterators and generators? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "iterators",
+                              "generators"
+                        ]
+                  },
+                  {
+                        "id": 29,
+                        "question_text": "What is the purpose of yield?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of the purpose of yield? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "purpose",
+                              "yield"
+                        ]
+                  },
+                  {
+                        "id": 30,
+                        "question_text": "Explain try, except, else, and finally.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of try, except, else, and finally. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "try",
+                              "except",
+                              "else",
+                              "finally"
+                        ]
+                  },
+                  {
+                        "id": 31,
+                        "question_text": "What are modules and packages?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of what are modules and packages? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "modules",
+                              "packages"
+                        ]
+                  },
+                  {
+                        "id": 32,
+                        "question_text": "Explain OOP concepts in Python.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of oop concepts in python. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "concepts",
+                              "Python"
+                        ]
+                  },
+                  {
+                        "id": 33,
+                        "question_text": "What is inheritance?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of inheritance? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "inheritance"
+                        ]
+                  },
+                  {
+                        "id": 34,
+                        "question_text": "What is polymorphism?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of polymorphism? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "polymorphism"
+                        ]
+                  },
+                  {
+                        "id": 35,
+                        "question_text": "What is encapsulation?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of encapsulation? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "encapsulation"
+                        ]
+                  },
+                  {
+                        "id": 36,
+                        "question_text": "What is abstraction?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of abstraction? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "abstraction"
+                        ]
+                  },
+                  {
+                        "id": 37,
+                        "question_text": "What are decorators?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of what are decorators? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "decorators"
+                        ]
+                  },
+                  {
+                        "id": 38,
+                        "question_text": "Difference between class and instance variables.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of difference between class and instance variables. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "class",
+                              "instance",
+                              "variables"
+                        ]
+                  },
+                  {
+                        "id": 39,
+                        "question_text": "Explain @staticmethod and @classmethod.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of @staticmethod and @classmethod. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "@staticmethod",
+                              "@classmethod"
+                        ]
+                  },
+                  {
+                        "id": 40,
+                        "question_text": "How can you optimize Python code?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of how can you optimize python code? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "optimize",
+                              "Python",
+                              "code"
+                        ]
+                  }
+            ],
+            "Advanced": [
+                  {
+                        "id": 41,
+                        "question_text": "Explain Python's memory management.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of python's memory management. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Python's",
+                              "memory",
+                              "management"
+                        ]
+                  },
+                  {
+                        "id": 42,
+                        "question_text": "What is garbage collection in Python?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of garbage collection in python? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "garbage",
+                              "collection",
+                              "Python"
+                        ]
+                  },
+                  {
+                        "id": 43,
+                        "question_text": "Explain Python's Global Interpreter Lock (GIL).",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of python's global interpreter lock (gil). covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Python's",
+                              "Global",
+                              "Interpreter",
+                              "Lock"
+                        ]
+                  },
+                  {
+                        "id": 44,
+                        "question_text": "How does Python handle multithreading?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how does python handle multithreading? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Python",
+                              "handle",
+                              "multithreading"
+                        ]
+                  },
+                  {
+                        "id": 45,
+                        "question_text": "Difference between multiprocessing and multithreading.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of difference between multiprocessing and multithreading. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "multiprocessing",
+                              "multithreading"
+                        ]
+                  },
+                  {
+                        "id": 46,
+                        "question_text": "Explain asynchronous programming using async and await.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of asynchronous programming using async and await. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "asynchronous",
+                              "programming",
+                              "async",
+                              "await"
+                        ]
+                  },
+                  {
+                        "id": 47,
+                        "question_text": "How do decorators work internally?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how do decorators work internally? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "decorators",
+                              "work",
+                              "internally"
+                        ]
+                  },
+                  {
+                        "id": 48,
+                        "question_text": "What are context managers?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of what are context managers? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "context",
+                              "managers"
+                        ]
+                  },
+                  {
+                        "id": 49,
+                        "question_text": "Explain the with statement.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of the with statement. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "statement"
+                        ]
+                  },
+                  {
+                        "id": 50,
+                        "question_text": "What are metaclasses?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of what are metaclasses? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "metaclasses"
+                        ]
+                  },
+                  {
+                        "id": 51,
+                        "question_text": "Explain method resolution order (MRO).",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of method resolution order (mro). covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "method",
+                              "resolution",
+                              "order",
+                              "MRO"
+                        ]
+                  },
+                  {
+                        "id": 52,
+                        "question_text": "What are magic/dunder methods?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of what are magic/dunder methods? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "magic/dunder",
+                              "methods"
+                        ]
+                  },
+                  {
+                        "id": 53,
+                        "question_text": "Explain __init__, __str__, and __repr__.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of __init__, __str__, and __repr__. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "__init__",
+                              "__str__",
+                              "__repr__"
+                        ]
+                  },
+                  {
+                        "id": 54,
+                        "question_text": "How does Python dictionary hashing work?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how does python dictionary hashing work? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Python",
+                              "dictionary",
+                              "hashing",
+                              "work"
+                        ]
+                  },
+                  {
+                        "id": 55,
+                        "question_text": "How would you optimize memory usage in Python?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how would you optimize memory usage in python? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "optimize",
+                              "memory",
+                              "usage"
+                        ]
+                  },
+                  {
+                        "id": 56,
+                        "question_text": "How would you debug a memory leak?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how would you debug a memory leak? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "debug",
+                              "memory",
+                              "leak"
+                        ]
+                  },
+                  {
+                        "id": 57,
+                        "question_text": "How would you design a scalable Python application?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how would you design a scalable python application? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "design",
+                              "scalable",
+                              "Python"
+                        ]
+                  },
+                  {
+                        "id": 58,
+                        "question_text": "What is dependency management in Python?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of dependency management in python? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "dependency",
+                              "management",
+                              "Python"
+                        ]
+                  },
+                  {
+                        "id": 59,
+                        "question_text": "How would you improve the performance of a large Python application?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how would you improve the performance of a large python application? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "improve",
+                              "performance",
+                              "large"
+                        ]
+                  },
+                  {
+                        "id": 60,
+                        "question_text": "Explain how you would structure a production-level Python project.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how you would structure a production-level python project. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "structure",
+                              "production-level",
+                              "Python"
+                        ]
+                  }
+            ]
+      },
+      "2": {
+            "Beginner": [
+                  {
+                        "id": 61,
+                        "question_text": "What is Java?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of java? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Java"
+                        ]
+                  },
+                  {
+                        "id": 62,
+                        "question_text": "What are the features of Java?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of what are the features of java? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "features",
+                              "Java"
+                        ]
+                  },
+                  {
+                        "id": 63,
+                        "question_text": "Why is Java platform independent?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of why is java platform independent? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Java",
+                              "platform",
+                              "independent"
+                        ]
+                  },
+                  {
+                        "id": 64,
+                        "question_text": "What is JVM?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of jvm? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "JVM"
+                        ]
+                  },
+                  {
+                        "id": 65,
+                        "question_text": "What is JDK?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of jdk? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "JDK"
+                        ]
+                  },
+                  {
+                        "id": 66,
+                        "question_text": "What is JRE?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of jre? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "JRE"
+                        ]
+                  },
+                  {
+                        "id": 67,
+                        "question_text": "What is a class?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a class? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "class"
+                        ]
+                  },
+                  {
+                        "id": 68,
+                        "question_text": "What is an object?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of an object? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "object"
+                        ]
+                  },
+                  {
+                        "id": 69,
+                        "question_text": "What is a constructor?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a constructor? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "constructor"
+                        ]
+                  },
+                  {
+                        "id": 70,
+                        "question_text": "What is inheritance?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of inheritance? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "inheritance"
+                        ]
+                  },
+                  {
+                        "id": 71,
+                        "question_text": "What is polymorphism?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of polymorphism? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "polymorphism"
+                        ]
+                  },
+                  {
+                        "id": 72,
+                        "question_text": "What is encapsulation?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of encapsulation? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "encapsulation"
+                        ]
+                  },
+                  {
+                        "id": 73,
+                        "question_text": "What is abstraction?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of abstraction? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "abstraction"
+                        ]
+                  },
+                  {
+                        "id": 74,
+                        "question_text": "What is method overloading?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of method overloading? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "method",
+                              "overloading"
+                        ]
+                  },
+                  {
+                        "id": 75,
+                        "question_text": "What is method overriding?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of method overriding? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "method",
+                              "overriding"
+                        ]
+                  },
+                  {
+                        "id": 76,
+                        "question_text": "What is the this keyword?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of the this keyword? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "this",
+                              "keyword"
+                        ]
+                  },
+                  {
+                        "id": 77,
+                        "question_text": "What is the super keyword?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of the super keyword? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "super",
+                              "keyword"
+                        ]
+                  },
+                  {
+                        "id": 78,
+                        "question_text": "What is an interface?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of an interface? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "interface"
+                        ]
+                  },
+                  {
+                        "id": 79,
+                        "question_text": "What is an abstract class?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of an abstract class? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "abstract",
+                              "class"
+                        ]
+                  },
+                  {
+                        "id": 80,
+                        "question_text": "What is exception handling?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of exception handling? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "exception",
+                              "handling"
+                        ]
+                  }
+            ],
+            "Intermediate": [
+                  {
+                        "id": 81,
+                        "question_text": "Difference between == and .equals().",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of difference between == and .equals(). covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "equals"
+                        ]
+                  },
+                  {
+                        "id": 82,
+                        "question_text": "Explain checked and unchecked exceptions.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of checked and unchecked exceptions. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "checked",
+                              "unchecked",
+                              "exceptions"
+                        ]
+                  },
+                  {
+                        "id": 83,
+                        "question_text": "Explain final, finally, and finalize().",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of final, finally, and finalize(). covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "final",
+                              "finally",
+                              "finalize"
+                        ]
+                  },
+                  {
+                        "id": 84,
+                        "question_text": "Explain ArrayList and LinkedList.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of arraylist and linkedlist. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "ArrayList",
+                              "LinkedList"
+                        ]
+                  },
+                  {
+                        "id": 85,
+                        "question_text": "Difference between HashMap and HashSet.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of difference between hashmap and hashset. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "HashMap",
+                              "HashSet"
+                        ]
+                  },
+                  {
+                        "id": 86,
+                        "question_text": "How does HashMap work?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of how does hashmap work? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "HashMap",
+                              "work"
+                        ]
+                  },
+                  {
+                        "id": 87,
+                        "question_text": "What is multithreading?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of multithreading? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "multithreading"
+                        ]
+                  },
+                  {
+                        "id": 88,
+                        "question_text": "What is a thread?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of a thread? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "thread"
+                        ]
+                  },
+                  {
+                        "id": 89,
+                        "question_text": "What is synchronization?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of synchronization? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "synchronization"
+                        ]
+                  },
+                  {
+                        "id": 90,
+                        "question_text": "What is garbage collection?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of garbage collection? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "garbage",
+                              "collection"
+                        ]
+                  },
+                  {
+                        "id": 91,
+                        "question_text": "What are Java Collections?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of what are java collections? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Java",
+                              "Collections"
+                        ]
+                  },
+                  {
+                        "id": 92,
+                        "question_text": "What is an Iterator?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of an iterator? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Iterator"
+                        ]
+                  },
+                  {
+                        "id": 93,
+                        "question_text": "What are Generics?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of what are generics? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Generics"
+                        ]
+                  },
+                  {
+                        "id": 94,
+                        "question_text": "What is the difference between String, StringBuilder, and StringBuffer?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of the difference between string, stringbuilder, and stringbuffer? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "String",
+                              "StringBuilder",
+                              "StringBuffer"
+                        ]
+                  },
+                  {
+                        "id": 95,
+                        "question_text": "What is an immutable object?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of an immutable object? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "immutable",
+                              "object"
+                        ]
+                  },
+                  {
+                        "id": 96,
+                        "question_text": "What is an enum?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of an enum? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "enum"
+                        ]
+                  },
+                  {
+                        "id": 97,
+                        "question_text": "What are lambda expressions?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of what are lambda expressions? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "lambda",
+                              "expressions"
+                        ]
+                  },
+                  {
+                        "id": 98,
+                        "question_text": "What are functional interfaces?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of what are functional interfaces? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "functional",
+                              "interfaces"
+                        ]
+                  },
+                  {
+                        "id": 99,
+                        "question_text": "What are Java Streams?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of what are java streams? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Java",
+                              "Streams"
+                        ]
+                  },
+                  {
+                        "id": 100,
+                        "question_text": "What is the difference between Comparable and Comparator?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of the difference between comparable and comparator? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Comparable",
+                              "Comparator"
+                        ]
+                  }
+            ],
+            "Advanced": [
+                  {
+                        "id": 101,
+                        "question_text": "Explain JVM architecture.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of jvm architecture. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "architecture"
+                        ]
+                  },
+                  {
+                        "id": 102,
+                        "question_text": "Explain Java memory management.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of java memory management. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Java",
+                              "memory",
+                              "management"
+                        ]
+                  },
+                  {
+                        "id": 103,
+                        "question_text": "Explain Heap and Stack memory.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of heap and stack memory. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Heap",
+                              "Stack",
+                              "memory"
+                        ]
+                  },
+                  {
+                        "id": 104,
+                        "question_text": "Explain garbage collector algorithms.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of garbage collector algorithms. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "garbage",
+                              "collector",
+                              "algorithms"
+                        ]
+                  },
+                  {
+                        "id": 105,
+                        "question_text": "Explain Java concurrency.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of java concurrency. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Java",
+                              "concurrency"
+                        ]
+                  },
+                  {
+                        "id": 106,
+                        "question_text": "What is ExecutorService?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of executorservice? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "ExecutorService"
+                        ]
+                  },
+                  {
+                        "id": 107,
+                        "question_text": "What is a thread pool?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of a thread pool? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "thread",
+                              "pool"
+                        ]
+                  },
+                  {
+                        "id": 108,
+                        "question_text": "What is deadlock?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of deadlock? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "deadlock"
+                        ]
+                  },
+                  {
+                        "id": 109,
+                        "question_text": "How can deadlocks be prevented?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how can deadlocks be prevented? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "deadlocks",
+                              "prevented"
+                        ]
+                  },
+                  {
+                        "id": 110,
+                        "question_text": "What are race conditions?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of what are race conditions? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "race",
+                              "conditions"
+                        ]
+                  },
+                  {
+                        "id": 111,
+                        "question_text": "Explain volatile variables.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of volatile variables. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "volatile",
+                              "variables"
+                        ]
+                  },
+                  {
+                        "id": 112,
+                        "question_text": "Explain synchronized blocks and methods.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of synchronized blocks and methods. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "synchronized",
+                              "blocks",
+                              "methods"
+                        ]
+                  },
+                  {
+                        "id": 113,
+                        "question_text": "What are atomic classes?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of what are atomic classes? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "atomic",
+                              "classes"
+                        ]
+                  },
+                  {
+                        "id": 114,
+                        "question_text": "Explain CompletableFuture.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of completablefuture. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "CompletableFuture"
+                        ]
+                  },
+                  {
+                        "id": 115,
+                        "question_text": "Explain Java Stream optimization.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of java stream optimization. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Java",
+                              "Stream",
+                              "optimization"
+                        ]
+                  },
+                  {
+                        "id": 116,
+                        "question_text": "What are design patterns in Java?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of what are design patterns in java? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "design",
+                              "patterns",
+                              "Java"
+                        ]
+                  },
+                  {
+                        "id": 117,
+                        "question_text": "Explain Singleton, Factory, and Observer patterns.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of singleton, factory, and observer patterns. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Singleton",
+                              "Factory",
+                              "Observer",
+                              "patterns"
+                        ]
+                  },
+                  {
+                        "id": 118,
+                        "question_text": "What is dependency injection?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of dependency injection? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "dependency",
+                              "injection"
+                        ]
+                  },
+                  {
+                        "id": 119,
+                        "question_text": "How would you design a scalable Java application?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how would you design a scalable java application? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "design",
+                              "scalable",
+                              "Java"
+                        ]
+                  },
+                  {
+                        "id": 120,
+                        "question_text": "How would you improve the performance of a Java application?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how would you improve the performance of a java application? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "improve",
+                              "performance",
+                              "Java"
+                        ]
+                  }
+            ]
+      },
+      "3": {
+            "Beginner": [
+                  {
+                        "id": 121,
+                        "question_text": "What is software?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of software? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "software"
+                        ]
+                  },
+                  {
+                        "id": 122,
+                        "question_text": "What is software development?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of software development? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "software",
+                              "development"
+                        ]
+                  },
+                  {
+                        "id": 123,
+                        "question_text": "What is SDLC?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of sdlc? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "SDLC"
+                        ]
+                  },
+                  {
+                        "id": 124,
+                        "question_text": "Explain the stages of SDLC.",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of the stages of sdlc. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "stages",
+                              "SDLC"
+                        ]
+                  },
+                  {
+                        "id": 125,
+                        "question_text": "What is the Waterfall model?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of the waterfall model? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Waterfall",
+                              "model"
+                        ]
+                  },
+                  {
+                        "id": 126,
+                        "question_text": "What is Agile?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of agile? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Agile"
+                        ]
+                  },
+                  {
+                        "id": 127,
+                        "question_text": "What is Scrum?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of scrum? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Scrum"
+                        ]
+                  },
+                  {
+                        "id": 128,
+                        "question_text": "What is a requirement?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a requirement? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "requirement"
+                        ]
+                  },
+                  {
+                        "id": 129,
+                        "question_text": "What is functional requirement?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of functional requirement? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "functional",
+                              "requirement"
+                        ]
+                  },
+                  {
+                        "id": 130,
+                        "question_text": "What is non-functional requirement?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of non-functional requirement? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "non-functional",
+                              "requirement"
+                        ]
+                  },
+                  {
+                        "id": 131,
+                        "question_text": "What is debugging?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of debugging? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "debugging"
+                        ]
+                  },
+                  {
+                        "id": 132,
+                        "question_text": "What is software testing?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of software testing? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "software",
+                              "testing"
+                        ]
+                  },
+                  {
+                        "id": 133,
+                        "question_text": "What is unit testing?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of unit testing? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "unit",
+                              "testing"
+                        ]
+                  },
+                  {
+                        "id": 134,
+                        "question_text": "What is integration testing?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of integration testing? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "integration",
+                              "testing"
+                        ]
+                  },
+                  {
+                        "id": 135,
+                        "question_text": "What is Git?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of git? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Git"
+                        ]
+                  },
+                  {
+                        "id": 136,
+                        "question_text": "What is GitHub?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of github? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "GitHub"
+                        ]
+                  },
+                  {
+                        "id": 137,
+                        "question_text": "What is a Git repository?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a git repository? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "repository"
+                        ]
+                  },
+                  {
+                        "id": 138,
+                        "question_text": "What is a Git branch?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a git branch? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "branch"
+                        ]
+                  },
+                  {
+                        "id": 139,
+                        "question_text": "What is an API?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of an api? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "API"
+                        ]
+                  },
+                  {
+                        "id": 140,
+                        "question_text": "What is a database?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a database? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "database"
+                        ]
+                  }
+            ],
+            "Intermediate": [
+                  {
+                        "id": 141,
+                        "question_text": "Explain Agile methodology.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of agile methodology. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Agile",
+                              "methodology"
+                        ]
+                  },
+                  {
+                        "id": 142,
+                        "question_text": "What are Scrum roles?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of what are scrum roles? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Scrum",
+                              "roles"
+                        ]
+                  },
+                  {
+                        "id": 143,
+                        "question_text": "What is a user story?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of a user story? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "user",
+                              "story"
+                        ]
+                  },
+                  {
+                        "id": 144,
+                        "question_text": "What is an API?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of an api? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "API"
+                        ]
+                  },
+                  {
+                        "id": 145,
+                        "question_text": "What is REST API?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of rest api? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "REST",
+                              "API"
+                        ]
+                  },
+                  {
+                        "id": 146,
+                        "question_text": "Difference between REST and SOAP.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of difference between rest and soap. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "REST",
+                              "SOAP"
+                        ]
+                  },
+                  {
+                        "id": 147,
+                        "question_text": "Explain GET, POST, PUT, PATCH, and DELETE.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of get, post, put, patch, and delete. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "GET",
+                              "POST",
+                              "PUT",
+                              "PATCH"
+                        ]
+                  },
+                  {
+                        "id": 148,
+                        "question_text": "Explain common HTTP status codes.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of common http status codes. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "common",
+                              "HTTP",
+                              "status",
+                              "codes"
+                        ]
+                  },
+                  {
+                        "id": 149,
+                        "question_text": "What is authentication?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of authentication? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "authentication"
+                        ]
+                  },
+                  {
+                        "id": 150,
+                        "question_text": "What is authorization?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of authorization? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "authorization"
+                        ]
+                  },
+                  {
+                        "id": 151,
+                        "question_text": "Explain OOP principles.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of oop principles. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "principles"
+                        ]
+                  },
+                  {
+                        "id": 152,
+                        "question_text": "What are SOLID principles?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of what are solid principles? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "SOLID",
+                              "principles"
+                        ]
+                  },
+                  {
+                        "id": 153,
+                        "question_text": "Difference between high-level and low-level design.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of difference between high-level and low-level design. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "high-level",
+                              "low-level",
+                              "design"
+                        ]
+                  },
+                  {
+                        "id": 154,
+                        "question_text": "Difference between Git merge and rebase.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of difference between git merge and rebase. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "merge",
+                              "rebase"
+                        ]
+                  },
+                  {
+                        "id": 155,
+                        "question_text": "What is a pull request?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of a pull request? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "pull",
+                              "request"
+                        ]
+                  },
+                  {
+                        "id": 156,
+                        "question_text": "What is CI/CD?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of ci/cd? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "CI/CD"
+                        ]
+                  },
+                  {
+                        "id": 157,
+                        "question_text": "Difference between unit and integration testing.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of difference between unit and integration testing. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "unit",
+                              "integration",
+                              "testing"
+                        ]
+                  },
+                  {
+                        "id": 158,
+                        "question_text": "What is database normalization?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of database normalization? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "database",
+                              "normalization"
+                        ]
+                  },
+                  {
+                        "id": 159,
+                        "question_text": "What is exception handling?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of exception handling? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "exception",
+                              "handling"
+                        ]
+                  },
+                  {
+                        "id": 160,
+                        "question_text": "How would you debug a production issue?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of how would you debug a production issue? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "debug",
+                              "production",
+                              "issue"
+                        ]
+                  }
+            ],
+            "Advanced": [
+                  {
+                        "id": 161,
+                        "question_text": "How would you design a scalable application?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how would you design a scalable application? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "design",
+                              "scalable",
+                              "application"
+                        ]
+                  },
+                  {
+                        "id": 162,
+                        "question_text": "What is system design?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of system design? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "system",
+                              "design"
+                        ]
+                  },
+                  {
+                        "id": 163,
+                        "question_text": "What is a microservices architecture?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of a microservices architecture? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "microservices",
+                              "architecture"
+                        ]
+                  },
+                  {
+                        "id": 164,
+                        "question_text": "Monolithic vs microservices architecture?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of monolithic vs microservices architecture? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Monolithic",
+                              "microservices",
+                              "architecture"
+                        ]
+                  },
+                  {
+                        "id": 165,
+                        "question_text": "What is service-oriented architecture?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of service-oriented architecture? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "service-oriented",
+                              "architecture"
+                        ]
+                  },
+                  {
+                        "id": 166,
+                        "question_text": "What is load balancing?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of load balancing? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "load",
+                              "balancing"
+                        ]
+                  },
+                  {
+                        "id": 167,
+                        "question_text": "What is caching?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of caching? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "caching"
+                        ]
+                  },
+                  {
+                        "id": 168,
+                        "question_text": "What is database sharding?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of database sharding? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "database",
+                              "sharding"
+                        ]
+                  },
+                  {
+                        "id": 169,
+                        "question_text": "What is replication?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of replication? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "replication"
+                        ]
+                  },
+                  {
+                        "id": 170,
+                        "question_text": "What is message queuing?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of message queuing? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "message",
+                              "queuing"
+                        ]
+                  },
+                  {
+                        "id": 171,
+                        "question_text": "Explain Kafka/RabbitMQ concepts.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of kafka/rabbitmq concepts. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Kafka/RabbitMQ",
+                              "concepts"
+                        ]
+                  },
+                  {
+                        "id": 172,
+                        "question_text": "What is an API gateway?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of an api gateway? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "gateway"
+                        ]
+                  },
+                  {
+                        "id": 173,
+                        "question_text": "What is rate limiting?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of rate limiting? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "rate",
+                              "limiting"
+                        ]
+                  },
+                  {
+                        "id": 174,
+                        "question_text": "What is fault tolerance?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of fault tolerance? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "fault",
+                              "tolerance"
+                        ]
+                  },
+                  {
+                        "id": 175,
+                        "question_text": "What is horizontal vs vertical scaling?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of horizontal vs vertical scaling? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "horizontal",
+                              "vertical",
+                              "scaling"
+                        ]
+                  },
+                  {
+                        "id": 176,
+                        "question_text": "What is eventual consistency?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of eventual consistency? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "eventual",
+                              "consistency"
+                        ]
+                  },
+                  {
+                        "id": 177,
+                        "question_text": "What are design patterns?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of what are design patterns? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "design",
+                              "patterns"
+                        ]
+                  },
+                  {
+                        "id": 178,
+                        "question_text": "How do you secure a REST API?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how do you secure a rest api? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "secure",
+                              "REST",
+                              "API"
+                        ]
+                  },
+                  {
+                        "id": 179,
+                        "question_text": "How would you troubleshoot a slow application?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how would you troubleshoot a slow application? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "troubleshoot",
+                              "slow",
+                              "application"
+                        ]
+                  },
+                  {
+                        "id": 180,
+                        "question_text": "Design a basic e-commerce / banking / interview platform architecture.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of design a basic e-commerce / banking / interview platform architecture. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Design",
+                              "basic",
+                              "e-commerce",
+                              "banking"
+                        ]
+                  }
+            ]
+      },
+      "4": {
+            "Beginner": [
+                  {
+                        "id": 181,
+                        "question_text": "What is data analysis?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of data analysis? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "data",
+                              "analysis"
+                        ]
+                  },
+                  {
+                        "id": 182,
+                        "question_text": "What is artificial intelligence?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of artificial intelligence? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "artificial",
+                              "intelligence"
+                        ]
+                  },
+                  {
+                        "id": 183,
+                        "question_text": "What is machine learning?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of machine learning? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "machine",
+                              "learning"
+                        ]
+                  },
+                  {
+                        "id": 184,
+                        "question_text": "What is deep learning?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of deep learning? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "deep",
+                              "learning"
+                        ]
+                  },
+                  {
+                        "id": 185,
+                        "question_text": "Difference between AI, ML, and DL.",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of difference between ai, ml, and dl. covering key principles and practical usage.",
+                        "expected_concepts": []
+                  },
+                  {
+                        "id": 186,
+                        "question_text": "What is a dataset?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a dataset? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "dataset"
+                        ]
+                  },
+                  {
+                        "id": 187,
+                        "question_text": "What is structured data?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of structured data? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "structured",
+                              "data"
+                        ]
+                  },
+                  {
+                        "id": 188,
+                        "question_text": "What is unstructured data?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of unstructured data? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "unstructured",
+                              "data"
+                        ]
+                  },
+                  {
+                        "id": 189,
+                        "question_text": "What is data preprocessing?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of data preprocessing? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "data",
+                              "preprocessing"
+                        ]
+                  },
+                  {
+                        "id": 190,
+                        "question_text": "What is missing data?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of missing data? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "missing",
+                              "data"
+                        ]
+                  },
+                  {
+                        "id": 191,
+                        "question_text": "What is an outlier?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of an outlier? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "outlier"
+                        ]
+                  },
+                  {
+                        "id": 192,
+                        "question_text": "What is mean?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of mean? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "mean"
+                        ]
+                  },
+                  {
+                        "id": 193,
+                        "question_text": "What is median?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of median? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "median"
+                        ]
+                  },
+                  {
+                        "id": 194,
+                        "question_text": "What is mode?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of mode? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "mode"
+                        ]
+                  },
+                  {
+                        "id": 195,
+                        "question_text": "What is variance?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of variance? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "variance"
+                        ]
+                  },
+                  {
+                        "id": 196,
+                        "question_text": "What is standard deviation?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of standard deviation? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "standard",
+                              "deviation"
+                        ]
+                  },
+                  {
+                        "id": 197,
+                        "question_text": "What is correlation?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of correlation? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "correlation"
+                        ]
+                  },
+                  {
+                        "id": 198,
+                        "question_text": "What is EDA?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of eda? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "EDA"
+                        ]
+                  },
+                  {
+                        "id": 199,
+                        "question_text": "What is supervised learning?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of supervised learning? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "supervised",
+                              "learning"
+                        ]
+                  },
+                  {
+                        "id": 200,
+                        "question_text": "What is unsupervised learning?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of unsupervised learning? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "unsupervised",
+                              "learning"
+                        ]
+                  }
+            ],
+            "Intermediate": [
+                  {
+                        "id": 201,
+                        "question_text": "How do you handle missing values?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of how do you handle missing values? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "handle",
+                              "missing",
+                              "values"
+                        ]
+                  },
+                  {
+                        "id": 202,
+                        "question_text": "How do you handle outliers?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of how do you handle outliers? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "handle",
+                              "outliers"
+                        ]
+                  },
+                  {
+                        "id": 203,
+                        "question_text": "Normalization vs standardization.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of normalization vs standardization. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Normalization",
+                              "standardization"
+                        ]
+                  },
+                  {
+                        "id": 204,
+                        "question_text": "Explain feature engineering.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of feature engineering. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "feature",
+                              "engineering"
+                        ]
+                  },
+                  {
+                        "id": 205,
+                        "question_text": "Explain feature selection.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of feature selection. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "feature",
+                              "selection"
+                        ]
+                  },
+                  {
+                        "id": 206,
+                        "question_text": "Classification vs regression.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of classification vs regression. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Classification",
+                              "regression"
+                        ]
+                  },
+                  {
+                        "id": 207,
+                        "question_text": "Explain train, validation, and test data.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of train, validation, and test data. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "train",
+                              "validation",
+                              "test",
+                              "data"
+                        ]
+                  },
+                  {
+                        "id": 208,
+                        "question_text": "What is overfitting?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of overfitting? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "overfitting"
+                        ]
+                  },
+                  {
+                        "id": 209,
+                        "question_text": "What is underfitting?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of underfitting? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "underfitting"
+                        ]
+                  },
+                  {
+                        "id": 210,
+                        "question_text": "Explain bias-variance tradeoff.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of bias-variance tradeoff. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "bias-variance",
+                              "tradeoff"
+                        ]
+                  },
+                  {
+                        "id": 211,
+                        "question_text": "What is cross-validation?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of cross-validation? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "cross-validation"
+                        ]
+                  },
+                  {
+                        "id": 212,
+                        "question_text": "Explain confusion matrix.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of confusion matrix. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "confusion",
+                              "matrix"
+                        ]
+                  },
+                  {
+                        "id": 213,
+                        "question_text": "Explain accuracy, precision, recall, and F1-score.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of accuracy, precision, recall, and f1-score. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "accuracy",
+                              "precision",
+                              "recall",
+                              "F1-score"
+                        ]
+                  },
+                  {
+                        "id": 214,
+                        "question_text": "What is class imbalance?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of class imbalance? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "class",
+                              "imbalance"
+                        ]
+                  },
+                  {
+                        "id": 215,
+                        "question_text": "How do you handle imbalanced datasets?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of how do you handle imbalanced datasets? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "handle",
+                              "imbalanced",
+                              "datasets"
+                        ]
+                  },
+                  {
+                        "id": 216,
+                        "question_text": "What is a decision tree?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of a decision tree? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "decision",
+                              "tree"
+                        ]
+                  },
+                  {
+                        "id": 217,
+                        "question_text": "What is random forest?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of random forest? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "random",
+                              "forest"
+                        ]
+                  },
+                  {
+                        "id": 218,
+                        "question_text": "What is linear regression?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of linear regression? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "linear",
+                              "regression"
+                        ]
+                  },
+                  {
+                        "id": 219,
+                        "question_text": "What is logistic regression?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of logistic regression? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "logistic",
+                              "regression"
+                        ]
+                  },
+                  {
+                        "id": 220,
+                        "question_text": "How do you select an ML algorithm?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of how do you select an ml algorithm? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "select",
+                              "algorithm"
+                        ]
+                  }
+            ],
+            "Advanced": [
+                  {
+                        "id": 221,
+                        "question_text": "Explain ensemble learning.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of ensemble learning. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "ensemble",
+                              "learning"
+                        ]
+                  },
+                  {
+                        "id": 222,
+                        "question_text": "Bagging vs boosting.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of bagging vs boosting. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Bagging",
+                              "boosting"
+                        ]
+                  },
+                  {
+                        "id": 223,
+                        "question_text": "Explain Random Forest internally.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of random forest internally. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Random",
+                              "Forest",
+                              "internally"
+                        ]
+                  },
+                  {
+                        "id": 224,
+                        "question_text": "Explain Gradient Boosting.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of gradient boosting. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Gradient",
+                              "Boosting"
+                        ]
+                  },
+                  {
+                        "id": 225,
+                        "question_text": "What is XGBoost?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of xgboost? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "XGBoost"
+                        ]
+                  },
+                  {
+                        "id": 226,
+                        "question_text": "What is hyperparameter tuning?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of hyperparameter tuning? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "hyperparameter",
+                              "tuning"
+                        ]
+                  },
+                  {
+                        "id": 227,
+                        "question_text": "Grid Search vs Random Search.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of grid search vs random search. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Grid",
+                              "Search",
+                              "Random",
+                              "Search"
+                        ]
+                  },
+                  {
+                        "id": 228,
+                        "question_text": "What is dimensionality reduction?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of dimensionality reduction? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "dimensionality",
+                              "reduction"
+                        ]
+                  },
+                  {
+                        "id": 229,
+                        "question_text": "Explain PCA.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of pca. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "PCA"
+                        ]
+                  },
+                  {
+                        "id": 230,
+                        "question_text": "What is feature importance?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of feature importance? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "feature",
+                              "importance"
+                        ]
+                  },
+                  {
+                        "id": 231,
+                        "question_text": "What is model interpretability?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of model interpretability? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "model",
+                              "interpretability"
+                        ]
+                  },
+                  {
+                        "id": 232,
+                        "question_text": "What is data leakage?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of data leakage? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "data",
+                              "leakage"
+                        ]
+                  },
+                  {
+                        "id": 233,
+                        "question_text": "How can data leakage be prevented?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how can data leakage be prevented? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "data",
+                              "leakage",
+                              "prevented"
+                        ]
+                  },
+                  {
+                        "id": 234,
+                        "question_text": "Explain ROC-AUC.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of roc-auc. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "ROC-AUC"
+                        ]
+                  },
+                  {
+                        "id": 235,
+                        "question_text": "When is F1-score better than accuracy?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of when is f1-score better than accuracy? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "When",
+                              "F1-score",
+                              "better",
+                              "than"
+                        ]
+                  },
+                  {
+                        "id": 236,
+                        "question_text": "Explain neural network architecture.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of neural network architecture. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "neural",
+                              "network",
+                              "architecture"
+                        ]
+                  },
+                  {
+                        "id": 237,
+                        "question_text": "Explain backpropagation.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of backpropagation. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "backpropagation"
+                        ]
+                  },
+                  {
+                        "id": 238,
+                        "question_text": "What is transfer learning?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of transfer learning? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "transfer",
+                              "learning"
+                        ]
+                  },
+                  {
+                        "id": 239,
+                        "question_text": "How would you deploy an ML model?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how would you deploy an ml model? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "deploy",
+                              "model"
+                        ]
+                  },
+                  {
+                        "id": 240,
+                        "question_text": "How would you design an end-to-end AI system from data collection \u2192 preprocessing \u2192 training \u2192 evaluation \u2192 deployment \u2192 monitoring?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how would you design an end-to-end ai system from data collection \u2192 preprocessing \u2192 training \u2192 evaluation \u2192 deployment \u2192 monitoring? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "design",
+                              "end-to-end",
+                              "system"
+                        ]
+                  }
+            ]
+      },
+      "5": {
+            "Beginner": [
+                  {
+                        "id": 241,
+                        "question_text": "What is SQL?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of sql? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "SQL"
+                        ]
+                  },
+                  {
+                        "id": 242,
+                        "question_text": "What is DBMS?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of dbms? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "DBMS"
+                        ]
+                  },
+                  {
+                        "id": 243,
+                        "question_text": "What is RDBMS?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of rdbms? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "RDBMS"
+                        ]
+                  },
+                  {
+                        "id": 244,
+                        "question_text": "What is a table?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a table? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "table"
+                        ]
+                  },
+                  {
+                        "id": 245,
+                        "question_text": "What is a row?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a row? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "row"
+                        ]
+                  },
+                  {
+                        "id": 246,
+                        "question_text": "What is a column?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a column? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "column"
+                        ]
+                  },
+                  {
+                        "id": 247,
+                        "question_text": "What is a primary key?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a primary key? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "primary",
+                              "key"
+                        ]
+                  },
+                  {
+                        "id": 248,
+                        "question_text": "What is a foreign key?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a foreign key? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "foreign",
+                              "key"
+                        ]
+                  },
+                  {
+                        "id": 249,
+                        "question_text": "What is a unique key?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a unique key? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "unique",
+                              "key"
+                        ]
+                  },
+                  {
+                        "id": 250,
+                        "question_text": "What is SELECT?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of select? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "SELECT"
+                        ]
+                  },
+                  {
+                        "id": 251,
+                        "question_text": "What is WHERE?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of where? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "WHERE"
+                        ]
+                  },
+                  {
+                        "id": 252,
+                        "question_text": "What is ORDER BY?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of order by? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "ORDER"
+                        ]
+                  },
+                  {
+                        "id": 253,
+                        "question_text": "What is GROUP BY?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of group by? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "GROUP"
+                        ]
+                  },
+                  {
+                        "id": 254,
+                        "question_text": "What is HAVING?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of having? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "HAVING"
+                        ]
+                  },
+                  {
+                        "id": 255,
+                        "question_text": "What are aggregate functions?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of what are aggregate functions? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "aggregate",
+                              "functions"
+                        ]
+                  },
+                  {
+                        "id": 256,
+                        "question_text": "What is a JOIN?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a join? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "JOIN"
+                        ]
+                  },
+                  {
+                        "id": 257,
+                        "question_text": "What is an INNER JOIN?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of an inner join? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "INNER",
+                              "JOIN"
+                        ]
+                  },
+                  {
+                        "id": 258,
+                        "question_text": "What is a LEFT JOIN?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a left join? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "LEFT",
+                              "JOIN"
+                        ]
+                  },
+                  {
+                        "id": 259,
+                        "question_text": "What is a subquery?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of a subquery? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "subquery"
+                        ]
+                  },
+                  {
+                        "id": 260,
+                        "question_text": "What is database normalization?",
+                        "category": "Technical",
+                        "difficulty": "Beginner",
+                        "expected_answer": "Clear technical explanation of database normalization? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "database",
+                              "normalization"
+                        ]
+                  }
+            ],
+            "Intermediate": [
+                  {
+                        "id": 261,
+                        "question_text": "Explain all types of SQL JOINs.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of all types of sql joins. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "types",
+                              "JOINs"
+                        ]
+                  },
+                  {
+                        "id": 262,
+                        "question_text": "WHERE vs HAVING.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of where vs having. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "WHERE",
+                              "HAVING"
+                        ]
+                  },
+                  {
+                        "id": 263,
+                        "question_text": "GROUP BY vs ORDER BY.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of group by vs order by. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "GROUP",
+                              "ORDER"
+                        ]
+                  },
+                  {
+                        "id": 264,
+                        "question_text": "What is a correlated subquery?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of a correlated subquery? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "correlated",
+                              "subquery"
+                        ]
+                  },
+                  {
+                        "id": 265,
+                        "question_text": "What is a CTE?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of a cte? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "CTE"
+                        ]
+                  },
+                  {
+                        "id": 266,
+                        "question_text": "What are window functions?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of what are window functions? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "window",
+                              "functions"
+                        ]
+                  },
+                  {
+                        "id": 267,
+                        "question_text": "Explain ROW_NUMBER().",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of row_number(). covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "ROW_NUMBER"
+                        ]
+                  },
+                  {
+                        "id": 268,
+                        "question_text": "Difference between RANK() and DENSE_RANK().",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of difference between rank() and dense_rank(). covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "RANK",
+                              "DENSE_RANK"
+                        ]
+                  },
+                  {
+                        "id": 269,
+                        "question_text": "What is an index?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of an index? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "index"
+                        ]
+                  },
+                  {
+                        "id": 270,
+                        "question_text": "How does an index improve performance?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of how does an index improve performance? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "index",
+                              "improve",
+                              "performance"
+                        ]
+                  },
+                  {
+                        "id": 271,
+                        "question_text": "What is normalization?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of normalization? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "normalization"
+                        ]
+                  },
+                  {
+                        "id": 272,
+                        "question_text": "Explain 1NF, 2NF, and 3NF.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of 1nf, 2nf, and 3nf. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "1NF",
+                              "2NF",
+                              "3NF"
+                        ]
+                  },
+                  {
+                        "id": 273,
+                        "question_text": "What is denormalization?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of denormalization? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "denormalization"
+                        ]
+                  },
+                  {
+                        "id": 274,
+                        "question_text": "What are transactions?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of what are transactions? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "transactions"
+                        ]
+                  },
+                  {
+                        "id": 275,
+                        "question_text": "Explain ACID properties.",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of acid properties. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "ACID",
+                              "properties"
+                        ]
+                  },
+                  {
+                        "id": 276,
+                        "question_text": "What is a view?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of a view? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "view"
+                        ]
+                  },
+                  {
+                        "id": 277,
+                        "question_text": "What is a stored procedure?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of a stored procedure? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "stored",
+                              "procedure"
+                        ]
+                  },
+                  {
+                        "id": 278,
+                        "question_text": "What is a trigger?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of a trigger? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "trigger"
+                        ]
+                  },
+                  {
+                        "id": 279,
+                        "question_text": "What is a self join?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of a self join? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "self",
+                              "join"
+                        ]
+                  },
+                  {
+                        "id": 280,
+                        "question_text": "How would you optimize a slow SQL query?",
+                        "category": "Technical",
+                        "difficulty": "Intermediate",
+                        "expected_answer": "Clear technical explanation of how would you optimize a slow sql query? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "optimize",
+                              "slow",
+                              "query"
+                        ]
+                  }
+            ],
+            "Advanced": [
+                  {
+                        "id": 281,
+                        "question_text": "Explain database indexing internally.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of database indexing internally. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "database",
+                              "indexing",
+                              "internally"
+                        ]
+                  },
+                  {
+                        "id": 282,
+                        "question_text": "Clustered vs non-clustered indexes.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of clustered vs non-clustered indexes. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Clustered",
+                              "non-clustered",
+                              "indexes"
+                        ]
+                  },
+                  {
+                        "id": 283,
+                        "question_text": "What is a composite index?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of a composite index? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "composite",
+                              "index"
+                        ]
+                  },
+                  {
+                        "id": 284,
+                        "question_text": "What is query execution planning?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of query execution planning? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "query",
+                              "execution",
+                              "planning"
+                        ]
+                  },
+                  {
+                        "id": 285,
+                        "question_text": "What is an execution plan?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of an execution plan? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "execution",
+                              "plan"
+                        ]
+                  },
+                  {
+                        "id": 286,
+                        "question_text": "How do you identify a slow SQL query?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how do you identify a slow sql query? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "identify",
+                              "slow",
+                              "query"
+                        ]
+                  },
+                  {
+                        "id": 287,
+                        "question_text": "What is database partitioning?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of database partitioning? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "database",
+                              "partitioning"
+                        ]
+                  },
+                  {
+                        "id": 288,
+                        "question_text": "What is database sharding?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of database sharding? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "database",
+                              "sharding"
+                        ]
+                  },
+                  {
+                        "id": 289,
+                        "question_text": "Explain replication.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of replication. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "replication"
+                        ]
+                  },
+                  {
+                        "id": 290,
+                        "question_text": "What is master-slave/primary-replica architecture?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of master-slave/primary-replica architecture? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "master-slave/primary-replica",
+                              "architecture"
+                        ]
+                  },
+                  {
+                        "id": 291,
+                        "question_text": "What is a deadlock in databases?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of a deadlock in databases? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "deadlock",
+                              "databases"
+                        ]
+                  },
+                  {
+                        "id": 292,
+                        "question_text": "How can database deadlocks be prevented?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how can database deadlocks be prevented? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "database",
+                              "deadlocks",
+                              "prevented"
+                        ]
+                  },
+                  {
+                        "id": 293,
+                        "question_text": "Explain transaction isolation levels.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of transaction isolation levels. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "transaction",
+                              "isolation",
+                              "levels"
+                        ]
+                  },
+                  {
+                        "id": 294,
+                        "question_text": "What are dirty reads?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of what are dirty reads? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "dirty",
+                              "reads"
+                        ]
+                  },
+                  {
+                        "id": 295,
+                        "question_text": "What are phantom reads?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of what are phantom reads? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "phantom",
+                              "reads"
+                        ]
+                  },
+                  {
+                        "id": 296,
+                        "question_text": "What is optimistic vs pessimistic locking?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of optimistic vs pessimistic locking? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "optimistic",
+                              "pessimistic",
+                              "locking"
+                        ]
+                  },
+                  {
+                        "id": 297,
+                        "question_text": "How would you design a database for a large-scale application?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how would you design a database for a large-scale application? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "design",
+                              "database",
+                              "large-scale"
+                        ]
+                  },
+                  {
+                        "id": 298,
+                        "question_text": "How would you optimize a database containing millions of records?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how would you optimize a database containing millions of records? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "optimize",
+                              "database",
+                              "containing"
+                        ]
+                  },
+                  {
+                        "id": 299,
+                        "question_text": "How would you handle database backup and recovery?",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of how would you handle database backup and recovery? covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "would",
+                              "handle",
+                              "database",
+                              "backup"
+                        ]
+                  },
+                  {
+                        "id": 300,
+                        "question_text": "Design the database architecture for an e-commerce / banking / job portal system.",
+                        "category": "Technical",
+                        "difficulty": "Advanced",
+                        "expected_answer": "Clear technical explanation of design the database architecture for an e-commerce / banking / job portal system. covering key principles and practical usage.",
+                        "expected_concepts": [
+                              "Design",
+                              "database",
+                              "architecture",
+                              "e-commerce"
+                        ]
+                  }
+            ]
+      }
+};
 
     // --- JOB ROLES & SELECTION ---
     async function loadJobRoles() {
@@ -1753,7 +5087,9 @@
       } catch (err) {
         console.warn('Backend start failed, initializing Client Offline Session:', err);
         const role = (jobRoles && jobRoles.find(r => r.id === selectedRoleId)) || { id: 1, role_name: "Software Engineer" };
-        const qList = (OFFLINE_QUESTION_BANK[selectedRoleId] || OFFLINE_QUESTION_BANK[1]).slice(0, count);
+        const roleQs = (OFFLINE_QUESTION_BANK[selectedRoleId] || OFFLINE_QUESTION_BANK[1]);
+        const diffQs = (roleQs[selectedDifficulty] || roleQs['Intermediate'] || roleQs['Beginner'] || []);
+        const qList = diffQs.slice(0, count);
         activeInterview = {
           interview_id: 'offline_' + Date.now(),
           role_name: role.role_name,
