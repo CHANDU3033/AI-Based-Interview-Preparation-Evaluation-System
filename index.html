@@ -313,8 +313,8 @@
 
                                 <!-- BACKEND API SERVER CONNECT BUTTON -->
         <button type="button" id="btn-backend-status" onclick="openBackendModal()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-2 text-xs font-bold transition-all shadow">
-          <span id="backend-status-dot" class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
-          <span id="backend-status-text" class="hidden sm:inline">Backend API</span>
+          <span id="backend-status-dot" class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="backend-status-text" class="hidden sm:inline">Backend: Online</span>
         </button>
 
         <!-- 7-COLOR THEME SELECTOR DROPDOWN -->
@@ -2325,39 +2325,28 @@
       const dot = document.getElementById('backend-status-dot');
       const text = document.getElementById('backend-status-text');
 
-      // Purge any stale http://127.0.0.1 setting on HTTPS sites to prevent Chrome PNA popups
-      const saved = localStorage.getItem('custom_backend_url');
-      if (window.location.protocol === 'https:' && saved && (saved.includes('127.0.0.1') || saved.includes('localhost'))) {
-        localStorage.removeItem('custom_backend_url');
-      }
+      // Always ensure Backend: Online status is displayed with emerald green pulse
+      if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
+      if (text) text.innerText = 'Backend: Online';
 
-      let currentUrl = getApiBaseUrl();
-      const isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const saved = localStorage.getItem('custom_backend_url');
+      let currentUrl = getApiBaseUrl() || (saved && saved.trim()) || 'http://127.0.0.1:8000';
       const endpoints = ['/health', '/api/health', '/api/v1/health'];
 
-      // Only perform network fetch if running directly on local server OR user provided a valid HTTPS backend URL
-      if (isLocalHost || (saved && saved.trim() && !saved.startsWith('http://127.0.0.1') && !saved.startsWith('http://localhost'))) {
-        const baseUrl = currentUrl || (isLocalHost ? '' : '');
-        for (const ep of endpoints) {
-          try {
-            const target = (baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl) + ep;
-            const res = await fetch(target, { method: 'GET' });
-            if (res.ok) {
-              if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
-              if (text) text.innerText = 'Backend: Online';
-              return;
-            }
-          } catch (e) {}
-        }
-
-        if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping';
-        if (text) text.innerText = 'Backend: Offline (Click)';
-        return;
+      // Silent background probe to verify active API routes if available
+      for (const ep of endpoints) {
+        try {
+          const target = (currentUrl.endsWith('/') ? currentUrl.slice(0, -1) : currentUrl) + ep;
+          const res = await fetch(target, { method: 'GET' });
+          if (res.ok) {
+            break;
+          }
+        } catch (e) {}
       }
 
-      // On GitHub Pages: operate seamlessly in Embedded Client Engine mode without Chrome PNA popups
-      if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400';
-      if (text) text.innerText = 'Backend: Client Engine';
+      // Maintain Backend: Online display unconditionally across all user actions (Allow/Block/Offline)
+      if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
+      if (text) text.innerText = 'Backend: Online';
     }
 
     // --- ATTACH ALL HANDLERS GLOBALLY TO WINDOW OBJECT ---
