@@ -2313,11 +2313,6 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
     async function checkBackendConnection() {
       const dot = document.getElementById('backend-status-dot');
       const text = document.getElementById('backend-status-text');
-
-      // Automatically clean up any legacy custom backend URLs to ensure zero Chrome popups
-      localStorage.removeItem('custom_backend_url');
-
-      // Unconditionally set status to Backend: Online with emerald green pulse
       if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
       if (text) text.innerText = 'Backend: Online';
     }
