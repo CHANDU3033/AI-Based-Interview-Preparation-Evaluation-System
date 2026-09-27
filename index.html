@@ -1216,12 +1216,14 @@
       const host = window.location.hostname;
       const protocol = window.location.protocol;
 
-      if (protocol !== 'file:' && (host === 'localhost' || host === '127.0.0.1')) {
+      // When running directly from local backend or same domain, use relative origin
+      if (protocol !== 'file:' && (host === 'localhost' || host === '127.0.0.1' || host === '0.0.0.0' || !host.includes('.'))) {
         return '';
       }
 
-      // Default to Local Backend (or Cloud fallback) for GitHub Pages
-      return 'http://127.0.0.1:8000';
+      // On GitHub Pages or public domains, return empty relative path unless user saved a custom backend URL.
+      // This prevents Chrome Private Network Access (PNA) security popups ("Access other apps and services on this device").
+      return '';
     }
 
     const API_BASE_URL = getApiBaseUrl();
@@ -2318,38 +2320,34 @@
       const dot = document.getElementById('backend-status-dot');
       const text = document.getElementById('backend-status-text');
       let currentUrl = getApiBaseUrl();
-      if (!currentUrl || currentUrl === '') {
-        currentUrl = 'http://127.0.0.1:8000';
-      }
+      const saved = localStorage.getItem('custom_backend_url');
+      const isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
       const endpoints = ['/health', '/api/health', '/api/v1/health'];
 
-      for (const ep of endpoints) {
-        try {
-          const target = (currentUrl.endsWith('/') ? currentUrl.slice(0, -1) : currentUrl) + ep;
-          const res = await fetch(target, { method: 'GET' });
-          if (res.ok) {
-            if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
-            if (text) text.innerText = 'Backend: Online';
-            return;
-          }
-        } catch (e) {}
+      // Only perform network fetch if running on local server OR user explicitly provided a backend URL
+      if (isLocalHost || (saved && saved.trim())) {
+        const baseUrl = currentUrl || (isLocalHost ? '' : 'http://127.0.0.1:8000');
+        for (const ep of endpoints) {
+          try {
+            const target = (baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl) + ep;
+            const res = await fetch(target, { method: 'GET' });
+            if (res.ok) {
+              if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
+              if (text) text.innerText = 'Backend: Online';
+              return;
+            }
+          } catch (e) {}
+        }
+
+        if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping';
+        if (text) text.innerText = 'Backend: Offline (Click)';
+        return;
       }
 
-      // Try explicit localhost fallback
-      for (const ep of endpoints) {
-        try {
-          const res = await fetch('http://127.0.0.1:8000' + ep, { method: 'GET' });
-          if (res.ok) {
-            if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
-            if (text) text.innerText = 'Backend: Online';
-            return;
-          }
-        } catch (e) {}
-      }
-
-      if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping';
-      if (text) text.innerText = 'Backend: Offline (Click)';
+      // On GitHub Pages with no custom URL: operate seamlessly in Embedded Client Engine mode without Chrome PNA popups
+      if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400';
+      if (text) text.innerText = 'Backend: Client Engine';
     }
 
     // --- ATTACH ALL HANDLERS GLOBALLY TO WINDOW OBJECT ---
