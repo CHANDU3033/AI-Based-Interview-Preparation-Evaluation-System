@@ -26,18 +26,27 @@ def is_question_echo(question_text: str, student_answer: str) -> bool:
     q_clean = re.sub(r'[^a-zA-Z0-9\s]', '', question_text.lower()).strip()
     a_clean = re.sub(r'[^a-zA-Z0-9\s]', '', student_answer.lower()).strip()
 
+    if not q_clean or not a_clean:
+        return False
+
     if q_clean == a_clean:
         return True
 
-    stop_words = {"what", "is", "are", "how", "why", "explain", "the", "a", "an", "and", "or", "in", "of", "to", "for", "with", "between", "difference", "does", "your"}
+    stop_words = {"what", "is", "are", "how", "why", "explain", "the", "a", "an", "and", "or", "in", "of", "to", "for", "with", "between", "difference", "does", "your", "you", "can", "us", "define", "describe"}
     q_words = set(q_clean.split()) - stop_words
     a_words = set(a_clean.split()) - stop_words
 
-    if not a_words:
-        return True
+    if not a_words or not q_words:
+        return False
 
-    # If answer contains NO new keywords beyond the question keywords
-    if a_words.issubset(q_words):
+    intersection = q_words.intersection(a_words)
+    union = q_words.union(a_words)
+    jaccard = len(intersection) / len(union) if union else 0.0
+
+    new_words = a_words - q_words
+
+    # Only flag as echo if similarity is very high (>0.85) AND candidate introduces fewer than 2 new unique words
+    if jaccard > 0.85 and len(new_words) < 2:
         return True
 
     return False
