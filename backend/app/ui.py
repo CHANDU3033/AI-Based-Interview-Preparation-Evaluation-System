@@ -1246,7 +1246,12 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
       if (path.startsWith('http://') || path.startsWith('https://')) {
         url = path;
       } else {
-        url = API_BASE_URL + cleanPath;
+        url = API_BASE_URL ? (API_BASE_URL + cleanPath) : cleanPath;
+      }
+
+      // Prevent Chrome PNA Popup ("Access other apps and services on this device")
+      if (window.location.protocol === 'https:' && (url.startsWith('http://127.0.0.1') || url.startsWith('http://localhost') || url.startsWith('http://0.0.0.0'))) {
+        throw new Error('Local network fetch blocked on HTTPS site');
       }
 
       options.headers = options.headers || {};
@@ -2319,15 +2324,20 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
     async function checkBackendConnection() {
       const dot = document.getElementById('backend-status-dot');
       const text = document.getElementById('backend-status-text');
-      let currentUrl = getApiBaseUrl();
-      const saved = localStorage.getItem('custom_backend_url');
-      const isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
+      // Purge any stale http://127.0.0.1 setting on HTTPS sites to prevent Chrome PNA popups
+      const saved = localStorage.getItem('custom_backend_url');
+      if (window.location.protocol === 'https:' && saved && (saved.includes('127.0.0.1') || saved.includes('localhost'))) {
+        localStorage.removeItem('custom_backend_url');
+      }
+
+      let currentUrl = getApiBaseUrl();
+      const isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
       const endpoints = ['/health', '/api/health', '/api/v1/health'];
 
-      // Only perform network fetch if running on local server OR user explicitly provided a backend URL
-      if (isLocalHost || (saved && saved.trim())) {
-        const baseUrl = currentUrl || (isLocalHost ? '' : 'http://127.0.0.1:8000');
+      // Only perform network fetch if running directly on local server OR user provided a valid HTTPS backend URL
+      if (isLocalHost || (saved && saved.trim() && !saved.startsWith('http://127.0.0.1') && !saved.startsWith('http://localhost'))) {
+        const baseUrl = currentUrl || (isLocalHost ? '' : '');
         for (const ep of endpoints) {
           try {
             const target = (baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl) + ep;
@@ -2345,7 +2355,7 @@ INDEX_HTML_CONTENT = """<!DOCTYPE html>
         return;
       }
 
-      // On GitHub Pages with no custom URL: operate seamlessly in Embedded Client Engine mode without Chrome PNA popups
+      // On GitHub Pages: operate seamlessly in Embedded Client Engine mode without Chrome PNA popups
       if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400';
       if (text) text.innerText = 'Backend: Client Engine';
     }
